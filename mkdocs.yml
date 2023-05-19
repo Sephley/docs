@@ -16,8 +16,8 @@ theme:
         icon: material/weather-night
         name: Switch to light mode
 
-site_description: Ivaris Ansible configuration documentation
-site_author: Ivaris AG
+site_description: My personal documentation
+site_author: Sephley
 copyright: All rights reserved
 
 nav:
