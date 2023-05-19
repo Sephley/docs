@@ -1,0 +1,25 @@
+site_name: docs
+site_url: https://docs.sephley.com
+repo_name: docs
+repo_url: https://github.com/sephley/docs
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+site_description: Ivaris Ansible configuration documentation
+site_author: Ivaris AG
+copyright: All rights reserved
+
+nav:
+  - Home: index.md
+  - ZLI-M109: m109.md
