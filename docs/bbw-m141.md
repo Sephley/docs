@@ -74,7 +74,7 @@ db2 update db cfg for dbbw001 using AUTO_DEL_REC_OBJ ON
 ```
 ### Rollforward database after restore
 This is only necessary if the specified database is enabled for roll-forward recovery and it has been restored but not rolled forward.  
-see https://www.ibm.com/docs/en/db2/10.5?topic=messages-sql1000-sql1249#sql1117n for more detail
+see <https://www.ibm.com/docs/en/db2/10.5?topic=messages-sql1000-sql1249#sql1117n> for more detail
 ```
 db2 rollforward db DBBW001 to end of logs and stop
 ```

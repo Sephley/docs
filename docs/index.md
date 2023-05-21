@@ -32,4 +32,4 @@ Not only that, but you can also nest them:
 
 It's even possible to add some other elements, like bullet points.
 
-*source:* https://www.markdownguide.org/basic-syntax
+*source:* <https://www.markdownguide.org/basic-syntax>
