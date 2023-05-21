@@ -1,5 +1,31 @@
 # M141 - Admin / Betrieb DBM
 
+### Start / Stop DBM
+
+```
+db2 START DBM
+
+db2 STOP DBM FORCE
+```
+### Connect to database / Disconnect from database
+```
+db2 CONNECT TO DBBW001
+
+db2 CONNECTION RESET
+```
+
+### Run SQL script from CLI
+```
+db2 -tvsf script.sql
+```
+
+### Grant privileges to a user for a table
+```
+db2 "GRANT SELECT, INSERT, UPDATE, DELETE ON BIBLIO.TARTIKEL TO USER bbwuser;"
+```
+
+then proceed to check privileges: `db2 SELECT * FROM SYSCAT.TABAUTH;`
+
 ### Backup database
 Offline
 
