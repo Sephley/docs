@@ -4,6 +4,8 @@ repo_name: docs
 repo_url: https://github.com/sephley/docs
 theme:
   name: material
+  features:
+  - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
