@@ -49,6 +49,16 @@ db2 "RESTORE DB DBBW001 FROM /bbw/DBbackup/ TAKEN AT 20230417084512"
 ```
 
 ### Update db cfg
+From first test:
+```
+db2 update db cfg for dbbw001 using LOGRETAIN RECOVERY
+
+db2 update db cfg for dbbw001 using AUTO_MAINT OFF
+
+db2 update db cfg for dbbw001 using AUTO_DEL_REC_OBJ ON
+
+```
+From Ueb4
 ```
 db2 update db cfg for dbbw001 using NEWLOGPATH '/bbw/activelog1'
 
