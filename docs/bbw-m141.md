@@ -48,7 +48,7 @@ Make sure to select the timestamp that is equivalent to the one of your desired 
 db2 "RESTORE DB DBBW001 FROM /bbw/DBbackup/ TAKEN AT 20230417084512"
 ```
 
-### Update db cfg
+### Update database config
 From first test:
 ```
 db2 update db cfg for dbbw001 using LOGRETAIN RECOVERY
@@ -72,6 +72,13 @@ db2 update db cfg for dbbw001 using LOG RETAIN RECOVERY
 
 db2 update db cfg for dbbw001 using AUTO_DEL_REC_OBJ ON
 ```
+### Search DBM config
+the parameter 'logprimary' is an example of a parameter to search for.  
+make sure to specify the correct database after 'for'  
+```
+db2 get db cfg for dbbw001 | grep -i logprimary
+```
+
 ### Rollforward database after restore
 This is only necessary if the specified database is enabled for roll-forward recovery and it has been restored but not rolled forward.  
 see <https://www.ibm.com/docs/en/db2/10.5?topic=messages-sql1000-sql1249#sql1117n> for more detail
