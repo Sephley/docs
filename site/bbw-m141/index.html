@@ -12,10 +12,8 @@
         <meta name="author" content="Sephley">
       
       
-        <link rel="canonical" href="https://docs.sephley.com/m109/">
+        <link rel="canonical" href="https://docs.sephley.com/bbw-m141/">
       
-      
-        <link rel="prev" href="..">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -23,7 +21,7 @@
     
     
       
-        <title>ZLI-M109 - docs</title>
+        <title>M141 - Admin / Betrieb DBM - docs</title>
       
     
     
@@ -75,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#zli-module-109" class="md-skip">
+        <a href="#m141-admin-betrieb-dbm" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ZLI-M109
+              M141 - Admin / Betrieb DBM
             
           </span>
         </div>
@@ -259,52 +257,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ZLI-M109
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../m109.md" class="md-nav__link">
         ZLI-M109
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#day-1" class="md-nav__link">
-    Day 1
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -336,8 +293,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#day-1" class="md-nav__link">
-    Day 1
+  <a href="#backup-database" class="md-nav__link">
+    Backup database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore-database" class="md-nav__link">
+    Restore database
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-db-cfg" class="md-nav__link">
+    Update db cfg
   </a>
   
 </li>
@@ -360,9 +331,23 @@
   
 
 
-<h1 id="zli-module-109">ZLI Module 109</h1>
-<p>"Dienste in der Public Cloud betreiben und überwachen"</p>
-<h2 id="day-1">Day 1</h2>
+<h1 id="m141-admin-betrieb-dbm">M141 - Admin / Betrieb DBM</h1>
+<h3 id="backup-database">Backup database</h3>
+<p>Offline</p>
+<p><code>db2 backup database DBBW001 to /bbw/DBbackup</code></p>
+<p>Online</p>
+<p><code>db2 backup database DBBW001 online to /bbw/DBbackup</code></p>
+<h3 id="restore-database">Restore database</h3>
+<p>The location specified after 'FROM' must be a directory, not a file.</p>
+<p>Make sure to select the timestamp that is equivalent to the one of your desired backup.</p>
+<p><code>db2 "RESTORE DB DBBW001 FROM /bbw/DBbackup/ TAKEN AT 20230417084512"</code></p>
+<h3 id="update-db-cfg">Update db cfg</h3>
+<p>```db2 update db cfg for dbbw001 using NEWLOGPATH '/bbw/activelog1'</p>
+<p>db2 update db cfg for dbbw001 using MIRRORLOGPATH '/bbw/activelog2'</p>
+<p>db2 update db cfg for dbbw001 using LOGARCHMETH1 DISK:/bbw/archlog1</p>
+<p>db2 update db cfg for dbbw001 using LOGARCHMETH2 DISK:/bbw/archlog2</p>
+<p>db2 update db cfg for dbbw001 using LOG RETAIN RECOVERY</p>
+<p>db2 update db cfg for dbbw001 using AUTO_DEL_REC_OBJ ON```</p>
 
 
 
@@ -404,7 +389,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.b4d07000.min.js"></script>
