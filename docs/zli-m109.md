@@ -70,4 +70,13 @@ Is the external Configuration of your application. Is only for non-confidential 
 ### Volumes / Storage
 Attaches a physical storage to a Pod, can be locally connected or also via Cloud.  
 Think of it as an external drive plugged in to the kubernetes cluster.
+
+### Deployment
+A deployment is a template for creating pods.
+
+### Kubernetes Configuration
+deployments get sent to the API server.  
+Each config file (written in yml) has 3 parts. The metadata, the specification and the third part defines the type of configuration (like service or deployment).  
+Kubernetes always compares the desired state with the actual state and then does anything it can to reach the desired state if that is not the case.
+
 ### Minikube - Kubernetes ganz einfach
