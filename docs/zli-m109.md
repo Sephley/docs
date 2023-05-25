@@ -1,7 +1,6 @@
 # ZLI Module 109
 "Dienste in der Public Cloud betreiben und überwachen"
 *Course:* <https://moodle.zli.ch/course/view.php?id=1610>
-## Day 1
 
 ### Auftrag 1.1: Einfache HTML Seite erstellen und mit FTP «deployen»
 
@@ -44,7 +43,7 @@ minikube addons enable metrics-server
 sudo reboot  
 ```
 
-## Auftrag 4.2: Container Orchestration mit Docker Compose
+### Auftrag 4.2: Container Orchestration mit Docker Compose
 
 see <https://docs.docker.com/compose/gettingstarted/> for how to set up a generic docker-compose application
 
@@ -52,3 +51,23 @@ see <https://github.com/Sephley/m109-site> for all the files
 
 Docker-compose requires a docker-compose.yml file that can set up multiple Containers.  
 Using ```docker compose up``` you start the containers
+
+## Kubernetes
+### Pod 
+The Pod is the smallest unit in Kubernetes, usually only runs 1 Application.  
+Each Pod gets its own IP address, not the container. They are rather ephemeral, which means they are prone to crash.
+
+#### Service 
+is used to attach an IP address to a pod, so that if it dies, the new one just uses the service to retain the IP address.  
+It is possible to specify, whether the service is internal or external.
+
+#### Ingress
+Forwards IP-address of pod to domain name of application.
+
+#### ConfigMap
+Is the external Configuration of your application. Is only for non-confidential data! Unless you use secret to encrypt it.
+
+### Volumes / Storage
+Attaches a physical storage to a Pod, can be locally connected or also via Cloud.  
+Think of it as an external drive plugged in to the kubernetes cluster.
+### Minikube - Kubernetes ganz einfach
