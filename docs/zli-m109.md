@@ -26,7 +26,8 @@ git config --global user.email "mail@mail.com"
 ```
 sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 ```
-### Auftrag 4.2: Intallation minikube
+### Intallation minikube
+Minikube can create a cluster containing only one node.
 
 ```
 sudo apt install curl wget apt-transport-https -y  
@@ -42,3 +43,12 @@ minikube addons enable dashboard
 minikube addons enable metrics-server  
 sudo reboot  
 ```
+
+## Auftrag 4.2: Container Orchestration mit Docker Compose
+
+see <https://docs.docker.com/compose/gettingstarted/> for how to set up a generic docker-compose application
+
+see <https://github.com/Sephley/m109-site> for all the files
+
+Docker-compose requires a docker-compose.yml file that can set up multiple Containers.  
+Using ```docker compose up``` you start the containers
