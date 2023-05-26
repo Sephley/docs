@@ -80,3 +80,13 @@ Each config file (written in yml) has 3 parts. The metadata, the specification a
 Kubernetes always compares the desired state with the actual state and then does anything it can to reach the desired state if that is not the case.
 
 ### Minikube - Kubernetes ganz einfach
+see <https://github.com/sephley/dev-minikube>  
+also <https://kubernetes.io/docs/home/>
+
+`mongo-config.yml` is the ConfigMap Configuration File.
+
+`mongo-secret.yml` add your encode secrets (username and password) into this file.  
+to encode you can run: `echo -n <word to encode> | base64`  
+Once you have added these values they can be referenced by different deployments.
+
+`mongo.yml`
