@@ -109,3 +109,26 @@ You can call the labes whatever you want, it just has to be in key/value format 
 `webapp.yml` is very similar to te `mongo.yml` file, as it is what runs the webservice based on the mongodb. The deployment is exactly the same, except for labels and the extra envirionment variable.
 
 You can reference things from other files using `valueFrom`. This applies to all files.
+
+`type: Nodeport` The nodePort is used to make the service available externally. Must be between 30000-32767.
+
+#### Deployment
+
+```
+kubectl apply -f mongo-config.yaml  
+kubectl apply -f mongo-secret.yaml  
+kubectl apply -f mongo.yaml  
+kubectl apply -f webapp.yaml
+```
+
+`kubectl get all` outputs all the components created in the cluster, whicht includes deployments, pods and all the services.
+
+`kubectl get` can be used for everything in the cluster, like secrets, configmap, pods etc. Example: `kubectl get secret`
+
+`kubectl --help` for help lol. You can also use the `--help` parameter for `kubectl get` more specific help.
+
+`kubectl describe service webapp-service` to get info on your webapp deployment. Outputs stuff like IP, name, port etc. also works for pods: `kubectl describe pod mongo-deployment-564b4bdfdf-jx66n` you can see name of pod from `kubectl get` output.
+
+`kubectl logs mongo-deployment-564b4bdfdf-jx66n` to see logs.
+
+`minikube ip` to get IP. Now your application is accessible in your webbrowser. Remember to specify the external port (nodePort).
