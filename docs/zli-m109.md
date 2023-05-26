@@ -83,17 +83,29 @@ Kubernetes always compares the desired state with the actual state and then does
 see <https://github.com/sephley/dev-minikube>  
 also <https://kubernetes.io/docs/home/>
 
-`mongo-config.yml` is the ConfigMap Configuration File.
+Note that the names 'mongo-config' or 'mongo-secret' do not need to be named this way. Kubernetes uses the 'name: ' key to differenciate between stuff.
 
+#### mongo-config.yml
+`mongo-config.yml` is the ConfigMap Configuration File. You should only create this once as you will reference it a lot.
+
+#### mongo-secret.yml
 `mongo-secret.yml` add your encode secrets (username and password) into this file.  
 to encode you can run: `echo -n <word to encode> | base64`  
 Once you have added these values they can be referenced by different deployments.
 
+#### mongo.yml
 `mongo.yml`  
 the `spec` section of the file specifys the deployment specific stuff like type of webserver.  
 the `template` section is like a whole new deployment with its own `spec` section etc. It configures the Pod within the deployment. You also set your docker image here.
 
 `lables` are key/value pairs. They are for identifiying the "family" of the pods, so that for example two pods with the same label would have similar application running on them. Lables are required of Pods and are good practice for anythin else.  
-You can call the labes whatever you want, it just has to be in key/value format like: "app: nginx" or "mykey: myvalue".
+You can call the labes whatever you want, it just has to be in key/value format like: "app: nginx" or "mykey: myvalue". "app:" is the standard key.
 
 `selector` defines that all the pods that have label x belong to deployment y.
+
+`replicas` defines how many pods you want to create with the deployment.
+
+#### webapp.yml
+`webapp.yml` is very similar to te `mongo.yml` file, as it is what runs the webservice based on the mongodb. The deployment is exactly the same, except for labels and the extra envirionment variable.
+
+You can reference things from other files using `valueFrom`. This applies to all files.
