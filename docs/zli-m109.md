@@ -89,4 +89,11 @@ also <https://kubernetes.io/docs/home/>
 to encode you can run: `echo -n <word to encode> | base64`  
 Once you have added these values they can be referenced by different deployments.
 
-`mongo.yml`
+`mongo.yml`  
+the `spec` section of the file specifys the deployment specific stuff like type of webserver.  
+the `template` section is like a whole new deployment with its own `spec` section etc. It configures the Pod within the deployment. You also set your docker image here.
+
+`lables` are key/value pairs. They are for identifiying the "family" of the pods, so that for example two pods with the same label would have similar application running on them. Lables are required of Pods and are good practice for anythin else.  
+You can call the labes whatever you want, it just has to be in key/value format like: "app: nginx" or "mykey: myvalue".
+
+`selector` defines that all the pods that have label x belong to deployment y.
