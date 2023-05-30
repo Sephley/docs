@@ -56,6 +56,8 @@ Using ```docker compose up``` you start the containers
 ### Pod 
 The Pod is the smallest unit in Kubernetes, usually only runs 1 Application.  
 Each Pod gets its own IP address, not the container. They are rather ephemeral, which means they are prone to crash.
+![pod](/images/pod.png)
+![port](/images/source_target_port_on_service.png)
 
 #### Service 
 is used to attach an IP address to a pod, so that if it dies, the new one just uses the service to retain the IP address.  
@@ -80,7 +82,7 @@ Each config file (written in yml) has 3 parts. The metadata, the specification a
 Kubernetes always compares the desired state with the actual state and then does anything it can to reach the desired state if that is not the case.
 
 ### Minikube - Kubernetes ganz einfach
-see <https://github.com/sephley/dev-minikube>  
+see <https://github.com/sephley/dev_minikube>  
 also <https://kubernetes.io/docs/home/>
 
 Note that the names 'mongo-config' or 'mongo-secret' do not need to be named this way. Kubernetes uses the 'name: ' key to differenciate between stuff.
@@ -111,6 +113,7 @@ You can call the labes whatever you want, it just has to be in key/value format 
 You can reference things from other files using `valueFrom`. This applies to all files.
 
 `type: Nodeport` The nodePort is used to make the service available externally. Must be between 30000-32767.
+![nodeport](/images/nodeport.png)
 
 #### Deployment
 
