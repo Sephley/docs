@@ -56,8 +56,8 @@ Using ```docker compose up``` you start the containers
 ### Pod 
 The Pod is the smallest unit in Kubernetes, usually only runs 1 Application.  
 Each Pod gets its own IP address, not the container. They are rather ephemeral, which means they are prone to crash.
-![pod](/images/pod.png)
-![port](/images/source_target_port_on_service.png)
+![pod](./images/pod.png)
+![port](./images/source_target_port_on_service.png)
 
 #### Service 
 is used to attach an IP address to a pod, so that if it dies, the new one just uses the service to retain the IP address.  
@@ -113,7 +113,7 @@ You can call the labes whatever you want, it just has to be in key/value format 
 You can reference things from other files using `valueFrom`. This applies to all files.
 
 `type: Nodeport` The nodePort is used to make the service available externally. Must be between 30000-32767.
-![nodeport](/images/nodeport.png)
+![nodeport](./images/nodeport.png)
 
 #### Deployment
 
