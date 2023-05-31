@@ -177,3 +177,8 @@ kubectl create -f route.yaml
 
 use `kubectl get routes` to view your new routes.  
 run `curl https://quotes-joshur-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/quotes` to see your file.
+
+#### repo links
+<https://github.com/redhat-developer-demos/quotesweb/>  
+<https://github.com/redhat-developer-demos/qotd-python/>  
+<https://github.com/redhat-developer-demos/quotemysql/>
