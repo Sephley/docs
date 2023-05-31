@@ -138,7 +138,19 @@ kubectl apply -f webapp.yaml
 
 ### Auftrag 7: Quotes App
 
+Username:  
+joshur (namespace = joshur-dev)
+
 API token: sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y 
  
 Login command: 
 oc login --token=sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
+
+#### Variables
+
+Username (username): `joshur`  
+Authorization token (token): `sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y`  
+Name of the cluster (cluster_name): `api-sandbox-m3-1530-p1-openshiftapps-com:6443`  
+Context assigned to us (context): `joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur`
+
+#### Local Kubernetes configuration
