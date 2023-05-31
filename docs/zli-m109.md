@@ -150,7 +150,14 @@ oc login --token=sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y --server=htt
 
 Username (username): `joshur`  
 Authorization token (token): `sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y`  
+API server URL (api_server_url): `https://api.sandbox-m3.1530.p1.openshiftapps.com:6443`  
 Name of the cluster (cluster_name): `api-sandbox-m3-1530-p1-openshiftapps-com:6443`  
 Context assigned to us (context): `joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur`
 
-#### Local Kubernetes configuration
+#### Set Local Kubernetes configuration
+
+Set credentials: `kubectl config set-credentials joshur/pi-sandbox-m3-1530-p1-openshiftapps-com:6443 --token sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y`  
+Set cluster: `kubectl config set-cluster pi-sandbox-m3-1530-p1-openshiftapps-com:6443 --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443`  
+Set context: `kubectl config set-context joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur --user=joshur/https://api.sandbox-m3.1530.p1.openshiftapps.com:6443 --namespace=joshur-dev --cluster=api-sandbox-m3-1530-p1-openshiftapps-com:6443`  
+Use context: `kubectl config use-context joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur`
+
