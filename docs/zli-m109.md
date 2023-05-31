@@ -155,9 +155,22 @@ Name of the cluster (cluster_name): `api-sandbox-m3-1530-p1-openshiftapps-com:64
 Context assigned to us (context): `joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur`
 
 #### Set Local Kubernetes configuration
+Make sure to run the login command listed above before you proceed!
 
-Set credentials: `kubectl config set-credentials joshur/pi-sandbox-m3-1530-p1-openshiftapps-com:6443 --token sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y`  
-Set cluster: `kubectl config set-cluster pi-sandbox-m3-1530-p1-openshiftapps-com:6443 --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443`  
+Set credentials: `kubectl config set-credentials joshur/api-sandbox-m3-1530-p1-openshiftapps-com:6443 --token sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y`  
+Set cluster: `kubectl config set-cluster api-sandbox-m3-1530-p1-openshiftapps-com:6443 --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443`  
 Set context: `kubectl config set-context joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur --user=joshur/https://api.sandbox-m3.1530.p1.openshiftapps.com:6443 --namespace=joshur-dev --cluster=api-sandbox-m3-1530-p1-openshiftapps-com:6443`  
 Use context: `kubectl config use-context joshur-dev/api-sandbox-m3-1530-p1-openshiftapps-com:6443/joshur`
 
+#### Create files
+First, clone the repositories that contain the yml files we need.  
+`git clone https://github.com/redhat-developer-demos/quotesweb.git`  
+`git clone https://github.com/redhat-developer-demos/quotemysql.git`  
+`git clone https://github.com/redhat-developer-demos/qotd-python.git`
+
+Create the following files in the qotd-python/k8s directory  
+```
+kubectl create -f quotes-deployment.yaml  
+kubectl create -f service.yaml  
+kubectl create -f route.yaml
+```
