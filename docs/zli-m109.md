@@ -135,3 +135,10 @@ kubectl apply -f webapp.yaml
 `kubectl logs mongo-deployment-564b4bdfdf-jx66n` to see logs.
 
 `minikube ip` to get IP. Now your application is accessible in your webbrowser. Remember to specify the external port (nodePort).
+
+### Auftrag 7: Quotes App
+
+API token: sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y 
+ 
+Login command: 
+oc login --token=sha256~sIwXmH5DFLbWQHjn3RFzq2VvJGurkt2QN2xeFdV9h8Y --server=https://api.sandbox-m3.1530.p1.openshiftapps.com:6443
