@@ -174,3 +174,6 @@ kubectl create -f quotes-deployment.yaml
 kubectl create -f service.yaml  
 kubectl create -f route.yaml
 ```
+
+use `kubectl get routes` to view your new routes.  
+run `curl https://quotes-joshur-dev.apps.sandbox-m3.1530.p1.openshiftapps.com/quotes` to see your file.
