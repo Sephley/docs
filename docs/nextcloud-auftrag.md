@@ -5,3 +5,8 @@ Snap bietet zwar den Vorteil, dass man Pakete sehr leicht mit einem Klick instal
 <https://snapcraft.io/install/nextcloud/ubuntu>
 
 <https://chat.openai.com/share/fc9fea12-cc87-497f-bd57-31a54410a7a4>
+
+Man kann auch mittels snap verifizieren, ob der Server läuft oder nicht.  
+```
+sudo snap services nextcloud
+```
