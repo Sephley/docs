@@ -6,6 +6,8 @@ Snap bietet zwar den Vorteil, dass man Pakete sehr leicht mit einem Klick instal
 
 <https://chat.openai.com/share/fc9fea12-cc87-497f-bd57-31a54410a7a4>
 
+<https://chat.openai.com/share/f77371e3-b100-439f-8bc3-5f99b193a814>
+
 ## Installation von Nextcloud mittels snap
 ```
 sudo snap install nextcloud  
