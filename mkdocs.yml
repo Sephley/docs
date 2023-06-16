@@ -26,4 +26,5 @@ nav:
   - Home: index.md
   - ZLI-M109: zli-m109.md
   - BBW-M141: bbw-m141.md
+    - Prüfung-Security: pruefung-security.md
   - Nextcloud: nextcloud-auftrag.md
