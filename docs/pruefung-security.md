@@ -73,3 +73,37 @@ GRANT USE OF TABLESPACE USERSPACE1 TO USER dbuser11;
 
 GRANT CREATETAB ON DATABASE TO USER dbuser12;
 ``` 
+
+## Ueb4
+In this assignment, you must create a database role that has certain permissions on certain tables.  
+After that, you must create two UNIX users that have the newly created role (in this case: TESTER)
+### Ueb4_GRANT_ROLE.sql
+```
+--
+-- Speichern Sie in diesem SQL Script die notwendigen GRANT Statements
+--
+
+CREATE ROLE TESTER;
+
+--
+-- Autorisierungen für User dbuser10
+--
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER10.TDBS_PERSON TO TESTER;
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER10.TDBS_ABTEILUNG TO TESTER;
+
+--
+-- Autorisierungen für User dbuser11
+--
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER11.TDBS_PERSON TO TESTER;
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER11.TDBS_ABTEILUNG TO TESTER;
+
+--
+-- Autorisierungen für User dbuser12
+--
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER12.TDBS_PERSON TO TESTER;
+GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER12.TDBS_ABTEILUNG TO TESTER;
+
+```
