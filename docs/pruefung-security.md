@@ -40,8 +40,36 @@ GRANT EXECUTE ON PACKAGE NULLID.SQLC2P31 TO USER dbuser12;
 GRANT SELECT ON TABLE BIBLIO.TARTIKEL TO USER dbuser12;
 ```
 ## Ueb3
+The premise of this assignment is the same as Ueb2.  
 To run a script as a simple Database user, use this command: 
 ```
 db2 CONNECT TO DBBW002 USER dbuser10 USING dbuser10
 ```
-### 
+### Ueb3_GRANT_User.sql
+```
+--
+-- Speichern Sie in diesem SQL Script die notwendigen GRANT Statements
+--
+
+--
+-- Autorisierungen für User dbuser10
+--
+
+GRANT CREATETAB ON DATABASE TO USER dbuser10;
+GRANT IMPLICIT_SCHEMA ON DATABASE TO USER dbuser10;
+GRANT USE OF TABLESPACE USERSPACE1 TO USER dbuser10;
+
+--
+-- Autorisierungen für User dbuser11
+--
+
+GRANT CREATETAB ON DATABASE TO USER dbuser11;
+GRANT IMPLICIT_SCHEMA ON DATABASE TO USER dbuser11;
+GRANT USE OF TABLESPACE USERSPACE1 TO USER dbuser11;
+
+--
+-- Autorisierungen für User dbuser12
+--
+
+GRANT CREATETAB ON DATABASE TO USER dbuser12;
+``` 
