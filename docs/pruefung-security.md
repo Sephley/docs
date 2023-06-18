@@ -64,7 +64,7 @@ GRANT SELECT ON TABLE BIBLIO.TARTIKEL TO USER dbuser12;
 ```
 ## Ueb3
 The premise of this assignment is the same as Ueb2.  
-To run a script as a simple Database user, use this command: 
+To connect to a Database as a simple Database user, use this command: 
 ```
 db2 CONNECT TO DBBW002 USER dbuser10 USING dbuser10
 ```
