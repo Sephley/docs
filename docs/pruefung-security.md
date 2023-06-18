@@ -2,6 +2,29 @@
 
 ## Ueb1
 
+### Linuxusererstellen.sh
+Linux user add script for preparation.  
+
+```
+cat  /etc/group
+
+# Erstellen der Gruppen
+groupadd dbusrgrp 
+groupadd dbadmgrp
+groupadd dbuser10
+groupadd dbuser11
+groupadd dbuser12
+
+
+# Anzeige welche User existieren:
+cat /etc/passwd
+
+# Erstellen der User (UserID und PW sind identisch)
+useradd -p $(openssl passwd -1 dbuser10) -g dbuser10  -G dbuser10           -s /bin/bash -c "Test user dbuser10"  -d /home/dbuser10   dbuser10
+useradd -p $(openssl passwd -1 dbuser11) -g dbuser11  -G dbuser11,dbusrgrp  -s /bin/bash -c "Test user dbuser11"  -d /home/dbuser11   dbuser11
+useradd -p $(openssl passwd -1 dbuser12) -g dbuser12  -G dbuser12,dbadmgrp  -s /bin/bash -c "Test user dbuser12"  -d /home/dbuser12   dbuser12
+```
+
 ### Ueb1_GRANT_User.sql
 ```
 GRANT DATAACCESS ON DBBW001 TO GROUP dbusrgrp;
