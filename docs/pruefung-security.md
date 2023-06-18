@@ -130,3 +130,16 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER12.TDBS_PERSON TO TESTER;
 GRANT SELECT, INSERT, UPDATE, DELETE ON DBUSER12.TDBS_ABTEILUNG TO TESTER;
 
 ```
+
+Afterwards, you must assign this role to the users (in this case tester01 and tester02).
+
+```
+db2 GRANT TESTER TO USER tester01;
+db2 GRANT TESTER TO USER tester02;
+```
+
+Lastly, I had to enable the Workload for the users.
+
+```
+db2 GRANT USAGE ON WORKLOAD SYSDEFAULTUSERWORKLOAD TO ROLE TESTER;
+```
