@@ -24,3 +24,20 @@ package:
     - docker build --cache-from $CI_AWS_ECR_REGISTRY/$CI_AWS_ECR_REPOSITORY_NAME:latest -t $CI_AWS_ECR_REGISTRY/$CI_AWS_ECR_REPOSITORY_NAME:latest .
     - docker push $CI_AWS_ECR_REGISTRY/$CI_AWS_ECR_REPOSITORY_NAME:latest
 ```
+
+### Dockerfile
+This is an example Dockerfile from the refcard03 Assignment. 
+Note that you may need to change some things depending on the application you receive for the test.  
+For example the Java version may differ etc.   
+```
+FROM maven:3-openjdk-11-slim
+
+COPY src /src
+COPY pom.xml /
+RUN mvn -f pom.xml clean package
+
+RUN mv /target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+It would be better to use a multi-stage version, because time will be crucial during the test.
