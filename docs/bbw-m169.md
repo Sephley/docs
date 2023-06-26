@@ -1,0 +1,1 @@
+# Help for Capture-the-flag Test on 10.07.2023
