@@ -9,7 +9,7 @@ Note that you will also need to hand in a documentation for this assignment.
 update db cfg for dbbw004 using LOGSECOND 200;
 ```
 
-you may need to add more, depending on the next step.
+ you may need to add more, depending on the next step.
 
 - run the script `HRACCESS_Create.sql`. It will likely not work due to certain permissions. Add the required permissions to the file `CONFIG_DATABASE.sql`.
 - run the script `HRACCESS_COUNT_ROWS.sql` and verfiy if all the data was loaded by running the script `HRACCESS_COUNT_ROWS.sql`.
@@ -46,6 +46,12 @@ CREATE SERVER server_definition_name
  TYPE server_type 
  VERSION version_number WRAPPER DRDA
  AUTHORIZATION "db2inst1" PASSWORD "db2inst1" OPTIONS (DBNAME DBBW004);
+
+// User mappings werden nicht benötigt, da sich alle auf dem gleichen Server befinden
+// Verbindung zur Datenbank testen
+SET PASSTHRU server_definition_name
+SELECT count(*) FROM syscat.systables
+SET PASSTHRU RESET;
 ```
 
 ### HRREMOTE_Drop.sql
