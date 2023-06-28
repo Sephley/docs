@@ -1,9 +1,9 @@
-# This assignment is about federated datasources
+# Federated Datasources
 Note that you will also need to hand in a documentation for this assignment.  
 [Assignment](<https://olat.bbw.ch/auth/RepositoryEntry/635961710/CourseNode/107315659184604/path%3D~~75%2DZusatzAufgaben~~Auftrag%5FFederation/0>)
 
 ## Part 1
-- connect to dbbw004 and run the scripts Olat as user db2inst1
+- connect to dbbw004 and run the scripts from Olat as user db2inst1
 - add this command to the `CONFIG_DATABASE.sql` file
 ```
 update db cfg for dbbw004 using LOGSECOND 200;
