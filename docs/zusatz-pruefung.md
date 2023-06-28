@@ -31,7 +31,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO m141fed;
 
 ## Part 2
 - configure federated datasources as documented in the [db2 Knowledge Center](https://www.ibm.com/docs/en/db2/11.5?topic=wrapper-configuring-access-db2-data-sources)  
-All the commands should be saved into the script `HRREMOTE_Create.sql`. You should also create a script `HHREMOTE_Drop.sql` where you remove all the data.
+All the commands should be saved into the script `HRREMOTE_Create.sql`. You should also create a script `HRREMOTE_Drop.sql` where you remove all the data.
 
 For this part you must be connected to DBBW003!
 
