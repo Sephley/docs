@@ -33,6 +33,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO m141fed;
 - configure federated datasources as documented in the [db2 Knowledge Center](https://www.ibm.com/docs/en/db2/11.5?topic=wrapper-configuring-access-db2-data-sources)  
 All the commands should be saved into the script `HRREMOTE_Create.sql`. You should also create a script `HHREMOTE_Drop.sql` where you remove all the data.
 
+For this part you must be connected to DBBW003!
+
 ### HRREMOTE_Create.sql
 ```
 CATALOG TCPIP NODE db2_node REMOTE system42 SERVER db2tcp42;
@@ -88,4 +90,22 @@ UNCATALOG DATABASE DBBW004;
 
 -- Node entfernen
 UNCATALOG NODE db2_node;
+```
+
+After running the script `HRREMOTE_Create.sql`, run `HRREMOTE_CHECK_ACCESS.sql`.
+
+### HRACCESS_GRANT_bbwuser.sql
+- Create a script named `HRACCESS_GRANT_bbwuser.sql`
+- Add the following content to the script and run the script.
+```
+-- Zugriff auf die Datenbank
+GRANT CONNECT ON DATABASE TO USER bbwuser;
+GRANT USAGE ON WORKLOAD SYSDEFAULTUSERWORKLOAD TO USER bbwuser;
+-- Zugriff auf die Tabellen erteilen
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPARTMENTS TO bbwuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_EMP TO bbwuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_MANAGER TO bbwuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.EMPLOYEES TO bbwuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.SALARIES TO bbwuser;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO bbwuser;
 ```
