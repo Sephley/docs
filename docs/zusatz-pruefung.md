@@ -38,20 +38,54 @@ All the commands should be saved into the script `HRREMOTE_Create.sql`. You shou
 CATALOG TCPIP NODE db2_node REMOTE system42 SERVER db2tcp42;
 CATALOG DATABASE DBBW004 AT NODE db2_node AUTHENTICATION SERVER;
 
-// Wrapper registrieren
+-- Wrapper registrieren
 CREATE WRAPPER DRDA;
 
-// Server Definitionen registrieren
+-- Server Definitionen registrieren
 CREATE SERVER server_definition_name 
  TYPE server_type 
  VERSION version_number WRAPPER DRDA
  AUTHORIZATION "db2inst1" PASSWORD "db2inst1" OPTIONS (DBNAME DBBW004);
 
-// User mappings werden nicht benötigt, da sich alle auf dem gleichen Server befinden
-// Verbindung zur Datenbank testen
+-- User mappings werden nicht benötigt, da sich alle auf dem gleichen Server befinden
+-- Verbindung zur Datenbank testen
 SET PASSTHRU server_definition_name
 SELECT count(*) FROM syscat.systables
 SET PASSTHRU RESET;
+
+-- Nicknames aus DBBW004 hinzufügen
+CREATE NICKNAME DBBW003.HRREMOTE.DEPARTMENTS FOR DBBW004.HRACCESS.DEPARTMENTS;
+CREATE NICKNAME DBBW003.HRREMOTE.DEPT_MANAGER FOR DBBW004.HRACCESS.DEPT_MANAGER;
+CREATE NICKNAME DBBW003.HRREMOTE.EMPLOYEES FOR DBBW004.HRACCESS.EMPLOYEES;
+CREATE NICKNAME DBBW003.HRREMOTE.DEPT_EMP FOR DBBW004.HRACCESS.DEPT_EMP;
+CREATE NICKNAME DBBW003.HRREMOTE.TITLES FOR DBBW004.HRACCESS.TITLES;
+CREATE NICKNAME DBBW003.HRREMOTE.SALARIES FOR DBBW004.HRACCESS.SALARIES;
 ```
 
 ### HRREMOTE_Drop.sql
+```
+-- Nicknames löschen
+DROP NICKNAME DBBW003.HRREMOTE.DEPARTMENTS;
+DROP NICKNAME DBBW003.HRREMOTE.DEPT_MANAGER;
+DROP NICKNAME DBBW003.HRREMOTE.EMPLOYEES;
+DROP NICKNAME DBBW003.HRREMOTE.DEPT_EMP;
+DROP NICKNAME DBBW003.HRREMOTE.TITLES;
+DROP NICKNAME DBBW003.HRREMOTE.SALARIES;
+
+-- PASSTHRU-Verbindung testen und zurücksetzen
+SET PASSTHRU server_definition_name;
+SELECT count(*) FROM syscat.systables;
+SET PASSTHRU RESET;
+
+-- Server-Definition löschen
+DROP SERVER server_definition_name;
+
+-- Wrapper löschen
+DROP WRAPPER DRDA;
+
+-- Datenbankkatalog entfernen
+UNCATALOG DATABASE DBBW004;
+
+-- Node entfernen
+UNCATALOG NODE db2_node;
+```
