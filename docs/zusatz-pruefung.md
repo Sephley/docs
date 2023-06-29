@@ -12,6 +12,7 @@ update db cfg for dbbw004 using LOGSECOND 200;
  you may need to add more, depending on the next step.
 
 - run the script `HRACCESS_Create.sql`. It will likely not work due to certain permissions. Add the required permissions to the file `CONFIG_DATABASE.sql`.
+- run the script `HRACCESS_LOAD_DATA.sql`. This will take a while.
 - run the script `HRACCESS_COUNT_ROWS.sql` and verfiy if all the data was loaded by running the script `HRACCESS_COUNT_ROWS.sql`.
 - create a linux user called `m141fed`. Use the follwing command:
 ```
