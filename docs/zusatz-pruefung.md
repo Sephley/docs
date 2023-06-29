@@ -13,7 +13,7 @@ update db cfg for dbbw004 using LOGSECOND 200;
 
 - run the script `HRACCESS_Create.sql`. It will likely not work due to certain permissions. Add the required permissions to the file `CONFIG_DATABASE.sql`.
 - run the script `HRACCESS_LOAD_DATA.sql`. This will take a while.
-- run the script `HRACCESS_COUNT_ROWS.sql` and verfiy if all the data was loaded by running the script `HRACCESS_COUNT_ROWS.sql`.
+- run the script `HRACCESS_COUNT_ROWS.sql` This verifies if the Data was loaded
 - create a linux user called `m141fed`. Use the follwing command:
 ```
 useradd -p $(openssl passwd -1 m141fed) -s /bin/bash m141fed -d /home/m141fed
@@ -22,12 +22,12 @@ Then proceed to grant all the priviliges the user needs and save them in the scr
 
 ### HRACCESS_GRANT_m141fed.sql
 ```
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPARTMENTS TO m141fed;
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_EMP TO m141fed;
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_MANAGER TO m141fed;
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.EMPLOYEES TO m141fed;
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.SALARIES TO m141fed;
-GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPARTMENTS TO USER m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_EMP TO USER m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_MANAGER TO USER m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.EMPLOYEES TO USER m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.SALARIES TO USER m141fed;
+GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO USER m141fed;
 ```
 
 ## Part 2
