@@ -102,10 +102,9 @@ After running the script `HRREMOTE_Create.sql`, run `HRREMOTE_CHECK_ACCESS.sql`.
 - Create a script named `HRACCESS_GRANT_bbwuser.sql`
 - Add the following content to the script and run the script.
 ```
--- Zugriff auf die Datenbank
 GRANT CONNECT ON DATABASE TO USER bbwuser;
 GRANT USAGE ON WORKLOAD SYSDEFAULTUSERWORKLOAD TO USER bbwuser;
--- Zugriff auf die Tabellen erteilen
+GRANT EXECUTE ON PACKAGE NULLID.SQLC2P31 TO USER bbwuser;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPARTMENTS TO bbwuser;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_EMP TO bbwuser;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_MANAGER TO bbwuser;
