@@ -14,7 +14,7 @@ update db cfg for dbbw004 using LOGSECOND 200;
 - run the script `HRACCESS_Create.sql`. It will likely not work due to certain permissions. Add the required permissions to the file `CONFIG_DATABASE.sql`.
 - run the script `HRACCESS_LOAD_DATA.sql`. This will take a while.
 - run the script `HRACCESS_COUNT_ROWS.sql` This verifies if the Data was loaded
-- create a linux user called `m141fed`. Use the follwing command:
+- create a linux user called `m141fed`. Run the following command as root:
 ```
 useradd -p $(openssl passwd -1 m141fed) -s /bin/bash m141fed -d /home/m141fed
 ```  
@@ -22,6 +22,9 @@ Then proceed to grant all the priviliges the user needs and save them in the scr
 
 ### HRACCESS_GRANT_m141fed.sql
 ```
+GRANT CONNECT ON DATABASE TO USER m141fed;
+GRANT USAGE ON WORKLOAD SYSDEFAULTUSERWORKLOAD TO USER m141fed;
+GRANT EXECUTE ON PACKAGE NULLID.SQLC2P31 TO USER m141fed;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPARTMENTS TO USER m141fed;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_EMP TO USER m141fed;
 GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.DEPT_MANAGER TO USER m141fed;
