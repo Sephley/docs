@@ -9,12 +9,10 @@ Note that you will also need to hand in a documentation for this assignment.
 update db cfg for dbbw004 using LOGSECOND 200;
 ```
 
- you may need to add more, depending on the next step.
-
-- run the script `HRACCESS_Create.sql`. It will likely not work due to certain permissions. Add the required permissions to the file `CONFIG_DATABASE.sql`.
+- run the script `HRACCESS_Create.sql`. 
 - run the script `HRACCESS_LOAD_DATA.sql`. This will take a while.
-- run the script `HRACCESS_COUNT_ROWS.sql` This verifies if the Data was loaded
-- create a linux user called `m141fed`. Run the following command as root:
+- run the script `HRACCESS_COUNT_ROWS.sql` This verifies if the Data was loaded.
+- create a linux user called `m141fed`. To do so, run the following command as root:
 ```
 useradd -p $(openssl passwd -1 m141fed) -s /bin/bash m141fed -d /home/m141fed
 ```  
@@ -37,8 +35,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO USER m141fed;
 - configure federated datasources as documented in the [db2 Knowledge Center](https://www.ibm.com/docs/en/db2/11.5?topic=wrapper-configuring-access-db2-data-sources)  
 All the commands should be saved into the script `HRREMOTE_Create.sql`. You should also create a script `HRREMOTE_Drop.sql` where you remove all the data.
 
-For this part you must be connected to DBBW003!
-
+For this part you must be connected to DBBW003!  
+You also may need to run this: `UPDATE DBM CFG USING FEDERATED YES;`
 ### HRREMOTE_Create.sql
 ```
 CATALOG TCPIP NODE db2_node REMOTE system42 SERVER db2tcp42;
