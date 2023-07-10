@@ -48,10 +48,7 @@ CATALOG DATABASE DBBW004 AT NODE db2_node AUTHENTICATION SERVER;
 CREATE WRAPPER DRDA;
 
 -- Server Definitionen registrieren
-CREATE SERVER server_definition_name 
- TYPE server_type 
- VERSION version_number WRAPPER DRDA
- AUTHORIZATION "db2inst1" PASSWORD "db2inst1" OPTIONS (DBNAME DBBW004);
+CREATE SERVER BBW TYPE DB2/LUW VERSION 11 WRAPPER DRDA AUTHORIZATION "db2inst1" PASSWORD "db2inst1" OPTIONS (DBNAME 'DBBW004') ;
 
 -- User mappings werden nicht benötigt, da sich alle auf dem gleichen Server befinden
 -- Verbindung zur Datenbank testen
