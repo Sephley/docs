@@ -52,7 +52,7 @@ CREATE SERVER BBW TYPE DB2/LUW VERSION 11 WRAPPER DRDA AUTHORIZATION "db2inst1" 
 
 -- User mappings werden nicht benötigt, da sich alle auf dem gleichen Server befinden
 -- Verbindung zur Datenbank testen
-SET PASSTHRU server_definition_name
+SET PASSTHRU BBW
 SELECT count(*) FROM syscat.systables
 SET PASSTHRU RESET;
 
@@ -75,13 +75,8 @@ DROP NICKNAME DBBW003.HRREMOTE.DEPT_EMP;
 DROP NICKNAME DBBW003.HRREMOTE.TITLES;
 DROP NICKNAME DBBW003.HRREMOTE.SALARIES;
 
--- PASSTHRU-Verbindung testen und zurücksetzen
-SET PASSTHRU server_definition_name;
-SELECT count(*) FROM syscat.systables;
-SET PASSTHRU RESET;
-
 -- Server-Definition löschen
-DROP SERVER server_definition_name;
+DROP SERVER BBW;
 
 -- Wrapper löschen
 DROP WRAPPER DRDA;
