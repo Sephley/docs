@@ -36,7 +36,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON HRACCESS.TITLES TO USER m141fed;
 All the commands should be saved into the script `HRREMOTE_Create.sql`. You should also create a script `HRREMOTE_Drop.sql` where you remove all the data.
 
 For this part you must be connected to DBBW003!  
-You also may need to run this: `UPDATE DBM CFG USING FEDERATED YES;`
+You also may need to run this: `UPDATE DBM CFG USING FEDERATED YES;` and proceed to restart your DBM (it's probably easier to restart the VM)
 ### HRREMOTE_Create.sql
 ```
 CATALOG TCPIP NODE db2_node REMOTE system42 SERVER db2tcp42;
