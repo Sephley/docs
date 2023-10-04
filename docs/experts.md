@@ -1,9 +1,11 @@
 # PXE Boot
 
-## Day 1
+# My GitLab Setup
 
-## Day 2
-Customize your own slitaz image by adding rootfs5
+Our GitLab Server was setup in a personal PVE (Proxmox Virtual Environment) as a VM using Docker-Compose.  
 
-### Step 1
-Start up your PXE boot server
+## Procedure
+### Setup an Ubuntu Server and install Docker & Docker-Compose
+Follow this link[<https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>] (official guide)
+
+### Setup GitLab using Docker-Compose
