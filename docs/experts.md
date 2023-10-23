@@ -19,8 +19,8 @@ It is recommended to export the `$GITLAB_HOME` variable like this: `export GITLA
 and then adding this to `.bashrc` so you don't have to do it every time.  
 However, this didn't work for me, so I ended up hard-coding them in the `docker-compose.yaml` file.
 
-I altered the `docker-compose.yaml` a little from the one in the manual.  
-Basically, I switched to the Commuity Edition of GitLab, altered the hostname to something I may use and hard-coded the `$GITLAB_HOME` variable.  
+I altered the `docker-compose.yaml` quite a lot from the one in the manual.  
+I switched to the Commuity Edition of GitLab, altered the hostname to something I may use,hard-coded the `$GITLAB_HOME` variable(because it wasn't working) and added grafana.  
 My file:  
 ```
 version: '3.6'
@@ -28,20 +28,29 @@ services:
   web:
     image: 'gitlab/gitlab-ce:latest'
     restart: always
-    hostname: 'git.clusterstack.net'
+    container_name: gitlab
+    hostname: 'localhost'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'https://git.clusterstack.net'
+        external_url 'http://localhost:8929'
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
-      - '80:80'
-      - '433:433'
-      - '22:22'
+      - '8929:8929'
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
       - '/srv/gitlab/data:/var/opt/gitlab'
-    shm_size: '256m'
+    shm_size: '1g'
+  grafana:
+    image: 'grafana/grafana'
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+volumes:
+  grafana-storage: {}
 ```
 
 ## Monitoring Solution
