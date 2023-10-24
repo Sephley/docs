@@ -33,9 +33,12 @@ services:
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://localhost:8929'
+        prometheus_monitoring['enable'] = true
+        prometheus['listen_address'] = 'localhost:9090'
         # Add any other gitlab.rb configuration here, each on its own line
     ports:
       - '8929:8929'
+      - '9090:9090'
     volumes:
       - '/srv/gitlab/config:/etc/gitlab'
       - '/srv/gitlab/logs:/var/log/gitlab'
@@ -56,9 +59,13 @@ volumes:
 ## Monitoring Solution
 I used Prometheus (which comes preinstalled with GitLab) and Grafana as my monitoring solution.
 
-For Grafana, follow this [guide](<https://docs.gitlab.com/ee/administration/monitoring/performance/grafana_configuration.html>).  
+For Grafana, follow this [guide](<https://docs.gitlab.com/ee/administration/monitoring/performance/grafana_configuration.html>) to set it up.  
 It used to come shipped with GitLab just like Prometheus, but was deprecated in 16.0 and removed in 16.3.  
 For this reason, I had to add it in as a separate container in the `docker-compose.yml` file.
+
+Once I had my Grafana Container up and running, I imported the Prometheus Metrics by adding a connection to `192.168.1.212:9090` (My Prometheus).  
+When it comes to actually adding graphs / dashboards, I found that there are many premade ones here: <https://grafana.com/grafana/dashboards/>  
+Just download the JSON and import it into Grafana.
 
 ## GitLab Runner Setup
 For the GitLab Runners, I made a separate VM for resource management purposes.
