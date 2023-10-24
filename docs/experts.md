@@ -1,5 +1,3 @@
-# PXE Boot
-
 # My GitLab Setup
 The purpose of this assignment is to set up a GitLab Server as if it were for a large-scale company.
 
@@ -20,7 +18,7 @@ and then adding this to `.bashrc` so you don't have to do it every time.
 However, this didn't work for me, so I ended up hard-coding them in the `docker-compose.yaml` file.
 
 I altered the `docker-compose.yaml` quite a lot from the one in the manual.  
-I switched to the Commuity Edition of GitLab, altered the hostname to something I may use, hard-coded the `$GITLAB_HOME` variable (because it wasn't working) and added grafana.  
+I switched to the Commuity Edition of GitLab, altered the hostname to something I may use, hard-coded the `$GITLAB_HOME` variable (because it wasn't working) and added grafana & prometheus.  
 My file:  
 ```
 version: '3.6'
