@@ -20,7 +20,7 @@ and then adding this to `.bashrc` so you don't have to do it every time.
 However, this didn't work for me, so I ended up hard-coding them in the `docker-compose.yaml` file.
 
 I altered the `docker-compose.yaml` quite a lot from the one in the manual.  
-I switched to the Commuity Edition of GitLab, altered the hostname to something I may use,hard-coded the `$GITLAB_HOME` variable(because it wasn't working) and added grafana.  
+I switched to the Commuity Edition of GitLab, altered the hostname to something I may use, hard-coded the `$GITLAB_HOME` variable (because it wasn't working) and added grafana.  
 My file:  
 ```
 version: '3.6'
@@ -56,6 +56,14 @@ volumes:
 ## Monitoring Solution
 I used Prometheus (which comes preinstalled with GitLab) and Grafana as my monitoring solution.
 
-For Grafana, follow this [guide](<https://docs.gitlab.com/ee/administration/monitoring/performance/grafana_configuration.html>)
-It used to come shipped with GitLab just like Prometheus, but was deprecated in 16.0 and removed in 16.3.
+For Grafana, follow this [guide](<https://docs.gitlab.com/ee/administration/monitoring/performance/grafana_configuration.html>).  
+It used to come shipped with GitLab just like Prometheus, but was deprecated in 16.0 and removed in 16.3.  
+For this reason, I had to add it in as a separate container in the `docker-compose.yml` file.
+
+## GitLab Runner Setup
+For the GitLab Runners, I made a separate VM for resource management purposes.
+
+Just like before, I used this [guide](<https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>) to install Docker and Docker-compose.  
+
+
 ## GitLab Conifguration
