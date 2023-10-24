@@ -31,4 +31,6 @@ nav:
     - Zusatz-Prüfung: zusatz-pruefung.md
   - BBW-M169: bbw-m169.md
   - Nextcloud: nextcloud-auftrag.md
-  - Experts-Kurs: experts.md
+  - Experts-Kurs:
+    - PXE-Boot: pxe.md
+    - GitLab-Setup: experts.md
