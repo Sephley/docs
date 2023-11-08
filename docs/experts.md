@@ -82,9 +82,10 @@ docker run -d --name gitlab-runner --restart always \
 Note that I am using the `alpine` image because it is more lightweight. The other option would be to use the `latest` tag which uses `ubuntu`.
 
 Now we need to [register this Runner](https://docs.gitlab.com/runner/register/index.html?tab=Docker#register-with-a-runner-authentication-token).  
+In your GitLab Settings you can add a runner, which will enable you to generate an authentication token.  
 I ran this command on my Runner VM (setup in non-interactive mode):  
 ```
-docker run --rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
+docker run --rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner:alpine register \
   --non-interactive \
   --url "192.168.1.212" \
   --token "$RUNNER_TOKEN" \
