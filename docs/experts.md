@@ -66,7 +66,7 @@ When it comes to actually adding graphs / dashboards, I found that there are man
 Just download the JSON and import it into Grafana.
 
 ## GitLab Runner Setup
-For the GitLab Runners, I made a separate VM for resource management purposes.  
+For the GitLab Runner, I made a separate VM for resource management purposes.  
 Since nothing else is running on this VM, there is no need to use Docker-Compose.
 
 Just like before, I used this [guide](<https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>) to install Docker.  
@@ -79,5 +79,20 @@ docker run -d --name gitlab-runner --restart always \
     -v gitlab-runner-config:/etc/gitlab-runner \
     gitlab/gitlab-runner:alpine
 ```  
-Note that I am using the `alpine` image because it is more lightweight. The other option would be to use th `latest` tag which uses `Ubuntu`.
+Note that I am using the `alpine` image because it is more lightweight. The other option would be to use the `latest` tag which uses `ubuntu`.
+
+Now we need to [register this Runner](https://docs.gitlab.com/runner/register/index.html?tab=Docker#register-with-a-runner-authentication-token).  
+I ran this command on my Runner VM (setup in non-interactive mode):  
+```
+docker run --rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
+  --non-interactive \
+  --url "192.168.1.212" \
+  --token "$RUNNER_TOKEN" \
+  --executor "docker" \
+  --docker-image alpine:latest \
+  --description "docker-runner"
+```  
+Then create a project with a CI-CD Pipeline and add the runner to the project.
+### Why only one Runner?
+
 ## GitLab Conifguration
