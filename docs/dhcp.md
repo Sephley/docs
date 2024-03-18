@@ -3,7 +3,7 @@
 [Präsi](https://olat.bbw.ch/auth/1%3A1%3A32044700929%3A3%3A0%3Aserv%3Ax%3A_csrf%3Ad6d20b18-d00f-4da6-8969-ce5d2b958249/DHCP%20PXE/DHCP-praesi.pdf)
 ## Umgebung
 - VMware Workstation Pro
-    - Ubuntu Server (Ohne GUI)
+    - 2x Ubuntu Server (Ohne GUI) - einer für den ISC und einer als relay agent
     - Windows Client
 
 ### Requirements
@@ -28,7 +28,7 @@ max-lease-time 7200;
 subnet 192.168.1.0 netmask 255.255.255.0 {
  range 192.168.1.150 192.168.1.200;
  option routers 192.168.1.254;
- option domain-name-servers 192.168.1.1, 192.168.1.2;
+ option domain-name-servers 192.168.1.1, 1.1.1.1;
  option domain-name "mydomain.example";
 }
 ```
@@ -38,6 +38,14 @@ subnet 192.168.1.0 netmask 255.255.255.0 {
 ```
 sudo systemctl restart isc-dhcp-server.service
 ```
+
+## DHCP Relay
+Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
+Der Agent
 ## Sources
-- Offizielle Installaition `isc-dhcp-server` von Canonical  
+- Offizielle Installation `isc-dhcp-server` von Canonical  
 https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server
+- Man page `dhcrelay`  
+https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay
+- setup isc-dhcp-relay  
+https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004
