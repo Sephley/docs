@@ -22,7 +22,7 @@ site_description: My personal documentation
 site_author: Sephley
 copyright: All rights reserved
 plugins:
-  - glightbox
+  - mkdocs-glightbox
 
 nav:
   - Home: index.md
