@@ -6,7 +6,8 @@
     - 2x Ubuntu Server (Ohne GUI) - einer für den ISC und einer als relay agent
     - Windows Client
 
-### Requirements
+### Netzwerkplan
+![plan](drawio/plan.drawio)
 
 ## Installation
 #### 1. APT Packet installieren
