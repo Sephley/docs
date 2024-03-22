@@ -22,16 +22,35 @@ Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das Fi
 Folgende Konfiguration habe ich verwendet:
 
 ```
-default-lease-time 600;
-max-lease-time 7200;
-    
-subnet 192.168.1.0 netmask 255.255.255.0 {
- range 192.168.1.150 192.168.1.200;
- option routers 192.168.1.254;
- option domain-name-servers 192.168.1.1, 1.1.1.1;
- option domain-name "mydomain.example";
+subnet 192.168.1.0 netmask 255.255.255.192 {
+    range 192.168.1.2 192.168.1.62;
+    option routers 192.168.1.1;
+    option domain-name-servers 1.1.1.1, 9.9.9.9;
+    option subnet-mask 255.255.255.192;
 }
+
+authoritative;
 ```
+
+Danach identifizieren wir unser Netzwerkinterface und tragen es bei `/etc/default/isc-dhcp-server` ein
+```
+INTERFACESv4="enp0s8"
+```
+Nun können wir unseren DHCP konfigurieren: `/etc/netplan/01-netcfg.yaml`
+
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s8:
+      addresses:
+        - 10.0.1.15/24
+      gateway4: 10.0.1.1
+      nameservers:
+        addresses: [1.1.1.1, 9.9.9.9]
+```
+Danach folgenden Befehl auführen: `sudo netplan apply`
 
 #### 3. Dienst neustarten
 
@@ -44,8 +63,8 @@ Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.
 Der Agent
 ## Sources
 - Offizielle Installation `isc-dhcp-server` von Canonical  
-https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server
+[https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
 - Man page `dhcrelay`  
-https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay
+[https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay](https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay)
 - setup isc-dhcp-relay  
-https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004
+[https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004](https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004)
