@@ -21,6 +21,8 @@ theme:
 site_description: My personal documentation
 site_author: Sephley
 copyright: All rights reserved
+plugins:
+  - glightbox
 
 nav:
   - Home: index.md
