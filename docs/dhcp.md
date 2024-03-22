@@ -60,11 +60,10 @@ sudo systemctl restart isc-dhcp-server.service
 
 ## DHCP Relay
 Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
-Der Agent
+Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
+
 ## Sources
 - Offizielle Installation `isc-dhcp-server` von Canonical  
 [https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
-- Man page `dhcrelay`  
-[https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay](https://kb.isc.org/docs/isc-dhcp-44-manual-pages-dhcrelay)
-- setup isc-dhcp-relay  
+- Setup Blog `isc-dhcp-relay ` von Reintech
 [https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004](https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004)

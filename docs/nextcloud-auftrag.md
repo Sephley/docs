@@ -23,3 +23,6 @@ sudo snap services nextcloud
 sudo vim /var/snap/nextcloud/current/nextcloud/config/config.php
 ```
 In diesem File unter `trusted domains`, seine gewünschte Domäne hinzufügen.
+
+## Manual Install
+![nextcloud2](images/nextcloud2.png)

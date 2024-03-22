@@ -22,7 +22,8 @@ site_description: My personal documentation
 site_author: Sephley
 copyright: All rights reserved
 plugins:
-  - mkdocs-glightbox
+  - glightbox
+  - drawio
 
 nav:
   - Home: index.md
