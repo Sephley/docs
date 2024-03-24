@@ -24,16 +24,13 @@ Folgende Konfiguration habe ich verwendet:
 
 ```
 subnet 192.168.1.0 netmask 255.255.255.192 {
-    range 192.168.1.2 192.168.1.62;
+    range 192.168.1.5 192.168.1.60;
     option routers 192.168.1.1;
     option domain-name-servers 1.1.1.1, 9.9.9.9;
-    option subnet-mask 255.255.255.192;
 }
-
-authoritative;
 ```
 
-Danach identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein
+Danach identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.
 ```
 INTERFACESv4="ens33"
 ```
@@ -43,9 +40,9 @@ Ich habe die bereits vorhandene Version wie folgt überschrieben.
 ```
 network:
   version: 2
-  renderer: networkd
   ethernets:
     ens33:
+      dhcp4: no
       addresses:
         - 192.168.1.2/26
       routes:
