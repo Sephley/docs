@@ -1,6 +1,6 @@
 # DHCP Vogel
-[Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32044700929%3A3%3A0%3Aserv%3Ax%3A_csrf%3Ad6d20b18-d00f-4da6-8969-ce5d2b958249/DHCP%20PXE/DHCP-Auftrag.pdf)  
-[Präsi](https://olat.bbw.ch/auth/1%3A1%3A32044700929%3A3%3A0%3Aserv%3Ax%3A_csrf%3Ad6d20b18-d00f-4da6-8969-ce5d2b958249/DHCP%20PXE/DHCP-praesi.pdf)
+[Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
+[Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)
 ## Umgebung
 - VMware Workstation Pro
     - 2x Ubuntu Server (Ohne GUI) - einer für den ISC und einer als relay agent
@@ -33,21 +33,24 @@ subnet 192.168.1.0 netmask 255.255.255.192 {
 authoritative;
 ```
 
-Danach identifizieren wir unser Netzwerkinterface und tragen es bei `/etc/default/isc-dhcp-server` ein
+Danach identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein
 ```
-INTERFACESv4="enp0s8"
+INTERFACESv4="ens33"
 ```
-Nun können wir unseren DHCP konfigurieren: `/etc/netplan/01-netcfg.yaml`
+Nun können wir unseren DHCP server eine statische IP geben: `/etc/netplan/00-installer-config.yaml`  
+Ich habe die bereits vorhandene Version wie folgt überschrieben.
 
 ```
 network:
   version: 2
   renderer: networkd
   ethernets:
-    enp0s8:
+    ens33:
       addresses:
-        - 10.0.1.15/24
-      gateway4: 10.0.1.1
+        - 192.168.1.2/26
+      routes:
+        - to: default
+          via: 192.168.1.1
       nameservers:
         addresses: [1.1.1.1, 9.9.9.9]
 ```
