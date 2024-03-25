@@ -64,7 +64,9 @@ Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.
 Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
 
 ## Zusätzliche Probleme
+Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und habe bis heute nicht herausgefunden warum.
 
+Ich habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nr zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen.
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
 [https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
