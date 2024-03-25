@@ -82,6 +82,10 @@ iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
 ## Wireshark
 Durch den Installer kann man sich mit leichtigkeit durchklicken.  
 
+Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /renew` & `ipconfig /release` ausgeführt und dies mit Wireshark aufgenommen.
+
+![wireshark](images/dhcp/dhcpwireshark.png)
+
 ![vogel](images/dhcp/dhcpvogel.png)
 
 ## DHCP Relay
@@ -102,6 +106,9 @@ Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated)
 
 ### 3. Internetzugang Client
 Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat.
+
+### 4. Wireshark
+Zu beginn habe ich nur `ipconfig renew` ausgeführ ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
