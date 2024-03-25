@@ -1,0 +1,643 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="My personal documentation" name="description"/>
+<meta content="Sephley" name="author"/>
+<link href="https://docs.sephley.com/dhcp/" rel="canonical"/>
+<link href="../bbw-m169/" rel="prev"/>
+<link href="../pxe/" rel="next"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.15" name="generator"/>
+<title>DHCP - docs</title>
+<link href="../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></link></head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#dhcp-vogel">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="docs" class="md-header__button md-logo" data-md-component="logo" href=".." title="docs">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            docs
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              DHCP
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"></path></svg>
+</label>
+</form>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sephley/docs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    docs
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="docs" class="md-nav__button md-logo" data-md-component="logo" href=".." title="docs">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    docs
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/sephley/docs" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    docs
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../zli-m109/">
+<span class="md-ellipsis">
+    ZLI-M109
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    BBW-M141
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            BBW-M141
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bbw-m141/">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pruefung-security/">
+<span class="md-ellipsis">
+    Security
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../zusatz-pruefung/">
+<span class="md-ellipsis">
+    Zusatz-Security
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bbw-m169/">
+<span class="md-ellipsis">
+    BBW-M169
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    BBW-M300
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            BBW-M300
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    DHCP
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    DHCP
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#umgebung">
+<span class="md-ellipsis">
+      Umgebung
+    </span>
+</a>
+<nav aria-label="Umgebung" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#netzwerkplan">
+<span class="md-ellipsis">
+      Netzwerkplan
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+<span class="md-ellipsis">
+      Installation
+    </span>
+</a>
+<nav aria-label="Installation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-apt-packet-installieren">
+<span class="md-ellipsis">
+      1. APT Packet installieren
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-konfiguration">
+<span class="md-ellipsis">
+      2. Konfiguration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-dienst-neustarten">
+<span class="md-ellipsis">
+      3. Dienst neustarten
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-internetzugang-auf-dem-client-ermoglichen">
+<span class="md-ellipsis">
+      4. Internetzugang auf dem Client ermöglichen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wireshark">
+<span class="md-ellipsis">
+      Wireshark
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dhcp-relay">
+<span class="md-ellipsis">
+      DHCP Relay
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probleme">
+<span class="md-ellipsis">
+      Probleme
+    </span>
+</a>
+<nav aria-label="Probleme" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-netzwerkadapter">
+<span class="md-ellipsis">
+      1. Netzwerkadapter
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-gateway">
+<span class="md-ellipsis">
+      2. Gateway
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-internetzugang-client">
+<span class="md-ellipsis">
+      3. Internetzugang Client
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-wireshark">
+<span class="md-ellipsis">
+      4. Wireshark
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion">
+<span class="md-ellipsis">
+      Reflexion
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quellen">
+<span class="md-ellipsis">
+      Quellen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pxe/">
+<span class="md-ellipsis">
+    PXE-Boot
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pxe-mitschnitt/">
+<span class="md-ellipsis">
+    Mitschnitt-PXE-Debian
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    Experts-Kurs
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            Experts-Kurs
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../experts/">
+<span class="md-ellipsis">
+    GitLab-Setup
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#umgebung">
+<span class="md-ellipsis">
+      Umgebung
+    </span>
+</a>
+<nav aria-label="Umgebung" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#netzwerkplan">
+<span class="md-ellipsis">
+      Netzwerkplan
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#installation">
+<span class="md-ellipsis">
+      Installation
+    </span>
+</a>
+<nav aria-label="Installation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-apt-packet-installieren">
+<span class="md-ellipsis">
+      1. APT Packet installieren
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-konfiguration">
+<span class="md-ellipsis">
+      2. Konfiguration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-dienst-neustarten">
+<span class="md-ellipsis">
+      3. Dienst neustarten
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-internetzugang-auf-dem-client-ermoglichen">
+<span class="md-ellipsis">
+      4. Internetzugang auf dem Client ermöglichen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#wireshark">
+<span class="md-ellipsis">
+      Wireshark
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#dhcp-relay">
+<span class="md-ellipsis">
+      DHCP Relay
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#probleme">
+<span class="md-ellipsis">
+      Probleme
+    </span>
+</a>
+<nav aria-label="Probleme" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-netzwerkadapter">
+<span class="md-ellipsis">
+      1. Netzwerkadapter
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-gateway">
+<span class="md-ellipsis">
+      2. Gateway
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-internetzugang-client">
+<span class="md-ellipsis">
+      3. Internetzugang Client
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-wireshark">
+<span class="md-ellipsis">
+      4. Wireshark
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reflexion">
+<span class="md-ellipsis">
+      Reflexion
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#quellen">
+<span class="md-ellipsis">
+      Quellen
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="dhcp-vogel">DHCP Vogel</h1>
+<p><a href="https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf">Auftrag</a><br/>
+<a href="https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf">Präsi</a></p>
+<h2 id="umgebung">Umgebung</h2>
+<ul>
+<li>VMware Workstation Pro<ul>
+<li>2x Ubuntu Server (Ohne GUI) - einer für den ISC und einer als relay agent</li>
+<li>Windows Client</li>
+</ul>
+</li>
+</ul>
+<h3 id="netzwerkplan">Netzwerkplan</h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../drawio/plan.drawio"><div class="mxgraph" data-mxgraph='{"highlight":"#0000ff","nav":true,"resize":true,"toolbar":"zoom layers tags lightbox","edit":"_blank","xml":"&lt;mxfile host=\"Electron\" modified=\"2024-03-22T14:11:03.656Z\" agent=\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.0.4 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36\" etag=\"BGODNlbC5Y2otMcNqzDF\" version=\"24.0.4\" type=\"device\"&gt;  &lt;diagram name=\"Page-1\" id=\"nTQGUZQcPy84R1Rn9wm-\"&gt;    &lt;mxGraphModel dx=\"1434\" dy=\"844\" grid=\"1\" gridSize=\"10\" guides=\"1\" tooltips=\"1\" connect=\"1\" arrows=\"1\" fold=\"1\" page=\"1\" pageScale=\"1\" pageWidth=\"827\" pageHeight=\"1169\" math=\"0\" shadow=\"0\"&gt;      &lt;root&gt;        &lt;mxCell id=\"0\"/&gt;        &lt;mxCell id=\"1\" parent=\"0\"/&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-7\" value=\"\" style=\"rounded=0;whiteSpace=wrap;html=1;strokeColor=none;\" vertex=\"1\" parent=\"1\"&gt;          &lt;mxGeometry x=\"120\" y=\"310\" width=\"610\" height=\"360\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-1\" value=\"&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;&amp;lt;b&amp;gt;LAN&amp;lt;/b&amp;gt;&amp;lt;/font&amp;gt;&amp;lt;div&amp;gt;192.168.1.0/26&amp;lt;/div&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;strokeColor=#0000FF;fillColor=none;\" vertex=\"1\" parent=\"1\"&gt;          &lt;mxGeometry x=\"120\" y=\"310\" width=\"260\" height=\"360\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-2\" value=\"&amp;lt;b&amp;gt;&amp;lt;font style=&amp;quot;font-size: 14px;&amp;quot;&amp;gt;NAT&amp;lt;/font&amp;gt;&amp;lt;/b&amp;gt;&amp;lt;div&amp;gt;10.0.1.0/24&amp;lt;/div&amp;gt;\" style=\"rounded=0;whiteSpace=wrap;html=1;strokeColor=#33FF33;fillColor=none;\" vertex=\"1\" parent=\"1\"&gt;          &lt;mxGeometry x=\"470\" y=\"310\" width=\"260\" height=\"360\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-3\" value=\"DHCP Server&amp;lt;div&amp;gt;10.0.1.15/24&amp;lt;/div&amp;gt;\" style=\"verticalLabelPosition=bottom;sketch=0;aspect=fixed;html=1;verticalAlign=top;strokeColor=none;align=center;outlineConnect=0;shape=mxgraph.citrix.dhcp_server;\" vertex=\"1\" parent=\"1\"&gt;          &lt;mxGeometry x=\"562\" y=\"520\" width=\"76\" height=\"90\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-4\" value=\"\" style=\"endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;\" edge=\"1\" parent=\"1\" source=\"Lu9Eben1TwgA7Xt8Hn3x-1\" target=\"Lu9Eben1TwgA7Xt8Hn3x-2\"&gt;          &lt;mxGeometry width=\"50\" height=\"50\" relative=\"1\" as=\"geometry\"&gt;            &lt;mxPoint x=\"390\" y=\"460\" as=\"sourcePoint\"/&gt;            &lt;mxPoint x=\"440\" y=\"410\" as=\"targetPoint\"/&gt;          &lt;/mxGeometry&gt;        &lt;/mxCell&gt;        &lt;mxCell id=\"Lu9Eben1TwgA7Xt8Hn3x-5\" value=\"Windows Client&amp;lt;br&amp;gt;192.168.1.10/26\" style=\"image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/laptop_client.svg;\" vertex=\"1\" parent=\"1\"&gt;          &lt;mxGeometry x=\"230\" y=\"550\" width=\"45\" height=\"50\" as=\"geometry\"/&gt;        &lt;/mxCell&gt;      &lt;/root&gt;    &lt;/mxGraphModel&gt;  &lt;/diagram&gt;&lt;/mxfile&gt;"}' style="max-width:100%;border:1px solid transparent;"></div></a></p>
+<h2 id="installation">Installation</h2>
+<p>Ich habe zwei Netzwerkadapter erstellt:<br/>
+- NAT<br/>
+- Vnet5</p>
+<h4 id="1-apt-packet-installieren">1. APT Packet installieren</h4>
+<pre><code>sudo apt update
+sudo apt install isc-dhcp-server
+</code></pre>
+<h4 id="2-konfiguration">2. Konfiguration</h4>
+<p>Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das File <code>/etc/dhcp/dhcpd.conf</code> bearbeiten.<br/>
+Folgende Konfiguration habe ich verwendet (Die MAC-Adresse habe ich von VMware ausgelesen):</p>
+<pre><code>default-lease-time 600;
+max-lease-time 7200;
+
+subnet 192.168.1.0 netmask 255.255.255.192 {
+    range 192.168.1.5 192.168.1.60;
+    option routers 192.168.1.2;
+    option domain-name-servers 1.1.1.1, 9.9.9.9;
+}
+
+host dhcpclient {
+  hardware ethernet 00:0C:29:15:BC:DB;
+  fixed-address 192.168.1.4;
+}
+</code></pre>
+<p>Danach identifizieren wir unser Netzwerkinterface mittels <code>ip a</code> und tragen es bei <code>/etc/default/isc-dhcp-server</code> ein.</p>
+<pre><code>INTERFACESv4="ens33"
+</code></pre>
+<p>Nun können wir unseren DHCP server eine statische IP geben: <code>/etc/netplan/00-installer-config.yaml</code><br/>
+Ich habe die bereits vorhandene Version wie folgt überschrieben.</p>
+<pre><code>network:
+  version: 2
+  ethernets:
+    ens33:
+      dhcp4: no
+      addresses:
+        - 192.168.1.2/26
+      nameservers:
+        addresses: [1.1.1.1, 9.9.9.9]
+</code></pre>
+<p>Danach folgenden Befehl auführen: <code>sudo netplan apply</code></p>
+<h4 id="3-dienst-neustarten">3. Dienst neustarten</h4>
+<pre><code>sudo systemctl restart isc-dhcp-server.service
+</code></pre>
+<p>Nun sehen wir auf dem Client die vergebene IP:</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dhcp/dhcp5.png"><img alt="client" src="../images/dhcp/dhcp5.png"/></a></p>
+<p>Allerdings hat der Client noch keinen Internetzugang.</p>
+<h4 id="4-internetzugang-auf-dem-client-ermoglichen">4. Internetzugang auf dem Client ermöglichen</h4>
+<pre><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
+</code></pre>
+<h2 id="wireshark">Wireshark</h2>
+<p>Durch den Installer kann man sich mit leichtigkeit durchklicken.  </p>
+<p>Um den DHCP Traffic zu analysieren habe ich auf dem Windows client <code>ipconfig /renew</code> &amp; <code>ipconfig /release</code> ausgeführt und dies mit Wireshark aufgenommen.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dhcp/dhcpwireshark.png"><img alt="wireshark" src="../images/dhcp/dhcpwireshark.png"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dhcp/dhcpvogel.png"><img alt="vogel" src="../images/dhcp/dhcpvogel.png"/></a></p>
+<h2 id="dhcp-relay">DHCP Relay</h2>
+<p>Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.<br/>
+Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.</p>
+<h2 id="probleme">Probleme</h2>
+<h3 id="1-netzwerkadapter">1. Netzwerkadapter</h3>
+<p>Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dhcp/dhcp1.png"><img alt="adapter" src="../images/dhcp/dhcp1.png"/></a></p>
+<p>Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).</p>
+<h3 id="2-gateway">2. Gateway</h3>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="auto" href="../images/dhcp/dhcp2.png"><img alt="gateway" src="../images/dhcp/dhcp2.png"/></a>
+Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated) Konfiguration hatte. Man muss mittlerweile mittels <code>routes</code> den gateway setzen.</p>
+<h3 id="3-internetzugang-client">3. Internetzugang Client</h3>
+<p>Nun habe ich festgestellt, dass die <code>routes</code> Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat.</p>
+<h3 id="4-wireshark">4. Wireshark</h3>
+<p>Zu beginn habe ich nur <code>ipconfig renew</code> ausgeführt ohne <code>ipconfig release</code>. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.</p>
+<h2 id="reflexion">Reflexion</h2>
+<p>RTFM</p>
+<h2 id="quellen">Quellen</h2>
+<ul>
+<li>Offizielle Installation <code>isc-dhcp-server</code> von Canonical<br/>
+<a href="https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server">https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server</a></li>
+<li>NAT Routing Ubuntu<br/>
+<a href="https://linuxhint.com/configure-nat-on-ubuntu/">https://linuxhint.com/configure-nat-on-ubuntu/</a></li>
+<li>Setup Blog <code>isc-dhcp-relay</code> von Reintech<br/>
+<a href="https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004">https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004</a></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      All rights reserved
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script><script src="https://viewer.diagrams.net/js/viewer-static.min.js"></script></body>
+</html>
