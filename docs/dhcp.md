@@ -31,6 +31,11 @@ subnet 192.168.1.0 netmask 255.255.255.192 {
     option routers 192.168.1.1;
     option domain-name-servers 1.1.1.1, 9.9.9.9;
 }
+
+host dhcpclient {
+  hardware ethernet 00:0C:29:15:BC:DB;
+  fixed-address 192.168.1.4;
+}
 ```
 
 Danach identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.
@@ -89,6 +94,8 @@ Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Ad
 ### 2. Gateway
 ![gateway](images/dhcp/dhcp2.png)
 Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated) Konfiguration hatte. Man muss mittlerweile mittels `routes` den gateway setzen.
+
+### 3. Internetzugang Client
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
