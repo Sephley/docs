@@ -36,6 +36,6 @@ nav:
   - BBW-M300:
     - DHCP: dhcp.md
     - PXE-Boot: pxe.md
-    - Mitschnitt-PXE-Debian: mitschnitt.md
+    - Mitschnitt-PXE-Debian: pxe-mitschnitt.md
   - Experts-Kurs:
     - GitLab-Setup: experts.md
