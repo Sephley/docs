@@ -1,3 +1,4 @@
+```
 b## 2022-03-08, lp5jvogel
 ## Slitaz per PXE / Debian 11
 ## DHCP SERVER in Betrieb nehmen
@@ -51,3 +52,4 @@ cp /mnt/boot/bzImage /mnt/boot/rootfs* /srv/tftp/slitaz/.
 umount /mnt
 
 ## alles eingerichtet, jetzt Client booten
+```
