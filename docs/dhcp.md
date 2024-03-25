@@ -59,14 +59,28 @@ Danach folgenden Befehl auführen: `sudo netplan apply`
 sudo systemctl restart isc-dhcp-server.service
 ```
 
+#### 4. Internetzugang auf dem Client ermöglichen
+
+```
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
+```
+
 ## DHCP Relay
 Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
 Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
 
-## Zusätzliche Probleme
-Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und habe bis heute nicht herausgefunden warum.
+## Probleme
+### 1. Netzwerkadapter
+Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
+![adapter](images/dhcp/dhcp1.png)
 
-Ich habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nr zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen.
+Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
+
+### 2. Gateway
+![gateway](images/dhcp/dhcp2.png)
+Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated) Konfiguration hatte. Man muss mittlerweile mittels `routes` den gateway setzen.
+
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
 [https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
