@@ -10,8 +10,8 @@
 ![plan](drawio/plan.drawio)
 
 ## Installation
-Ich habe zwei Netzwerkadapter erstellt:
-- NAT
+Ich habe zwei Netzwerkadapter erstellt:  
+- NAT  
 - Vnet5
 
 #### 1. APT Packet installieren
@@ -70,7 +70,7 @@ sudo systemctl restart isc-dhcp-server.service
 
 Nun sehen wir auf dem Client die vergebene IP:
 
-![client](images/dhcp/dhcp4.png)
+![client](images/dhcp/dhcp5.png)
 
 Allerdings hat der Client noch keinen Internetzugang.
 #### 4. Internetzugang auf dem Client ermöglichen
@@ -79,6 +79,10 @@ Allerdings hat der Client noch keinen Internetzugang.
 echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
 ```
+## Wireshark
+Durch den Installer kann man sich mit leichtigkeit durchklicken.  
+
+![vogel](images/dhcp/dhcpvogel.png)
 
 ## DHCP Relay
 Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
@@ -103,6 +107,6 @@ Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er vers
 - Offizielle Installation `isc-dhcp-server` von Canonical  
 [https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
 - NAT Routing Ubuntu  
-[https://linuxhint.com/configure-nat-on-ubuntu/]
+[https://linuxhint.com/configure-nat-on-ubuntu/](https://linuxhint.com/configure-nat-on-ubuntu/)
 - Setup Blog `isc-dhcp-relay ` von Reintech  
 [https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004](https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004)
