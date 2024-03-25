@@ -10,6 +10,10 @@
 ![plan](drawio/plan.drawio)
 
 ## Installation
+Ich habe zwei Netzwerkadapter erstellt:
+- NAT
+- Vnet5
+
 #### 1. APT Packet installieren
 
 ```
@@ -20,7 +24,7 @@ sudo apt install isc-dhcp-server
 #### 2. Konfiguration
 
 Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das File `/etc/dhcp/dhcpd.conf` bearbeiten.  
-Folgende Konfiguration habe ich verwendet:
+Folgende Konfiguration habe ich verwendet (Die MAC-Adresse habe ich von VMware ausgelesen):
 
 ```
 default-lease-time 600;
@@ -28,7 +32,7 @@ max-lease-time 7200;
 
 subnet 192.168.1.0 netmask 255.255.255.192 {
     range 192.168.1.5 192.168.1.60;
-    option routers 192.168.1.1;
+    option routers 192.168.1.2;
     option domain-name-servers 1.1.1.1, 9.9.9.9;
 }
 
@@ -53,9 +57,6 @@ network:
       dhcp4: no
       addresses:
         - 192.168.1.2/26
-      routes:
-        - to: default
-          via: 192.168.1.1
       nameservers:
         addresses: [1.1.1.1, 9.9.9.9]
 ```
@@ -96,9 +97,12 @@ Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Ad
 Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated) Konfiguration hatte. Man muss mittlerweile mittels `routes` den gateway setzen.
 
 ### 3. Internetzugang Client
+Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat.
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
 [https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server](https://ubuntu.com/server/docs/how-to-install-and-configure-isc-dhcp-server)
+- NAT Routing Ubuntu  
+[https://linuxhint.com/configure-nat-on-ubuntu/]
 - Setup Blog `isc-dhcp-relay ` von Reintech  
 [https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004](https://reintech.io/blog/configure-dhcp-relay-agent-ubuntu-2004)
