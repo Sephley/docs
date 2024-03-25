@@ -23,6 +23,9 @@ Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das Fi
 Folgende Konfiguration habe ich verwendet:
 
 ```
+default-lease-time 600;
+max-lease-time 7200;
+
 subnet 192.168.1.0 netmask 255.255.255.192 {
     range 192.168.1.5 192.168.1.60;
     option routers 192.168.1.1;
@@ -59,6 +62,11 @@ Danach folgenden Befehl auführen: `sudo netplan apply`
 sudo systemctl restart isc-dhcp-server.service
 ```
 
+Nun sehen wir auf dem Client die vergebene IP:
+
+![client](images/dhcp/dhcp4.png)
+
+Allerdings hat der Client noch keinen Internetzugang.
 #### 4. Internetzugang auf dem Client ermöglichen
 
 ```
@@ -73,6 +81,7 @@ Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Se
 ## Probleme
 ### 1. Netzwerkadapter
 Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
+
 ![adapter](images/dhcp/dhcp1.png)
 
 Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
