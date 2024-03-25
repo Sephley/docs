@@ -30,11 +30,11 @@ nav:
   - ZLI-M109: zli-m109.md
   - BBW-M141: 
     - Home: bbw-m141.md
-    - Prüfung-Security: pruefung-security.md
-    - Zusatz-Prüfung: zusatz-pruefung.md
+    - Security: pruefung-security.md
+    - Zusatz-Security: zusatz-pruefung.md
   - BBW-M169: bbw-m169.md
-  - Nextcloud: nextcloud-auftrag.md
-  - BBW-M300: dhcp.md
-  - Experts-Kurs:
+  - BBW-M300:
+    - DHCP: dhcp.md
     - PXE-Boot: pxe.md
+  - Experts-Kurs:
     - GitLab-Setup: experts.md

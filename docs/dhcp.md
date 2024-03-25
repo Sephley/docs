@@ -108,7 +108,7 @@ Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated)
 Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat.
 
 ### 4. Wireshark
-Zu beginn habe ich nur `ipconfig renew` ausgeführ ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
+Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
