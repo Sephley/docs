@@ -47,8 +47,15 @@ host pxeserver {
   fixed-address 192.168.1.3;
 }
 ```
+#### Was wurde genau konfiguriert?
+- `default-lease-time 600;`: Legt die Standard-Leasedauer für IP-Adressen auf 600 Sekunden (10 Minuten) fest.
+- `max-lease-time 7200;`: Setzt die maximale Leasedauer für IP-Adressen auf 7200 Sekunden (2 Stunden).
+- `subnet 192.168.1.0 netmask 255.255.255.192 { ... }`: Definiert Subnetz, IP-Range Router, DNS-Server und PXE-Server.
+- `host windowsclient { ... }`: Definiert einen Host mit der MAC-Adresse 00:0C:29:15:BC:DB und der festen IP-Adresse 192.168.1.4.
+- `host pxeserver { ... }`: Definiert einen Host mit der MAC-Adresse 00:50:56:2B:35:1A und der festen IP-Adresse 192.168.1.3.
 
-Anschliessend identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.
+Anschliessend identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.  
+Somit legen wir fest auf welchem Interface unser DHCP-server laufen sollte.
 ```
 INTERFACESv4="ens33"
 ```
@@ -124,11 +131,11 @@ ersichtlich sein."*
 Das setup des PXE-Servers wurde **NICHT** auf der gleichen VM wie der DHCP vorgenommen. 
 
 ### 1. TFTP-server installieren
+Ein TFTP-Server ist erforderlich, um die Boot-Dateien über das Netzwerk bereitzustellen.
 ```
 apt install tftpd-hpa
 mkdir /srv/tftp
 ```
-
 ### 2. PXELinux konfigurieren
 ```
 apt install pxelinux syslinux-common
@@ -145,7 +152,12 @@ label slitaz
     kernel slitaz/bzImage
     append initrd=slitaz/rootfs4.gz,slitaz/rootfs3.gz,slitaz/rootfs2.gz,slitaz/rootfs1.gz rw root=/dev/null vga=normal autologin
 ```
-
+#### Was wurde hier konfiguriert?
+PXELinux ist ein Bootloader, der speziell für das Booten über das Netzwerk entwickelt wurde und auf Syslinux basiert.  
+Wir installieren es mittels APT.
+Das `syslinux-common` Packet enthält einige Abhängikeiten für PXELinux.  
+Hierbei werden `lpxelinux.0` und `ldlinux.c32` in das TFTP-Verzeichnis kopiert, da sie für den Bootvorgang benötigt werden.  
+Zudem erstellen wir das Verzeichnis `/srv/tftp/pxelinux.cfg`, wo wir das `default` config file für PXELinux erstellen.  
 ### 3. Slitaz an den richtigen Ort kopieren
 ```
 cd ~
@@ -155,6 +167,9 @@ mkdir /srv/tftp/slitaz
 cp /mnt/boot/bzImage /mnt/boot/rootfs* /srv/tftp/slitaz/.
 umount /mnt
 ```
+#### Was kopieren wir hier?
+Hier werden die benötigten Dateien des Betriebssystems Slitaz heruntergeladen und gemountet.  
+Anschliessend werden der Kernel (bzImage) und die initrd-Dateien (rootfs*) in das TFTP-Verzeichnis kopiert.
 ### 4. Setup Testen
 
 ![slitaz](images/dhcp/slitaz.png)
@@ -175,7 +190,8 @@ Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated)
 Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat. Anschliessend habe die `routes` Option entfernt.
 
 ### 4. Internetzugang Server
-Obwohl ich jeweils einen 
+Obwohl ich einen NAT-Adapter habe kann ich mit dem DHCP-Server nicht mehr auf das Internet zugreifen. Ich konnte bis jetzt nicht herausfinden warum. Wir tun jetzt einfach so, als wäre es ein Security Feauture.  
+*It's not a bug, it's a feature - a clever human being*
 
 ### 5. Wireshark
 Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
