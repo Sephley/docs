@@ -1,4 +1,4 @@
-# Help for Capture-the-flag Test on 10.07.2023
+# Infos for Capture-the-flag Test on 10.07.2023
 see <https://bbwin.gitlab.io/m169-aws-fargate/iac/> for the previous assignment regarding CI/CD.
 ### gitlab-ci.yml
 ```

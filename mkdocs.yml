@@ -34,8 +34,7 @@ nav:
     - Zusatz-Security: zusatz-pruefung.md
   - BBW-M169: bbw-m169.md
   - BBW-M300:
-    - DHCP: dhcp.md
-    - PXE-Boot: pxe.md
-    - Mitschnitt-PXE-Debian: pxe-mitschnitt.md
+    - DHCP-PXE: dhcp.md
+    - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
   - Experts-Kurs:
     - GitLab-Setup: experts.md
