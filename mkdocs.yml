@@ -24,6 +24,22 @@ copyright: All rights reserved
 plugins:
   - glightbox
   - drawio
+  - exporter
+  - exporter-pdf:
+      concurrency: 8
+      covers:
+        front: resources/templates/covers/front.html.j2
+        back: resources/templates/covers/back.html.j2
+      stylesheets:
+        - resources/stylesheets/pdf.scss
+  - exporter-extras:
+      buttons:
+        - title: Download as PDF
+          enabled: !!python/name:mkdocs_exporter.plugins.pdf.button.enabled
+          icon: !!python/name:mkdocs_exporter.plugins.pdf.button.icon
+          attributes:
+            href: !!python/name:mkdocs_exporter.plugins.pdf.button.href
+            download: !!python/name:mkdocs_exporter.plugins.pdf.button.download
 
 nav:
   - Home: index.md

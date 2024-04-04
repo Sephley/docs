@@ -87,7 +87,8 @@ iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
 ## Wireshark
 Durch den Installer kann man sich mit leichtigkeit durchklicken.  
 
-Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /renew` & `ipconfig /release` ausgeführt und dies mit Wireshark aufgenommen.
+Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /renew` & `ipconfig /release` ausgeführt und dies mit Wireshark aufgenommen.  
+*Weil es etwas länger dauerte, gab es ein timeout. Deshalb sind im Bild 2-Mal Request & ACK.*
 
 ![wireshark](images/dhcp/dhcpwireshark.png)
 
@@ -95,8 +96,23 @@ Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /re
 
 ## DHCP Relay
 Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
-Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
+Der Agent wird benötigt um clients von einem separaten Netzwerk mit unserem DHCP Server zu verbinden.
 
+### 1. APT Packet installieren
+```
+sudo apt update
+sudo apt install isc-dhcp-relay
+```
+### 2. Konfiguration
+Folgendes config file wie folgt bearbeiten `/etc/default/isc-dhcp-relay`:
+```
+SERVERS="192.168.1.2"
+INTERFACES="eth0 eth1"
+```
+### 3. Dienst neustarten
+```
+sudo systemctl restart isc-dhcp-relay
+```
 ## PXE
 [Slitaz Download](https://slitaz.org/en/get/#rolling)  
 [PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
