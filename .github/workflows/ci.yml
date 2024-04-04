@@ -21,5 +21,5 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-glightbox mkdocs-drawio mkdocs-video mkdocs-exporter
+      - run: pip install mkdocs-material mkdocs-glightbox mkdocs-drawio mkdocs-video mkdocs-exporter mkdocs-exporter-pdf mkdocs-exporter-extras
       - run: mkdocs gh-deploy --force
