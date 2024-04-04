@@ -1,6 +1,6 @@
 # Auftrag DHCP & PXE M300 Vogel
-[Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
-[Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)
+[DHCP Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
+[DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)
 ## Umgebung
 Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.  
 Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag.
@@ -19,7 +19,7 @@ sudo apt update
 sudo apt install isc-dhcp-server
 ```
 
-### 2. Konfiguration DCHP
+### 2. Konfiguration DHCP
 Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das File `/etc/dhcp/dhcpd.conf` bearbeiten.  
 Folgende Konfiguration habe ich verwendet (Die MAC-Adressen habe ich von VMware ausgelesen):
 
@@ -74,7 +74,7 @@ Danach folgenden Befehl auführen: `sudo netplan apply`
 sudo systemctl restart isc-dhcp-server.service
 ```
 
-Nun sehen wir auf dem Client die vergebene IP:
+Nun sehen wir auf dem Windows Client die vergebene IP:
 
 ![client](images/dhcp/dhcp5.png)
 
@@ -98,8 +98,8 @@ Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.
 Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
 
 ## PXE
-[Slitaz download](https://slitaz.org/en/get/#rolling)  
-[Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
+[Slitaz Download](https://slitaz.org/en/get/#rolling)  
+[PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
 
 *"Beim Aufstarten des Clients soll dieser das Betriebssystem über den PXE-Server beziehen
 und ordnungsgemäss starten. Die Konfiguration und der Aufbau des Netzwerkes sollen
@@ -156,7 +156,7 @@ Weil ich den Überblick verloren habe, habe ich eine neue VM erstellt und mit ei
 Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated) Konfiguration hatte. Man muss mittlerweile mittels `routes` den gateway setzen.
 
 ### 3. Internetzugang Client
-Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat.
+Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat. Anschliessend habe die `routes` Option entfernt.
 
 ### 4. Internetzugang Server
 Obwohl ich jeweils einen 
