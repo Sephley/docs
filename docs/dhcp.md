@@ -31,9 +31,11 @@ default-lease-time 600;
 max-lease-time 7200;
 
 subnet 192.168.1.0 netmask 255.255.255.192 {
-    range 192.168.1.5 192.168.1.60;
-    option routers 192.168.1.2;
-    option domain-name-servers 1.1.1.1, 9.9.9.9;
+  range 192.168.1.5 192.168.1.60;
+  option routers 192.168.1.2;
+  option domain-name-servers 1.1.1.1, 9.9.9.9;
+  next-server 192.168.1.3;
+  filename "pxelinux.0";
 }
 
 host windowsclient {
@@ -41,10 +43,9 @@ host windowsclient {
   fixed-address 192.168.1.4;
 }
 
-host pxeclient {
-  hardware ethernet;
+host pxeserver {
+  hardware ethernet 00:50:56:2B:35:1A;
   fixed-address 192.168.1.3;
-  filename "gpxelinux.0";
 }
 ```
 
@@ -99,7 +100,6 @@ Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.
 Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Server zu verbinden.
 
 ## PXE
-
 [Slitaz download](https://slitaz.org/en/get/#rolling)  
 [Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
 
@@ -107,18 +107,18 @@ Der Agent wird benötigt um clients von einem separaten Netzwerk mit dem DHCP Se
 und ordnungsgemäss starten. Die Konfiguration und der Aufbau des Netzwerkes sollen
 ersichtlich sein."*
 
-Das setup des PXE-Servers wurde auf der gleichen VM wie der DHCP vorgenommen. Mit dem Mitschnitt hat dies gut funktioniert.
+Das setup des PXE-Servers wurde **NICHT** auf der gleichen VM wie der DHCP vorgenommen. 
 
-### 1. TFTP SERVER in Betrieb nehmen
+### 1. TFTP-server
 ```
-apt install tftpd
+apt install tftpd-hpa
 mkdir /srv/tftp
 ```
 
-### 2.  PXELinux in Betrieb nehmen
+### 2.  PXELinux
 ```
 apt install pxelinux syslinux-common
-cp /usr/lib/PXELINUX/gpxelinux.0 /srv/tftp/.
+cp /usr/lib/PXELINUX/lpxelinux.0 /srv/tftp/.
 cp /usr/lib/syslinux/modules/bios/ldlinux.c32 /srv/tftp/.
 mkdir /srv/tftp/pxelinux.cfg
 ```
@@ -133,14 +133,17 @@ label slitaz
 ```
 
 ### 3. Slitaz an den richtigen Ort kopieren
+```
 cd ~
 wget http://mirror.slitaz.org/iso/4.0/slitaz-4.0.iso
 mount -o loop slitaz-4.0.iso /mnt
 mkdir /srv/tftp/slitaz
 cp /mnt/boot/bzImage /mnt/boot/rootfs* /srv/tftp/slitaz/.
 umount /mnt
-
+```
 ### 4. Setup Testen
+
+![slitaz](images/dhcp/slitaz.png)
 
 ## Probleme
 ### 1. Netzwerkadapter
