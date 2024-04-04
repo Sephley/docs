@@ -28,10 +28,10 @@ plugins:
   - exporter-pdf:
       concurrency: 8
       covers:
-        front: resources/templates/covers/front.html.j2
-        back: resources/templates/covers/back.html.j2
+        front: docs/resources/templates/covers/front.html.j2
+        back: docs/resources/templates/covers/back.html.j2
       stylesheets:
-        - resources/stylesheets/pdf.scss
+        - docs/resources/stylesheets/pdf.scss
   - exporter-extras:
       buttons:
         - title: Download as PDF
