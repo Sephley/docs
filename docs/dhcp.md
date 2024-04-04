@@ -1,15 +1,14 @@
 # Auftrag DHCP & PXE M300 Vogel
-[DHCP Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
-[DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)
+Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag.
 ## Umgebung
 Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.  
-Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag.
-
 ### Netzwerkplan
 ![plan](drawio/plan.drawio)
 
-## Installation
-Ubuntu VM installieren und zwei Netzwerkadapter erstellen:  
+## Installation DHCP
+[DHCP Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
+[DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)  
+Ich habe eine Ubuntu VM installiert und zwei Netzwerkadapter erstellen:  
 - NAT  
 - Vnet5
 
@@ -34,7 +33,7 @@ subnet 192.168.1.0 netmask 255.255.255.192 {
   option domain-name-servers 1.1.1.1, 9.9.9.9;
   # PXE-Server config
   next-server 192.168.1.3;
-  filename "pxelinux.0";
+  filename "lpxelinux.0";
 }
 
 host windowsclient {
@@ -47,7 +46,7 @@ host pxeserver {
   fixed-address 192.168.1.3;
 }
 ```
-#### Was wurde genau konfiguriert?
+#### 2.1. Was wurde genau konfiguriert?
 - `default-lease-time 600;`: Legt die Standard-Leasedauer für IP-Adressen auf 600 Sekunden (10 Minuten) fest.
 - `max-lease-time 7200;`: Setzt die maximale Leasedauer für IP-Adressen auf 7200 Sekunden (2 Stunden).
 - `subnet 192.168.1.0 netmask 255.255.255.192 { ... }`: Definiert Subnetz, IP-Range Router, DNS-Server und PXE-Server.
@@ -114,12 +113,17 @@ sudo apt install isc-dhcp-relay
 Folgendes config file wie folgt bearbeiten `/etc/default/isc-dhcp-relay`:
 ```
 SERVERS="192.168.1.2"
-INTERFACES="eth0 eth1"
+INTERFACES="ens33"
 ```
 ### 3. Dienst neustarten
 ```
 sudo systemctl restart isc-dhcp-relay
 ```
+## udhcpd
+Eine alternative zum `isc-dhcp-server` wäre `udhcpc`. Es wurde entwickelt, um eine ressourcenschonende Implementierung des DHCP-Protokolls bereitzustellen.  
+Wie man sich also vorstellen kann, ist der Hauptvorteil von `udhcpc` der niedrige Ressourcenverbrauch im Vergleich zu `isc-dhcp-relay`, ist dafür etwas limitierter was die Funktionalität angeht.  
+Ich dachte zuerst, dass die neuste Version laut [ihrer Webseite](https://udhcp.busybox.net/) im Jahr 2002 veröffentlicht wurde.  
+Das [Debian Packet](https://manpages.debian.org/testing/udhcpd/udhcpd.8.en.html) ist aber aktueller.
 ## PXE
 [Slitaz Download](https://slitaz.org/en/get/#rolling)  
 [PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
@@ -152,7 +156,7 @@ label slitaz
     kernel slitaz/bzImage
     append initrd=slitaz/rootfs4.gz,slitaz/rootfs3.gz,slitaz/rootfs2.gz,slitaz/rootfs1.gz rw root=/dev/null vga=normal autologin
 ```
-#### Was wurde hier konfiguriert?
+#### 2.1. Was wurde hier konfiguriert?
 PXELinux ist ein Bootloader, der speziell für das Booten über das Netzwerk entwickelt wurde und auf Syslinux basiert.  
 Wir installieren es mittels APT.
 Das `syslinux-common` Packet enthält einige Abhängikeiten für PXELinux.  
@@ -167,7 +171,7 @@ mkdir /srv/tftp/slitaz
 cp /mnt/boot/bzImage /mnt/boot/rootfs* /srv/tftp/slitaz/.
 umount /mnt
 ```
-#### Was kopieren wir hier?
+#### 3.1. Was kopieren wir hier?
 Hier werden die benötigten Dateien des Betriebssystems Slitaz heruntergeladen und gemountet.  
 Anschliessend werden der Kernel (bzImage) und die initrd-Dateien (rootfs*) in das TFTP-Verzeichnis kopiert.
 ### 4. Setup Testen
@@ -197,7 +201,8 @@ Obwohl ich einen NAT-Adapter habe kann ich mit dem DHCP-Server nicht mehr auf da
 Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Reflexion
-RTFM
+Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren.  
+Grund dafür sind die Zusatzaufträge und erweiterte Zeitrahmen für die Aufgabe.
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
