@@ -1,39 +1,38 @@
-# DHCP Vogel
+# Auftrag DHCP & PXE M300 Vogel
 [Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
 [Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)
 ## Umgebung
-- VMware Workstation Pro
-    - 2x Ubuntu Server (Ohne GUI) - einer für den ISC und einer als relay agent
-    - Windows Client
+Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.  
+Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag.
 
 ### Netzwerkplan
 ![plan](drawio/plan.drawio)
 
 ## Installation
-Ich habe zwei Netzwerkadapter erstellt:  
+Ubuntu VM installieren und zwei Netzwerkadapter erstellen:  
 - NAT  
 - Vnet5
 
-#### 1. APT Packet installieren
-
+### 1. APT Packet installieren
 ```
 sudo apt update
 sudo apt install isc-dhcp-server
 ```
 
-#### 2. Konfiguration
-
+### 2. Konfiguration DCHP
 Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das File `/etc/dhcp/dhcpd.conf` bearbeiten.  
-Folgende Konfiguration habe ich verwendet (Die MAC-Adresse habe ich von VMware ausgelesen):
+Folgende Konfiguration habe ich verwendet (Die MAC-Adressen habe ich von VMware ausgelesen):
 
 ```
 default-lease-time 600;
 max-lease-time 7200;
 
+# LAN
 subnet 192.168.1.0 netmask 255.255.255.192 {
   range 192.168.1.5 192.168.1.60;
   option routers 192.168.1.2;
   option domain-name-servers 1.1.1.1, 9.9.9.9;
+  # PXE-Server config
   next-server 192.168.1.3;
   filename "pxelinux.0";
 }
@@ -49,10 +48,11 @@ host pxeserver {
 }
 ```
 
-Danach identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.
+Anschliessend identifizieren wir unser Netzwerkinterface mittels `ip a` und tragen es bei `/etc/default/isc-dhcp-server` ein.
 ```
 INTERFACESv4="ens33"
 ```
+### 3. Statische IP vergeben
 Nun können wir unseren DHCP server eine statische IP geben: `/etc/netplan/00-installer-config.yaml`  
 Ich habe die bereits vorhandene Version wie folgt überschrieben.
 
@@ -69,8 +69,7 @@ network:
 ```
 Danach folgenden Befehl auführen: `sudo netplan apply`
 
-#### 3. Dienst neustarten
-
+### 4. Dienst neustarten & DHCP testen
 ```
 sudo systemctl restart isc-dhcp-server.service
 ```
@@ -80,8 +79,7 @@ Nun sehen wir auf dem Client die vergebene IP:
 ![client](images/dhcp/dhcp5.png)
 
 Allerdings hat der Client noch keinen Internetzugang.
-#### 4. Internetzugang auf dem Client ermöglichen
-
+### 5. Internetzugang auf dem Client ermöglichen
 ```
 echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE
@@ -109,13 +107,13 @@ ersichtlich sein."*
 
 Das setup des PXE-Servers wurde **NICHT** auf der gleichen VM wie der DHCP vorgenommen. 
 
-### 1. TFTP-server
+### 1. TFTP-server installieren
 ```
 apt install tftpd-hpa
 mkdir /srv/tftp
 ```
 
-### 2.  PXELinux
+### 2. PXELinux konfigurieren
 ```
 apt install pxelinux syslinux-common
 cp /usr/lib/PXELINUX/lpxelinux.0 /srv/tftp/.
@@ -147,11 +145,11 @@ umount /mnt
 
 ## Probleme
 ### 1. Netzwerkadapter
-Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, noch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
+Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, doch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
 
 ![adapter](images/dhcp/dhcp1.png)
 
-Weil ich den Überblick verloren habe eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
+Weil ich den Überblick verloren habe, habe ich eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
 
 ### 2. Gateway
 ![gateway](images/dhcp/dhcp2.png)
