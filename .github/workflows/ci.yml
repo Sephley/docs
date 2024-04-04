@@ -22,4 +22,5 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material mkdocs-glightbox mkdocs-drawio mkdocs-video mkdocs-exporter
+      - run: playwright install --with-deps
       - run: mkdocs gh-deploy --force
