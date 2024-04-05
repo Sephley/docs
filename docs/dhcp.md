@@ -8,16 +8,14 @@ Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.
 ## Installation DHCP
 [DHCP Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
 [DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)  
-Ich habe eine Ubuntu VM installiert und zwei Netzwerkadapter erstellen:  
+Ich habe eine Ubuntu VM installiert und zwei Netzwerkadapter erstellt:  
 - NAT  
 - Vnet5
-
 ### 1. APT Packet installieren
 ```
 sudo apt update
 sudo apt install isc-dhcp-server
 ```
-
 ### 2. Konfiguration DHCP
 Um unseren frisch installierten DHCP server zu konfigurieren, müssen wir das File `/etc/dhcp/dhcpd.conf` bearbeiten.  
 Folgende Konfiguration habe ich verwendet (Die MAC-Adressen habe ich von VMware ausgelesen):
@@ -74,7 +72,6 @@ network:
         addresses: [1.1.1.1, 9.9.9.9]
 ```
 Danach folgenden Befehl auführen: `sudo netplan apply`
-
 ### 4. Dienst neustarten & DHCP testen
 ```
 sudo systemctl restart isc-dhcp-server.service
@@ -103,7 +100,6 @@ Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /re
 ## DHCP Relay
 Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
 Der Agent wird benötigt um clients von einem separaten Netzwerk mit unserem DHCP Server zu verbinden.
-
 ### 1. APT Packet installieren
 ```
 sudo apt update
@@ -133,7 +129,6 @@ und ordnungsgemäss starten. Die Konfiguration und der Aufbau des Netzwerkes sol
 ersichtlich sein."*
 
 Das setup des PXE-Servers wurde **NICHT** auf der gleichen VM wie der DHCP vorgenommen. 
-
 ### 1. TFTP-server installieren
 Ein TFTP-Server ist erforderlich, um die Boot-Dateien über das Netzwerk bereitzustellen.
 ```
@@ -198,11 +193,10 @@ Obwohl ich einen NAT-Adapter habe kann ich mit dem DHCP-Server nicht mehr auf da
 *It's not a bug, it's a feature - a clever human being*
 
 ### 5. Wireshark
-Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hat. So konnte ich keine vernünftige Analyse durchführen.
+Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hatte. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Reflexion
-Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren.  
-Grund dafür sind die Zusatzaufträge und erweiterte Zeitrahmen für die Aufgabe.
+Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren. Grund dafür sind die Zusatzaufträge und erweiterte Zeitrahmen für die Aufgabe.
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
