@@ -25,6 +25,7 @@ plugins:
   - glightbox
   - drawio
   - search
+  - mkdocs-video
 
 nav:
   - Home: index.md
