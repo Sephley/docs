@@ -171,9 +171,9 @@ Hier werden die benötigten Dateien des Betriebssystems Slitaz heruntergeladen u
 Anschliessend werden der Kernel (bzImage) und die initrd-Dateien (rootfs*) in das TFTP-Verzeichnis kopiert.
 ### 4. Setup Testen
 
-![slitaz](images/dhcp/slitaz.png)
-
 ![type:video](videos/vogel.mp4)
+
+![slitaz](images/dhcp/slitaz.png)
 
 ## Probleme
 ### 1. Netzwerkadapter
