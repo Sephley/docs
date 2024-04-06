@@ -173,6 +173,8 @@ Anschliessend werden der Kernel (bzImage) und die initrd-Dateien (rootfs*) in da
 
 ![slitaz](images/dhcp/slitaz.png)
 
+![type:video](videos/vogel.mp4)
+
 ## Probleme
 ### 1. Netzwerkadapter
 Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, doch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
