@@ -7,9 +7,10 @@ Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag. Ich hab
 ## Installation DHCP
 [DHCP Auftrag](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-Auftrag.pdf)  
 [DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)  
-Ich habe eine Ubuntu VM installiert und zwei Netzwerkadapter erstellt:  
+Ich habe eine Ubuntu VM installiert und drei Netzwerkadapter erstellt:  
 - NAT  
 - Vnet5
+- Vnet6
 ### 1. APT-Packet installieren
 ```
 sudo apt update
