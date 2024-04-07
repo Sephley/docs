@@ -1,8 +1,7 @@
 # Auftrag DHCP & PXE M300 Vogel
-Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag.
-## Umgebung
-Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.  
-### Netzwerkplan
+Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag. Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.  
+
+## Netzwerkplan
 ![plan](drawio/plan.drawio)
 
 ## Installation DHCP
@@ -11,7 +10,7 @@ Ich habe diesen Auftrag auf meinem Client mit VMware Workstation Pro erledigt.
 Ich habe eine Ubuntu VM installiert und zwei Netzwerkadapter erstellt:  
 - NAT  
 - Vnet5
-### 1. APT Packet installieren
+### 1. APT-Packet installieren
 ```
 sudo apt update
 sudo apt install isc-dhcp-server
@@ -57,7 +56,7 @@ Somit legen wir fest auf welchem Interface unser DHCP-server laufen sollte.
 INTERFACESv4="ens33"
 ```
 ### 3. Statische IP vergeben
-Nun können wir unseren DHCP server eine statische IP geben: `/etc/netplan/00-installer-config.yaml`  
+Nun können wir unseren DHCP server eine statische IP geben unter: `/etc/netplan/00-installer-config.yaml`  
 Ich habe die bereits vorhandene Version wie folgt überschrieben.
 
 ```
@@ -98,9 +97,9 @@ Um den DHCP Traffic zu analysieren habe ich auf dem Windows client `ipconfig /re
 ![vogel](images/dhcp/dhcpvogel.png)
 
 ## DHCP Relay
-Um diesen Dienst zu verwenden benötigt man ein DHCP Relay Agent.  
-Der Agent wird benötigt um clients von einem separaten Netzwerk mit unserem DHCP Server zu verbinden.
-### 1. APT Packet installieren
+Um diesen Dienst zu verwenden, benötigt man ein DHCP Relay Agent.  
+Der Agent wird benötigt, um Clients von einem separaten Netzwerk mit unserem DHCP-Server zu verbinden.
+### 1. APT-Packet installieren
 ```
 sudo apt update
 sudo apt install isc-dhcp-relay
@@ -147,7 +146,7 @@ sudo service udhcpd restart
 ```
 Nun sehen wir auf dem Windows Client wieder die vergebene IP:
 
-![client](images/dhcp/dhcp5.png)
+![client](images/dhcp/udchp)
 ## PXE
 [Slitaz Download](https://slitaz.org/en/get/#rolling)  
 [PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
@@ -205,11 +204,11 @@ Anschliessend werden der Kernel (bzImage) und die initrd-Dateien (rootfs*) in da
 
 ## Probleme
 ### 1. Netzwerkadapter
-Ich wusste nicht wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT adapter und ein custom Netzwerksegment erstellt, doch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus versehen die ganze Konfiguration auf dem NAT Adapter gemacht habe.
+Ich wusste nicht, wie ich mit den virtuellen Netzwerkadaptern umgehen musste. Ich habe einen NAT-Adapter und ein custom Netzwerksegment erstellt, doch mit dieser Konfiguration hatte ich keine Internetverbindung und dies lag daran, dass ich aus Versehen die ganze Konfiguration auf dem NAT-Adapter gemacht habe.
 
 ![adapter](images/dhcp/dhcp1.png)
 
-Weil ich den Überblick verloren habe, habe ich eine neue VM erstellt und mit einem NAT Adapter + einem Vnet Adapter hinzugefügt. Den NAT Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
+Weil ich den Überblick verloren habe, habe ich eine neue VM erstellt und mit einem NAT-Adapter + einem Vnet Adapter hinzugefügt. Den NAT-Adapter habe ich nicht angefasst, der diente nur zur Internetverbindung. Die ganze Konfiguration wurde auf dem Vnet Adapter vorgenommen (Vnet 5 in meinem Fall).
 
 ### 2. Gateway
 ![gateway](images/dhcp/dhcp2.png)
@@ -219,11 +218,11 @@ Ich habe eine Konfiguration im Internet gefunden, welche eine alte (depprecated)
 Nun habe ich festgestellt, dass die `routes` Option ein Fehler war, weil er versucht hat, über sich selbst zu routen und irgendeine zusätzliche Default Route gesetzt hat, die reingefunkt hat. Anschliessend habe die `routes` Option entfernt.
 
 ### 4. Internetzugang Server
-Obwohl ich einen NAT-Adapter habe kann ich mit dem DHCP-Server nicht mehr auf das Internet zugreifen. Ich konnte bis jetzt nicht herausfinden warum. Wir tun jetzt einfach so, als wäre es ein Security Feauture.  
+Obwohl ich einen NAT-Adapter habe, kann ich mit dem DHCP-Server nicht mehr auf das Internet zugreifen. Ich konnte bis jetzt nicht herausfinden warum. Wir tun jetzt einfach so, als wäre es ein Security Feauture.  
 *It's not a bug, it's a feature - a clever human being*
 
 ### 5. Wireshark
-Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hatte. So konnte ich keine vernünftige Analyse durchführen.
+Zu Beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Informationen bereits gemerkt hatte. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Reflexion
 Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren. Grund dafür sind die Zusatzaufträge und der erweiterte Zeitrahmen für die Aufgabe.  
