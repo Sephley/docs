@@ -226,7 +226,12 @@ Obwohl ich einen NAT-Adapter habe kann ich mit dem DHCP-Server nicht mehr auf da
 Zu beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Dies hat dazu geführt, dass ich nur den Acknowledge und den Request sehen konnte, weil der Client sich die restlichen Information bereits gemerkt hatte. So konnte ich keine vernünftige Analyse durchführen.
 
 ## Reflexion
-Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren. Grund dafür sind die Zusatzaufträge und erweiterte Zeitrahmen für die Aufgabe.
+Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren. Grund dafür sind die Zusatzaufträge und der erweiterte Zeitrahmen für die Aufgabe.  
+Ich habe dazugelernt:  
+- DHCP Relay in betrieb nehmen
+- udchpd aufsetzen
+- DHCP Traffic mit Wireshark analysieren
+- Allgemein besseres Verständnis zu PXE & DHCP
 
 ## Quellen
 - Offizielle Installation `isc-dhcp-server` von Canonical  
