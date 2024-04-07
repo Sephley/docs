@@ -116,10 +116,38 @@ INTERFACES="ens33"
 sudo systemctl restart isc-dhcp-relay
 ```
 ## udhcpd
-Eine alternative zum `isc-dhcp-server` wäre `udhcpc`. Es wurde entwickelt, um eine ressourcenschonende Implementierung des DHCP-Protokolls bereitzustellen.  
+Eine alternative zum `isc-dhcp-server` wäre `udhcpd`. Es wurde entwickelt, um eine ressourcenschonende Implementierung des DHCP-Protokolls bereitzustellen.  
 Wie man sich also vorstellen kann, ist der Hauptvorteil von `udhcpc` der niedrige Ressourcenverbrauch im Vergleich zu `isc-dhcp-relay`, ist dafür etwas limitierter was die Funktionalität angeht.  
 Ich dachte zuerst, dass die neuste Version laut [ihrer Webseite](https://udhcp.busybox.net/) im Jahr 2002 veröffentlicht wurde.  
 Das [Debian Packet](https://manpages.debian.org/testing/udhcpd/udhcpd.8.en.html) ist aber aktueller.
+### 1. APT Packet installieren
+```
+sudo apt install udhcpd
+```
+### 2. udhcpd konfigurieren
+`/etc/udhcpd.conf` mit gewünschtem Texteditor öffnen und wie folgt bearbeiten:  
+```
+start 192.168.1.5
+end 192.168.1.60
+option subnet 255.255.255.192
+option router 192.168.1.2
+option dns 1.1.1.1
+option lease 600
+interface ens33
+lease_file /var/lib/misc/udhcpd.leases
+static_lease 00:0C:29:15:BC:DB 192.168.1.4
+static_lease 00:50:56:2B:35:1A 192.168.1.3
+```
+### 3. Aktivieren und Dienst starten
+```
+sed -i '/DHCPD_ENABLED/ s/no/yes/' /etc/default/udhcpd
+touch /var/lib/misc/udhcpd.leases
+update-rc.d udhcpd defaults
+sudo service udhcpd restart
+```
+Nun sehen wir auf dem Windows Client wieder die vergebene IP:
+
+![client](images/dhcp/dhcp5.png)
 ## PXE
 [Slitaz Download](https://slitaz.org/en/get/#rolling)  
 [PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
