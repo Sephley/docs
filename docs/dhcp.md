@@ -9,7 +9,7 @@ Diese Dokumentation kombiniert beide Aufträge in einen grossen Auftrag. Ich hab
 [DHCP Präsi](https://olat.bbw.ch/auth/1%3A1%3A32068123854%3A3%3A0%3Aserv%3Ax%3A_csrf%3A03007576-d952-4001-add7-05c93a6fbd08/DHCP%20PXE/DHCP-praesi.pdf)  
 Ich habe eine Ubuntu VM installiert und drei Netzwerkadapter erstellt:  
 - NAT  
-- Vnet5
+- Vnet5  
 - Vnet6
 ### 1. APT-Packet installieren
 ```
@@ -147,7 +147,7 @@ sudo service udhcpd restart
 ```
 Nun sehen wir auf dem Windows Client wieder die vergebene IP:
 
-![client](images/dhcp/udchp)
+![client](images/dhcp/udchp.png)
 ## PXE
 [Slitaz Download](https://slitaz.org/en/get/#rolling)  
 [PXE Auftrag](https://olat.bbw.ch/auth/2%3A1%3A32071223651%3A3%3A0%3Aserv%3Ax%3A_csrf%3A8999ead8-3a00-41fa-aa9a-965b65a19c84/DHCP%20PXE/pxe-boot_slitaz.pdf)
@@ -228,9 +228,9 @@ Zu Beginn habe ich nur `ipconfig renew` ausgeführt ohne `ipconfig release`. Die
 ## Reflexion
 Obwohl ich diese Aufgabe im Experts-Kurs bereits schon hatte, konnte ich doch etwas von diesem Auftrag profitieren. Grund dafür sind die Zusatzaufträge und der erweiterte Zeitrahmen für die Aufgabe.  
 Ich habe dazugelernt:  
-- DHCP Relay in betrieb nehmen
-- udchpd aufsetzen
-- DHCP Traffic mit Wireshark analysieren
+- DHCP Relay in betrieb nehmen  
+- udchpd aufsetzen  
+- DHCP Traffic mit Wireshark analysieren  
 - Allgemein besseres Verständnis zu PXE & DHCP
 
 ## Quellen
