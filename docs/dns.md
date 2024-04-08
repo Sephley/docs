@@ -1,4 +1,5 @@
 # Auftrag DNS M300 Vogel
+[Auftrag](https://olat.bbw.ch/auth/RepositoryEntry/635961710/CourseNode/109192337476214/path%3D~~DNS/0)  
 ## Vorwissen
 Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun schon zwei Jahre her, von dem her bin ich also doch froh kann ich dies erneut tun. Mit DynDNS habe ich auch schon in meiner privaten Infrastruktur erfahrungen gemacht.
 ## Theorie
@@ -10,6 +11,8 @@ Dieser Teil ist der langweilige, aber doch notwendige Teil. Es kommen folgende P
 - *Auch in der AWS oder Azure-Umgebung finden Sie DNS. Was lässt sich damit anstellen?*  
 - *DNS unter IPv6 – was ändert sich?*  
 - *Reverse DNS unter IPv6: https://tech.rana.at/2017/12/08/*
+
+Damit es nochmals geschrieben steht, DNS steht bedeutet ausgeschrieben: "Domain Name System".
 ### Zonendatei
 ### Anfänge des Internets
 ### Primary / Secondary Konzept
@@ -19,3 +22,19 @@ Dieser Teil ist der langweilige, aber doch notwendige Teil. Es kommen folgende P
 ### DNS unter IPv6
 ### Reverse DNS unter IPv6
 ## Prakitische Arbeiten
+Dieser Teil handelt sich um folgende Punkte von dem Auftrag:  
+- *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*
+- *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*
+- *In einem früheren Auftrag haben Sie exotische Betriebssysteme ans Netzwerk angebunden. Binden Sie Ihren DNS-Resolver ein und zeigen Sie per Wireshark, ob diese Betriebssysteme die Abfragen korrekt durchführen.*  
+- *Versuchen Sie dynamisch DNS-Einträge anpassen zu lassen. Spielen Sie Kapitel 3 von https://strugglers.net/~andy/blog/2018/03/19/ nach. Beachten Sie, dass sich die Welt ändert: Nutzen Sie tsig-keygen statt dnssec-keygen.*  
+- *Unter maas.bbw-it.ch haben Sie Zugriff auf eine «persönliche» DNS-Subdomain. Nutzen Sie diese Möglichkeit und testen Sie, wie sie diese einsetzen können. Für Fortgeschrittene können Sie auch die dynamische Anpassung ausprobieren.*  
+- *Übersteuern Sie den DNS mittels Hosts-File (auch unter Windows). Wie verhält sich der Resolver, wenn Sie ihm per Hosts-File andere Werte unterjubeln? Werden diese da berücksichtigt?*
+### Netzwerkschema
+Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, anderseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
+![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
+### Bind9
+### Wireshark Abfrage Analyse
+### Wireshark Resolver Analyse
+### Secondary DNS
+### Persönliche Subdomain
+### DNS übersteuren
