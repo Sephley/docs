@@ -3,7 +3,7 @@
 ## Vorwissen
 Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun schon zwei Jahre her, von dem her bin ich also doch froh kann ich dies erneut tun. Mit DynDNS habe ich auch schon in meiner privaten Infrastruktur erfahrungen gemacht.
 ## Theorie
-Dieser Teil ist der langweilige, aber doch notwendige Teil. Es kommen folgende Punkte vom Auftrag vor:  
+Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Es kommen folgende Punkte vom Auftrag vor:    
 - *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
 - *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
 - *Recherchieren Sie verschiedene Record-Typen und erklären Sie diese.*  
@@ -18,6 +18,7 @@ Damit es nochmals geschrieben steht, DNS steht bedeutet ausgeschrieben: "Domain 
 ### Primary / Secondary Konzept
 ### Record-Typen
 ### DynDNS
+DynDNS ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
 ### DNS in AWS
 ### DNS unter IPv6
 ### Reverse DNS unter IPv6
@@ -33,8 +34,12 @@ Dieser Teil handelt sich um folgende Punkte von dem Auftrag:
 Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, anderseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
 ### Bind9
+#### Probleme
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
 ### Persönliche Subdomain
 ### DNS übersteuren
+## Quellen
+- Bind9 DNS setup von Digitalocean  
+[https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04)
