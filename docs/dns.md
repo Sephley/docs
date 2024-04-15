@@ -44,7 +44,7 @@ Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil 
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
 #### Probleme
 Zuerst wollte ich den Bind9 mit Der Anleitung von Digitalocean aufsetzen, diese war jedoch overkill für meine Umgebung.
-Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren.
+Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
