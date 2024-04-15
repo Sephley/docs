@@ -15,7 +15,11 @@ Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie au
 Damit es nochmals geschrieben steht, DNS steht bedeutet ausgeschrieben: "Domain Name System".
 ### Zonendatei
 ### Anfänge des Internets
+Der Ursprung des DNS liegt in den frühen Tagen des Internets, als es noch ARPANET hiess und nur wenige Forscher und Institutionen miteinander vernetzt waren. Zu dieser Zeit wurden Hostnamen und ihre zugehörigen IP-Adressen in einer einzigen Datei namens "HOSTS.TXT" verwaltet, die zentral gepflegt wurde.
+
+In den 1980er Jahren wurde das DNS-Konzept entwickelt, um diese Probleme zu lösen.
 ### Primary / Secondary Konzept
+Wie Mario und Luigi, ist es von Vorteil wenn man
 ### Record-Typen
 ### DynDNS
 DynDNS ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
@@ -43,3 +47,5 @@ Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil 
 ## Quellen
 - Bind9 DNS setup von Digitalocean  
 [https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04)
+- Bind9 Docs  
+[https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
