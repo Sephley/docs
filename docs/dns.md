@@ -40,18 +40,79 @@ Dieser Teil handelt sich um folgende Punkte von dem Auftrag:
 ### Netzwerkschema
 Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, anderseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
+Ich habe die IP-Reservierung von dem Windows Client entfernt, damit der DNS nun diese Adresse übernehmen kann.
 ### Bind9 Setup
 Bind9 ist eine Open-Source Implementation von DNS.  
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
+- LAN: 192.168.1.0/26
+- DNS server: 192.168.1.7
+- Client: 192.168.1.4
+- Domain: sephley.local
+
 #### 1. APT Pakete installieren
 ```
 sudo apt update
 sudo apt install bind9 bind9utils bind9-doc dnsutils
 ```
 #### 2. Konfigration vornehmen
-Die config-files für Bind9 befinden findet man unter `/etc/bind`.
+Die config-files für Bind9 befinden findet man unter `/etc/bind`.  
+Zuerst bearbeiten wir die Datei `named.conf.options`. Hier legen wir fest
+Vieles ist hier schon ausgefüllt, ich habe bloss den DNS zu dem von Cloudflare umkonfiguriert.
+```
+acl internal-network {
+192.168.1.0/26;
+};
+options {
+        directory "/var/cache/bind";
+        allow-query { localhost; internal-network; };
+        allow-transfer { localhost; };
+        forwarders { 1.1.1.1; };
+        recursion yes;
+        dnssec-validation auto;
+};
+```
+Als nächstes bearbeiten wir die Datei `named.conf.local`
+```
+zone "sephley.local" IN {
+        type master;
+        file "/etc/bind/forward.sephley.local";
+        allow-update { none; };
+};
+zone "1.168.192.in-addr.arpa" IN {
+        type master;
+        file "/etc/bind/reverse.sephley.local";
+        allow-update { none; };
+};
+```
+Nun schreiben wir endlich unsere zone file.  
+Um uns diese Arbeit zu erleichtern, kopieren wir den Inhalt von `db.local` in unsere neues zone file `forward.sephley.local`
+```
+cp db.local forward.sephley.local
+```
+Anschliessend fürgen wir folgendes in `forward.sephley.loccal` ein:
+```
+$TTL 604800
+@ IN SOA primary.sephley.local. root.primary.sephley.local. (
+         2022072651 ; Serial
+         3600 ; Refresh
+         1800 ; Retry
+         604800 ; Expire
+         604600 ) ; Negative Cache TTL
+;Name Server Information
+@ IN NS primary.sephley.local.
+
+;IP address of Your Domain Name Server(DNS)
+primary IN A 192.168.1.7
+
+;A Record for Host names
+www IN A 192.168.1.4
+
+;CNAME Record
+ftp IN CNAME www.sephley.local.
+```
+
 #### Probleme
-Zuerst wollte ich den Bind9 mit Der Anleitung von Digitalocean aufsetzen, diese war jedoch overkill für meine Umgebung.
+Zuerst wollte ich den Bind9 mit der Anleitung von Digitalocean aufsetzen, diese war jedoch overkill für meine Umgebung.
 Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
