@@ -41,7 +41,15 @@ Dieser Teil handelt sich um folgende Punkte von dem Auftrag:
 Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, anderseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
 ### Bind9 Setup
+Bind9 ist eine Open-Source Implementation von DNS.  
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
+#### 1. APT Pakete installieren
+```
+sudo apt update
+sudo apt install bind9 bind9utils bind9-doc dnsutils
+```
+#### 2. Konfigration vornehmen
+Die config-files für Bind9 befinden findet man unter `/etc/bind`.
 #### Probleme
 Zuerst wollte ich den Bind9 mit Der Anleitung von Digitalocean aufsetzen, diese war jedoch overkill für meine Umgebung.
 Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
