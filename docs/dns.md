@@ -3,7 +3,8 @@
 ## Vorwissen
 Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun schon zwei Jahre her, von dem her bin ich also doch froh kann ich dies erneut tun. Mit DynDNS habe ich auch schon in meiner privaten Infrastruktur erfahrungen gemacht.
 ## Theorie
-Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Es kommen folgende Punkte vom Auftrag vor:    
+Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen möchte.  
+Es kommen folgende Punkte vom Auftrag vor:    
 - *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
 - *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
 - *Recherchieren Sie verschiedene Record-Typen und erklären Sie diese.*  
@@ -24,6 +25,10 @@ In den 1980er Jahren wurde das DNS-Konzept entwickelt, um diese Probleme zu lös
 Wie Mario und Luigi, hat man Primary und Secondary DNS Server.
 
 ### Record-Typen
+**A Record**: Address record. A Records map server IP addresses to domain names. For example, 72.21.206.6 to amazon.com.  
+**CNAME**: Canonical Name record. A CNAME record establishes one domain as an alias to another (thereby routing all traffic addressed to the alias to the target; the canonical address).  
+**Alias Record**: Like a CNAME record, Alias records can be used to map one address to another. But Aliases can coexist with other records using the same name.  
+**MX Record**: Mail Exchange Record. These records will redirect a domain’s email to the servers hosting the domain’s user accounts. Mail exchange records are used for determining the priority of email servers for a domain.
 ### DynDNS
 DynDNS ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
 ### DNS in AWS
@@ -44,10 +49,11 @@ Ich habe die IP-Reservierung von dem Windows Client entfernt, damit der DNS nun 
 ### Bind9 Setup
 Bind9 ist eine Open-Source Implementation von DNS.  
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
-- LAN: 192.168.1.0/26
-- DNS server: 192.168.1.7
-- Client: 192.168.1.4
-- Domain: sephley.local
+
+- LAN: 192.168.1.0/26  
+- DNS server: 192.168.1.7  
+- Client: 192.168.1.4  
+- Domain: sephley.local  
 
 #### 1. APT Pakete installieren
 ```
@@ -84,12 +90,12 @@ zone "1.168.192.in-addr.arpa" IN {
         allow-update { none; };
 };
 ```
-Nun schreiben wir endlich unsere zone file.  
+Nun schreiben wir endlich unser zone file. (Theorie Block "Zonendatei")  
 Um uns diese Arbeit zu erleichtern, kopieren wir den Inhalt von `db.local` in unsere neues zone file `forward.sephley.local`
 ```
 cp db.local forward.sephley.local
 ```
-Anschliessend fürgen wir folgendes in `forward.sephley.loccal` ein:
+Anschliessend fürgen wir folgendes in `forward.sephley.local` ein:
 ```
 $TTL 604800
 @ IN SOA primary.sephley.local. root.primary.sephley.local. (
@@ -110,10 +116,11 @@ www IN A 192.168.1.4
 ;CNAME Record
 ftp IN CNAME www.sephley.local.
 ```
+(Theorie Block "Record-Typen")
 
 #### Probleme
-Zuerst wollte ich den Bind9 mit der Anleitung von Digitalocean aufsetzen, diese war jedoch overkill für meine Umgebung.
-Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
+- Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
+- Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
@@ -125,9 +132,14 @@ Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrier
 [https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/)
 
 ### Bind9
-- Bind9 DNS setup von Digitalocean  
-[https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04)
-- Bind9 Docs  
-[https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
 - Bind9 setup von Linuxtechi  
 [https://www.linuxtechi.com/install-configure-bind-9-dns-server-ubuntu-debian/](https://www.linuxtechi.com/install-configure-bind-9-dns-server-ubuntu-debian/)
+- Bind9 setup von Cherryservers  
+[https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04](https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04)
+- Bind9 Docs  
+[https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
+
+## TODO
+- edit the quotations of the assingment points so that you use them on a per-task basis. Nobody is going to read that wall of text.
+- add some sort of anchor linking for the theory block.
+- Describe Problems more
