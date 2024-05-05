@@ -150,16 +150,46 @@ sudo systemctl start named
 sudo systemctl enable named
 ```
 
-#### 4. Syntax validieren
+#### 4. Funktionalität testen
+Zuerst validieren wir den Syntax unser Konfig-Dateien:
 ```
 sudo named-checkconf /etc/bind/named.conf.local
 ```
-Wenn nichts ausgegeben wird, dann stimmt die Konfig.
+Wenn nichts ausgegeben wird, dann stimmt diese Konfig. 
+Als nächstes prüfen wir die Forward & Reverse Zone:
+```
+sudo named-checkzone sephley.local /etc/bind/forward.sephley.local
+sudo named-checkzone sephley.local /etc/bind/reverse.sephley.local
+```
+Wenn man hier ein `OK` erhaltet dann stimmen die Konfigs.  
+Nun wechseln wir auf einen Client im selben Netzwerk und setzen den DNS zu `192.168.1.7`:  
+`/etc/resolv.conf` bearbeiten:
+```
+search sephley.local
+nameserver 192.168.1.7
+```
+Nun führen wir auf einem Client im selben Netzwerk folgenden Befehl aus:
+```
+dig primary.sephley.local
+```
 #### Probleme
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 - ` network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53`  
 Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies ist weil ich noch IPv6 aktiviert hatte, was ich in meiner Konfig nicht mit-einbezogen habe.
+- Gemäss Anleitung von Linuxtechi wollte ich den DNS statisch konfigurieren um die Funktionalität meines DNS zu testen. Da stand ich sollte `/etc/resolv.conf` bearbeiten, doch das erste was in dieser Datei stand war:
+```
+# This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
+# Do not edit.
+#
+# This file might be symlinked as /etc/resolv.conf. If you're looking at
+# /etc/resolv.conf and seeing this text, you have followed the symlink.
+#
+# This is a dynamic resolv.conf file for connecting local clients to the
+# internal DNS stub resolver of systemd-resolved. This file lists all
+# configured search domains.
+```
+Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoretisch überschreiben kann mit einem statischen File, aber dass es nicht empfohlen wird.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
