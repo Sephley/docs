@@ -95,7 +95,7 @@ Um uns diese Arbeit zu erleichtern, kopieren wir den Inhalt von `db.local` in un
 ```
 cp db.local forward.sephley.local
 ```
-Anschliessend fürgen wir folgendes in `forward.sephley.local` ein:
+Anschliessend fügen wir folgendes in `forward.sephley.local` ein:
 ```
 $TTL 604800
 @ IN SOA primary.sephley.local. root.primary.sephley.local. (
@@ -116,11 +116,50 @@ www IN A 192.168.1.4
 ;CNAME Record
 ftp IN CNAME www.sephley.local.
 ```
-(Theorie Block "Record-Typen")
+(Theorie Block "Record-Typen")  
+Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage
+```
+cp db.127 reverse.sephley.local
+```
+Anschliessend fügen wir folgendes in `reverse.sephley.local` ein:
+```
+$TTL 86400
+@ IN SOA sephley.local. root.sephley.local. (
+         2022072752 ;Serial
+         3600 ;Refresh
+         1800 ;Retry
+         604800 ;Expire
+         86400 ;Minimum TTL
+)
+;Your Name Server Info
+@ IN NS primary.sephley.local.
+primary IN A 192.168.1.7
+;Reverse Lookup for Your DNS Server
+40 IN PTR primary.sephley.local.
+;PTR Record IP address to HostName
+50 IN PTR www.sephley.local.
+```
+Als nächstes fügen wir folgende Zeile in `/etc/default/named` ein, um beim Aufstarten von Bind9 IPv4 zu erzwingen.
+```
+OPTIONS="-u bind -4"
+```
+#### 3. Systemd
+Nun können wir den Dienst aktivieren und starten:
+```
+sudo systemctl start named
+sudo systemctl enable named
+```
 
+#### 4. Syntax validieren
+```
+sudo named-checkconf /etc/bind/named.conf.local
+```
+Wenn nichts ausgegeben wird, dann stimmt die Konfig.
 #### Probleme
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
+- ` network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53`  
+Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies ist weil ich noch IPv6 aktiviert hatte, was ich in meiner Konfig nicht mit-einbezogen habe.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
