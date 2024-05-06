@@ -25,6 +25,11 @@ In den 1980er Jahren wurde das DNS-Konzept entwickelt, um diese Probleme zu lös
 Wie Mario und Luigi, hat man Primary und Secondary DNS Server.
 
 ### Record-Typen
+|**Record**   |**Description**   |
+|---|---|
+|   |   |
+|   |   |
+|   |   |
 **A Record**: Address record. A Records map server IP addresses to domain names. For example, 72.21.206.6 to amazon.com.  
 **CNAME**: Canonical Name record. A CNAME record establishes one domain as an alias to another (thereby routing all traffic addressed to the alias to the target; the canonical address).  
 **Alias Record**: Like a CNAME record, Alias records can be used to map one address to another. But Aliases can coexist with other records using the same name.  
