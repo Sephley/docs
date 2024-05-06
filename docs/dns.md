@@ -114,7 +114,7 @@ primary IN      A       192.168.1.7
 www     IN      A       192.168.1.4
 ```
 (Theorie Block "Record-Typen")  
-Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage
+Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage:
 ```
 cp db.127 reverse.sephley.local
 ```
@@ -197,6 +197,7 @@ Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoret
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
+Für den Secondary DNS erstellen wir nochmals eine Ubuntu-Server VM.
 ### Persönliche Subdomain
 ### DNS übersteuren
 ## Quellen
@@ -211,6 +212,8 @@ Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoret
 [https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04](https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04)
 - Bind9 Docs  
 [https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
+- Bind9 als Secondary DNS  
+[https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/](https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/)
 
 ## TODO
 - edit the quotations of the assingment points so that you use them on a per-task basis. Nobody is going to read that wall of text.
