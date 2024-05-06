@@ -101,24 +101,17 @@ cp db.local forward.sephley.local
 ```
 Anschliessend fügen wir folgendes in `forward.sephley.local` ein:
 ```
-$TTL 604800
-@ IN SOA primary.sephley.local. root.primary.sephley.local. (
-         2022072651 ; Serial
-         3600 ; Refresh
-         1800 ; Retry
-         604800 ; Expire
-         604600 ) ; Negative Cache TTL
-;Name Server Information
-@ IN NS primary.sephley.local.
-
-;IP address of Your Domain Name Server(DNS)
-primary IN A 192.168.1.7
-
-;A Record for Host names
-www IN A 192.168.1.4
-
-;CNAME Record
-ftp IN CNAME www.sephley.local.
+$TTL    604800
+@       IN      SOA     primary.sephley.local. root.primary.sephley.local. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      primary.sephley.local.
+primary IN      A       192.168.1.7
+www     IN      A       192.168.1.4
 ```
 (Theorie Block "Record-Typen")  
 Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage
@@ -127,21 +120,19 @@ cp db.127 reverse.sephley.local
 ```
 Anschliessend fügen wir folgendes in `reverse.sephley.local` ein:
 ```
-$TTL 86400
-@ IN SOA sephley.local. root.sephley.local. (
-         2022072752 ;Serial
-         3600 ;Refresh
-         1800 ;Retry
-         604800 ;Expire
-         86400 ;Minimum TTL
-)
-;Your Name Server Info
-@ IN NS primary.sephley.local.
-primary IN A 192.168.1.7
-;Reverse Lookup for Your DNS Server
-40 IN PTR primary.sephley.local.
-;PTR Record IP address to HostName
-50 IN PTR www.sephley.local.
+$TTL    604800
+@       IN      SOA     sephley.local. root.sephley.local. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      primary.sephley.local.
+primary IN      A       192.168.1.7
+
+7       IN      PTR     primary.sephley.local.
+4       IN      PTR     www.sephley.local.
 ```
 Als nächstes fügen wir folgende Zeile in `/etc/default/named` ein, um beim Aufstarten von Bind9 IPv4 zu erzwingen.
 ```
@@ -167,15 +158,24 @@ sudo named-checkzone sephley.local /etc/bind/reverse.sephley.local
 ```
 Wenn man hier ein `OK` erhaltet dann stimmen die Konfigs.  
 Nun wechseln wir auf einen Client im selben Netzwerk und setzen den DNS zu `192.168.1.7`:  
-`/etc/resolv.conf` bearbeiten:
+`sudo vim /etc/netplan/00-installer-config.yaml` bearbeiten:
 ```
-search sephley.local
-nameserver 192.168.1.7
+network:
+  ethernets:
+    ens33:
+      dhcp4: true
+      nameservers:
+        addresses: [192.168.1.7]
+  version: 2
 ```
 Nun führen wir auf einem Client im selben Netzwerk folgenden Befehl aus:
 ```
 dig primary.sephley.local
 ```
+[dig syntax & usage](https://linux.die.net/man/1/dig)
+
+Output:  
+![Output](images/dns/dig.png)
 #### Probleme
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
@@ -193,7 +193,7 @@ Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies i
 # internal DNS stub resolver of systemd-resolved. This file lists all
 # configured search domains.
 ```
-Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoretisch überschreiben kann mit einem statischen File, aber dass es nicht empfohlen wird.
+Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoretisch überschreiben kann mit einem statischen File, aber dass es nicht empfohlen wird. Ich habe dann im `/etc/netplan/00-installer-config.yaml` den nameserver angegeben.
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
