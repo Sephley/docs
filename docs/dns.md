@@ -22,7 +22,7 @@ Der Ursprung des DNS liegt in den frühen Tagen des Internets, als es noch ARPAN
 In den 1980er Jahren wurde das DNS-Konzept entwickelt, um diese Probleme zu lösen.
 
 ### Primary / Secondary Konzept
-Wie Mario und Luigi, hat man Primary und Secondary DNS Server.
+Wie Mario und Luigi, hat man Primary und Secondary DNS-Server. Die Hauptaufgabe des sekundären DNS ist die Redundanz, falls der primäre ausfällt. Somit vermeidet man einen Single point of failure. Es werden read-only kopien der Zonendateien eingesetzt und alle information erhaltet er direkt von dem primären DNS-Server.
 
 ### Record-Typen
 |**Record**   |**Description**   |
