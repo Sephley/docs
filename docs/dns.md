@@ -206,7 +206,7 @@ sudo apt update
 sudo apt install bind9 bind9utils bind9-doc dnsutils
 ```
 #### 2. Konfiguration vornehmen
-Zurst müssen wir noch auf unserem primären DNS die folgenden parameter in `/etc/bind/named.conf.local` einfügen:
+Zurst müssen wir noch auf unserem primären DNS die folgenden parameter in `/etc/bind/named.conf.local` in beiden `zone` blocks einfügen:
 ```
 allow-transfer { 192.168.1.9 };
 also-notify { 192.168.1.9 };
@@ -216,7 +216,7 @@ also-notify { 192.168.1.9 };
 zone "sephley.local" {
 type slave;
 file "/etc/bind/forward.sephley.local";
-masters { 192.168.1.4; };
+masters { 192.168.1.7; };
 };
 ```
 Anschliessend laden wir den Dienst neu:  
