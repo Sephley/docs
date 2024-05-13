@@ -5,13 +5,13 @@ Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun sc
 ## Theorie
 Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen möchte.  
 Es kommen folgende Punkte vom Auftrag vor:    
-- *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
-- *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
-- *Recherchieren Sie verschiedene Record-Typen und erklären Sie diese.*  
-- *DynDNS hat einige spannende Probleme zu entdecken: Wie ist das mit den Timeouts? Wie lösen die das mit den vielen Anfragen? Wie ist DynDNS eigentlich entstanden?*
-- *Auch in der AWS oder Azure-Umgebung finden Sie DNS. Was lässt sich damit anstellen?*  
-- *DNS unter IPv6 – was ändert sich?*  
-- *Reverse DNS unter IPv6: https://tech.rana.at/2017/12/08/*
+- [ ] *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
+- [ ] *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
+- [ ] *Recherchieren Sie verschiedene Record-Typen und erklären Sie diese.*  
+- [ ] *DynDNS hat einige spannende Probleme zu entdecken: Wie ist das mit den Timeouts? Wie lösen die das mit den vielen Anfragen? Wie ist DynDNS eigentlich entstanden?*
+- [ ] *Auch in der AWS oder Azure-Umgebung finden Sie DNS. Was lässt sich damit anstellen?*  
+- [ ] *DNS unter IPv6 – was ändert sich?*  
+- [ ] *Reverse DNS unter IPv6: https://tech.rana.at/2017/12/08/*
 
 Damit es nochmals geschrieben steht, DNS steht bedeutet ausgeschrieben: "Domain Name System".
 ### Zonendatei
@@ -34,18 +34,20 @@ Wie Mario und Luigi, hat man Primary und Secondary DNS-Server. Die Hauptaufgabe 
 |MX   |Mail Exchange Record. These records will redirect a domain’s email to the servers hosting the domain’s user accounts. Mail exchange records are used for determining the priority of email servers for a domain.   |
 
 ### DynDNS
-DynDNS ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
+DynDNS (DDNS) ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
+In unserer geteilten Umgebung (Wyler, Oberle, Chio, Hurley) verwenden wir den DynDNS von Swisscom.  
+![swiss_ddns](images/dns/swiss_ddns.png)
 ### DNS in AWS
 ### DNS unter IPv6
 ### Reverse DNS unter IPv6
 ## Prakitische Arbeiten
 Dieser Teil handelt sich um folgende Punkte von dem Auftrag:  
-- *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*
-- *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*
-- *In einem früheren Auftrag haben Sie exotische Betriebssysteme ans Netzwerk angebunden. Binden Sie Ihren DNS-Resolver ein und zeigen Sie per Wireshark, ob diese Betriebssysteme die Abfragen korrekt durchführen.*  
-- *Versuchen Sie dynamisch DNS-Einträge anpassen zu lassen. Spielen Sie Kapitel 3 von https://strugglers.net/~andy/blog/2018/03/19/ nach. Beachten Sie, dass sich die Welt ändert: Nutzen Sie tsig-keygen statt dnssec-keygen.*  
-- *Unter maas.bbw-it.ch haben Sie Zugriff auf eine «persönliche» DNS-Subdomain. Nutzen Sie diese Möglichkeit und testen Sie, wie sie diese einsetzen können. Für Fortgeschrittene können Sie auch die dynamische Anpassung ausprobieren.*  
-- *Übersteuern Sie den DNS mittels Hosts-File (auch unter Windows). Wie verhält sich der Resolver, wenn Sie ihm per Hosts-File andere Werte unterjubeln? Werden diese da berücksichtigt?*
+- [ ] *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*
+- [ ] *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*
+- [ ] *In einem früheren Auftrag haben Sie exotische Betriebssysteme ans Netzwerk angebunden. Binden Sie Ihren DNS-Resolver ein und zeigen Sie per Wireshark, ob diese Betriebssysteme die Abfragen korrekt durchführen.*  
+- [ ] *Versuchen Sie dynamisch DNS-Einträge anpassen zu lassen. Spielen Sie Kapitel 3 von https://strugglers.net/~andy/blog/2018/03/19/ nach. Beachten Sie, dass sich die Welt ändert: Nutzen Sie tsig-keygen statt dnssec-keygen.*  
+- [ ] *Unter maas.bbw-it.ch haben Sie Zugriff auf eine «persönliche» DNS-Subdomain. Nutzen Sie diese Möglichkeit und testen Sie, wie sie diese einsetzen können. Für Fortgeschrittene können Sie auch die dynamische Anpassung ausprobieren.*  
+- [ ] *Übersteuern Sie den DNS mittels Hosts-File (auch unter Windows). Wie verhält sich der Resolver, wenn Sie ihm per Hosts-File andere Werte unterjubeln? Werden diese da berücksichtigt?*
 ### Netzwerkschema
 Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, anderseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
@@ -197,7 +199,7 @@ Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoret
 ### Wireshark Abfrage Analyse
 ### Wireshark Resolver Analyse
 ### Secondary DNS
-Für den Secondary DNS erstellen wir nochmals eine Ubuntu-Server VM.
+Für den Secondary DNS erstellen wir nochmals eine Ubuntu-Server VM. Diesmal habe ich eine Ubuntu 24.04 (Noble Numbat) VM erstellt, denn so kann ich die neue Version testen sowie auch die Rückwärtskompatibilität prüfen.
 ### Persönliche Subdomain
 ### DNS übersteuren
 ## Quellen
