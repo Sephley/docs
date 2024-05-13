@@ -206,19 +206,22 @@ sudo apt update
 sudo apt install bind9 bind9utils bind9-doc dnsutils
 ```
 #### 2. Konfiguration vornehmen
+Zurst müssen wir noch auf unserem primären DNS die folgenden parameter in `/etc/bind/named.conf.local` einfügen:
+```
+allow-transfer { 192.168.1.9 };
+also-notify { 192.168.1.9 };
+```
 `/etc/bind/named.conf.local` wie folgt bearbeiten:  
 ```
 zone "sephley.local" {
-type master;
+type slave;
 file "/etc/bind/forward.sephley.local";
-allow-transfer { 192.168.1.4; };
-also-notify { 192.168.1.4; };
+masters { 192.168.1.4; };
 };
 ```
 Anschliessend laden wir den Dienst neu:  
 ```
 sudo systemctl reload named
-
 ```
 ### Persönliche Subdomain
 ### DNS übersteuren
