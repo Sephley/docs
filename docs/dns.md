@@ -228,7 +228,9 @@ sudo systemctl reload named
 ## Quellen
 ### Theorie
 - DNS Zone file Erklärung von Cloudflare  
-[https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/)
+[https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/)  
+- Primary / Secondary Konzept von Cloudflare  
+[https://www.cloudflare.com/learning/dns/glossary/primary-secondary-dns/](https://www.cloudflare.com/learning/dns/glossary/primary-secondary-dns/)
 
 ### Bind9
 - Bind9 setup von Linuxtechi  
