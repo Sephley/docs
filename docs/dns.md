@@ -5,8 +5,8 @@ Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun sc
 ## Theorie
 Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen möchte.  
 Es kommen folgende Punkte vom Auftrag vor:    
-- [ ] *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
-- [ ] *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
+- [ x ] *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
+- [   ] *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*  
 - [ ] *Recherchieren Sie verschiedene Record-Typen und erklären Sie diese.*  
 - [ ] *DynDNS hat einige spannende Probleme zu entdecken: Wie ist das mit den Timeouts? Wie lösen die das mit den vielen Anfragen? Wie ist DynDNS eigentlich entstanden?*
 - [ ] *Auch in der AWS oder Azure-Umgebung finden Sie DNS. Was lässt sich damit anstellen?*  
@@ -200,6 +200,26 @@ Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoret
 ### Wireshark Resolver Analyse
 ### Secondary DNS
 Für den Secondary DNS erstellen wir nochmals eine Ubuntu-Server VM. Diesmal habe ich eine Ubuntu 24.04 (Noble Numbat) VM erstellt, denn so kann ich die neue Version testen sowie auch die Rückwärtskompatibilität prüfen.
+#### 1. APT Pakete installieren
+```
+sudo apt update
+sudo apt install bind9 bind9utils bind9-doc dnsutils
+```
+#### 2. Konfiguration vornehmen
+`/etc/bind/named.conf.local` wie folgt bearbeiten:  
+```
+zone "sephley.local" {
+type master;
+file "/etc/bind/forward.sephley.local";
+allow-transfer { 192.168.1.4; };
+also-notify { 192.168.1.4; };
+};
+```
+Anschliessend laden wir den Dienst neu:  
+```
+sudo systemctl reload named
+
+```
 ### Persönliche Subdomain
 ### DNS übersteuren
 ## Quellen
