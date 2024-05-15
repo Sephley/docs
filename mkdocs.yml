@@ -41,7 +41,7 @@ nav:
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
     - DNS: 
-      - section/index.md
+      - dns/index.md
       - Theorie: dns/theorie.md
       - Praktisch: dns/praktisch.md
   - Experts-Kurs:
