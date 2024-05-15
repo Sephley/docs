@@ -1,4 +1,4 @@
-### Record-Typen
+# Record-Typen
 |**Record**   |**Description**   |
 |---|---|
 |A   |Address record. A Records map server IP addresses to domain names. For example, 72.21.206.6 to amazon.com.     |

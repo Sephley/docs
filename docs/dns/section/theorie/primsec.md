@@ -1,2 +1,2 @@
-### Primary / Secondary Konzept
+# Primary / Secondary Konzept
 Wie Mario und Luigi, hat man Primary und Secondary DNS-Server. Die Hauptaufgabe des sekundären DNS ist die Redundanz, falls der primäre ausfällt. Somit vermeidet man einen Single point of failure. Es werden read-only kopien der Zonendateien eingesetzt und alle information erhaltet er direkt von dem primären DNS-Server.

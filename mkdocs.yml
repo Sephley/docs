@@ -6,7 +6,6 @@ theme:
   name: material
   features:
   - content.code.copy
-  - navigation.path
   - navigation.indexes
   - navigation.top
   - navigation.footer

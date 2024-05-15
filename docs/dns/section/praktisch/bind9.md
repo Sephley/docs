@@ -1,4 +1,4 @@
-### Bind9 Setup
+# Bind9
 Bind9 ist eine Open-Source Implementation von DNS.  
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
 
@@ -14,8 +14,8 @@ sudo apt install bind9 bind9utils bind9-doc dnsutils
 ```
 #### 2. Konfigration vornehmen
 Die config-files für Bind9 befinden findet man unter `/etc/bind`.  
-Zuerst bearbeiten wir die Datei `named.conf.options`. Hier legen wir fest
-Vieles ist hier schon ausgefüllt, ich habe bloss den DNS zu dem von Cloudflare umkonfiguriert.
+Zuerst bearbeiten wir die Datei `named.conf.options`.  
+Vieles ist hier schon ausgefüllt, ich habe bloss den DNS zu dem von Cloudflare umkonfiguriert und das Netzwerk angepasst.
 ```
 acl internal-network {
 192.168.1.0/26;

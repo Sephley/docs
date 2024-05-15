@@ -1,4 +1,4 @@
-## Theorie
+# Theorie
 Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen möchte.
 
 Es werden folgende Punkte vom Auftrag behandelt:    
