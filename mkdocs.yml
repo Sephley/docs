@@ -6,7 +6,8 @@ theme:
   name: material
   features:
   - content.code.copy
-  - 
+  - navigation.path
+  - navigation.indexes
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -39,8 +40,7 @@ nav:
   - BBW-M300:
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
-    - DNS:
-      - old: dns/dns.md
+    - DNS: dns/dns.md
       - Theorie: dns/theorie.md
       - Praktisch: dns/praktisch.md
   - Experts-Kurs:
