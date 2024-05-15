@@ -10,6 +10,10 @@ theme:
   - navigation.indexes
   - navigation.top
   - navigation.footer
+  markdown_extensions: #requires pymdown-extensions in ci job
+    - def_list
+    - pymdownx.tasklist:
+        custom_checkbox: true
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -30,10 +34,6 @@ plugins:
   - drawio
   - search
   - mkdocs-video
-markdown_extensions: #requires pymdown-extensions in ci job
-- def_list
-- pymdownx.tasklist:
-    custom_checkbox: true
 
 nav:
   - Home: index.md
