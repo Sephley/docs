@@ -30,6 +30,10 @@ plugins:
   - drawio
   - search
   - mkdocs-video
+markdown_extensions: #requires pymdown-extensions in ci job
+- def_list
+- pymdownx.tasklist:
+    custom_checkbox: true
 
 nav:
   - Home: index.md
@@ -42,7 +46,7 @@ nav:
   - BBW-M300:
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
-    - DNS: 
+    - DNS: #utilizes section feature for index pages
       - dns/section/index.md
       - Theorie: 
         - dns/section/theorie/index.md
