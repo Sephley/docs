@@ -36,7 +36,7 @@ Wie Mario und Luigi, hat man Primary und Secondary DNS-Server. Die Hauptaufgabe 
 ### DynDNS
 DynDNS (DDNS) ist sehr nützlich, wenn mon von seinem ISP keine Statische Public IP erhält, aber trotzdem Dienste in einem lokalen Netzwerk veröffentlichen möchte.
 In unserer geteilten Umgebung (Wyler, Oberle, Chio, Hurley) verwenden wir den DynDNS von Swisscom.  
-![swiss_ddns](images/dns/swiss_ddns.png)
+![swiss_ddns](images/swiss_ddns.png)
 ### DNS in AWS
 ### DNS unter IPv6
 ### Reverse DNS unter IPv6
@@ -177,7 +177,7 @@ dig primary.sephley.local
 [dig syntax & usage](https://linux.die.net/man/1/dig)
 
 Output:  
-![Output](images/dns/dig.png)
+![Output](images/dig.png)
 #### Probleme
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
