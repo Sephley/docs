@@ -8,6 +8,8 @@ theme:
   - content.code.copy
   - navigation.path
   - navigation.indexes
+  - navigation.top
+  - navigation.footer
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -42,7 +44,21 @@ nav:
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
     - DNS: 
       - dns/section/index.md
-      - Theorie: dns/theorie.md
-      - Praktisch: dns/praktisch.md
+      - Theorie: 
+        - dns/section/theorie.md
+        - Anfänge-des-Internets: dns/section/theorie/beginning.md
+        - DNS-in-AWS: dns/section/theorie/dnsaws.md
+        - DNS-unter-IPv6: dns/section/theorie/dnsipv6.md
+        - DynDNS: dns/section/theorie/dyndns.md
+        - Primary-Secondary-Konzept: dns/section/theorie/primsec.md
+        - Record-Typen: dns/section/theorie/rectypes.md
+        - Zonendatei: dns/section/theorie/zonefile.md
+      - Praktisch: 
+        - dns/section/praktisch.md
+        - Bind9: dns/section/praktisch/bind9.md
+        - Persöhnliche-Subdomain: dns/section/praktisch/pers_subdomain.md
+        - Secondary-DNS: dns/section/praktisch/secdns.md
+        - DNS-übersteuern: dns/section/praktisch/uebersteuern.md
+        - Wireshark: dns/section/praktisch/wireshark.md
   - Experts-Kurs:
     - GitLab-Setup: experts.md
