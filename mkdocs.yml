@@ -45,7 +45,7 @@ nav:
     - DNS: 
       - dns/section/index.md
       - Theorie: 
-        - dns/section/theorie.md
+        - dns/section/theorie/index.md
         - Anfänge-des-Internets: dns/section/theorie/beginning.md
         - DNS-in-AWS: dns/section/theorie/dnsaws.md
         - DNS-unter-IPv6: dns/section/theorie/dnsipv6.md
@@ -54,7 +54,7 @@ nav:
         - Record-Typen: dns/section/theorie/rectypes.md
         - Zonendatei: dns/section/theorie/zonefile.md
       - Praktisch: 
-        - dns/section/praktisch.md
+        - dns/section/praktisch/index.md
         - Bind9: dns/section/praktisch/bind9.md
         - Persöhnliche-Subdomain: dns/section/praktisch/pers_subdomain.md
         - Secondary-DNS: dns/section/praktisch/secdns.md
