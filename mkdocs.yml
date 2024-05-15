@@ -38,6 +38,7 @@ nav:
   - BBW-M300:
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
-    - DNS: dns.md
+    - DNS: dns/dns.md
+      - Theorie: dns/theorie.md
   - Experts-Kurs:
     - GitLab-Setup: experts.md
