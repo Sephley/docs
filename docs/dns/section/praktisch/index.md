@@ -1,4 +1,4 @@
-## Prakitische Arbeiten
+# Prakitische Arbeiten
 Dieser Teil handelt sich um folgende Punkte von dem Auftrag:  
 - [ ] *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*
 - [ ] *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*

@@ -1,5 +1,5 @@
 # Theorie
-Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen möchte.
+Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen oder belegen möchte.
 
 Es werden folgende Punkte vom Auftrag behandelt:    
 - [ x ] *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*  
