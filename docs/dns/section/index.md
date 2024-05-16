@@ -19,9 +19,9 @@ Der Theorieblock dient als Glossar und Hilfmittel, um den praktischen Teil zu ve
 [https://www.linuxtechi.com/install-configure-bind-9-dns-server-ubuntu-debian/](https://www.linuxtechi.com/install-configure-bind-9-dns-server-ubuntu-debian/)
 - Bind9 setup von Cherryservers  
 [https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04](https://www.cherryservers.com/blog/how-to-install-and-configure-a-private-bind-dns-server-on-ubuntu-22-04)
-- Bind9 Docs  
+- Bind9 offizielle Dokumentation  
 [https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
-- Bind9 als Secondary DNS  
+- Bind9 als Secondary DNS von Serverspace  
 [https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/](https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/)
 
 ## TODO

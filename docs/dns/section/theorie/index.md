@@ -10,4 +10,11 @@ Es werden folgende Punkte vom Auftrag behandelt:
 - [ ] *DNS unter IPv6 – was ändert sich?*  
 - [ ] *Reverse DNS unter IPv6: https://tech.rana.at/2017/12/08/*
 
+- [x] Lorem ipsum dolor sit amet, consectetur adipiscing elit
+- [ ] Vestibulum convallis sit amet nisi a tincidunt
+    * [x] In hac habitasse platea dictumst
+    * [x] In scelerisque nibh non dolor mollis congue sed et metus
+    * [ ] Praesent sed risus massa
+- [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+
 Damit es nochmals geschrieben steht, DNS steht bedeutet ausgeschrieben: "Domain Name System".
