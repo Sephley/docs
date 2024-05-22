@@ -35,15 +35,17 @@ plugins:
   - search
   - mkdocs-video
 
-nav:
+nav: #utilizes section feature for index pages
   - Home: index.md
-  - ZLI-M109: zli-m109.md
+  - ZLI-M109: 
+    - zli-m109.md
   - BBW-M141: 
     - bbw-m141.md
     - Security: pruefung-security.md
     - Zusatz-Security: zusatz-pruefung.md
-  - BBW-M169: bbw-m169.md
-  - BBW-M300: #utilizes section feature for index pages
+  - BBW-M169: 
+    - bbw-m169.md
+  - BBW-M300: 
     - bbw-m300.md
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
@@ -65,4 +67,5 @@ nav:
         - Secondary-DNS: dns/praktisch/secdns.md
         - DNS-übersteuern: dns/praktisch/uebersteuern.md
         - Wireshark: dns/praktisch/wireshark.md
-  - Experts-Kurs: experts.md
+  - Experts-Kurs: 
+    - experts.md
