@@ -46,22 +46,22 @@ nav:
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
     - DNS: #utilizes section feature for index pages
-      - dns/section/index.md
+      - dns/index.md
       - Theorie: 
-        - dns/section/theorie/index.md
-        - Anfänge-des-Internets: dns/section/theorie/beginning.md
-        - DNS-in-AWS: dns/section/theorie/dnsaws.md
-        - DNS-unter-IPv6: dns/section/theorie/dnsipv6.md
-        - DynDNS: dns/section/theorie/dyndns.md
-        - Primary-Secondary-Konzept: dns/section/theorie/primsec.md
-        - Record-Typen: dns/section/theorie/rectypes.md
-        - Zonendatei: dns/section/theorie/zonefile.md
+        - dns/theorie/index.md
+        - Anfänge-des-Internets: dns/theorie/beginning.md
+        - DNS-in-AWS: dns/theorie/dnsaws.md
+        - DNS-unter-IPv6: dns/theorie/dnsipv6.md
+        - DynDNS: dns/theorie/dyndns.md
+        - Primary-Secondary-Konzept: dns/theorie/primsec.md
+        - Record-Typen: dns/theorie/rectypes.md
+        - Zonendatei: dns/theorie/zonefile.md
       - Praktisch: 
-        - dns/section/praktisch/index.md
-        - Bind9: dns/section/praktisch/bind9.md
-        - Persöhnliche-Subdomain: dns/section/praktisch/pers_subdomain.md
-        - Secondary-DNS: dns/section/praktisch/secdns.md
-        - DNS-übersteuern: dns/section/praktisch/uebersteuern.md
-        - Wireshark: dns/section/praktisch/wireshark.md
+        - dns/praktisch/index.md
+        - Bind9: dns/praktisch/bind9.md
+        - Persöhnliche-Subdomain: dns/praktisch/pers_subdomain.md
+        - Secondary-DNS: dns/praktisch/secdns.md
+        - DNS-übersteuern: dns/praktisch/uebersteuern.md
+        - Wireshark: dns/praktisch/wireshark.md
   - Experts-Kurs:
     - GitLab-Setup: experts.md
