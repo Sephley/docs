@@ -9,6 +9,7 @@ theme:
   - navigation.indexes
   - navigation.top
   - navigation.footer
+  - navigation.tabs
   markdown_extensions: #requires pymdown-extensions in ci job
     - def_list
     - pymdownx.tasklist:
@@ -38,14 +39,15 @@ nav:
   - Home: index.md
   - ZLI-M109: zli-m109.md
   - BBW-M141: 
-    - Home: bbw-m141.md
+    - bbw-m141.md
     - Security: pruefung-security.md
     - Zusatz-Security: zusatz-pruefung.md
   - BBW-M169: bbw-m169.md
-  - BBW-M300:
+  - BBW-M300: #utilizes section feature for index pages
+    - bbw-m300.md
     - DHCP-PXE: dhcp.md
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
-    - DNS: #utilizes section feature for index pages
+    - DNS:
       - dns/index.md
       - Theorie: 
         - dns/theorie/index.md
@@ -63,5 +65,4 @@ nav:
         - Secondary-DNS: dns/praktisch/secdns.md
         - DNS-übersteuern: dns/praktisch/uebersteuern.md
         - Wireshark: dns/praktisch/wireshark.md
-  - Experts-Kurs:
-    - GitLab-Setup: experts.md
+  - Experts-Kurs: experts.md
