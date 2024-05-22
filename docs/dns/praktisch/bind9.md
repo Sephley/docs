@@ -1,5 +1,6 @@
 # Bind9
 Bind9 ist eine Open-Source Implementation von DNS.  
+## Setup
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
 
 - LAN: 192.168.1.0/26  
@@ -124,7 +125,7 @@ dig primary.sephley.local
 
 Output:  
 ![Output](images/dig.png)
-#### Probleme
+## Probleme / Anmerkungen
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 - ` network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53`  

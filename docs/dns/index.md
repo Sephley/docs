@@ -28,3 +28,4 @@ Der Theorieblock dient als Glossar und Hilfmittel, um den praktischen Teil zu ve
 - edit the quotations of the assingment points so that you use them on a per-task basis. Nobody is going to read that wall of text.
 - add some sort of anchor linking for the theory block.
 - Describe Problems more
+- update network diagram

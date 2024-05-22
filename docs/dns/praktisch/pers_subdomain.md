@@ -1,1 +1,2 @@
 # Persönliche Subdomain
+## Probleme / Anmerkungen

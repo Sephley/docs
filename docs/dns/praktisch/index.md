@@ -10,4 +10,3 @@ Dieser Teil handelt sich um folgende Punkte von dem Auftrag:
 ### Netzwerkschema
 Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, andererseits war mein letztes Netzwerkschema nicht besonders gut(unnötig Pfeile + vswitch nicht aufgezeichnet). Es ist also eine gute Übung für mich.  
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)
-Ich habe die IP-Reservierung von dem Windows Client entfernt, damit der DNS nun diese Adresse übernehmen kann.
