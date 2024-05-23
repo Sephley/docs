@@ -1,9 +1,9 @@
 # Glossar
-Ich werde diesen Abschnitt referenzieren, wenn ich bei dem prakitschen Teil etwas begründen oder belegen möchte.
+Ich werde diesen Abschnitt referenzieren, wenn ich bei dem praktischen Teil etwas begründen oder belegen möchte.
 
-Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. 
+Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persöhnlichen Umgebung. 
 
-Dieser Teil behandelt folgende Punkte von dem Auftrag:
+Checkliste der Aufträge gemäss Olat:
 
 - [x] *Erklären Sie die Zonendatei inkl. allen Parametern im SOA.*
 - [ ] *Recherchieren Sie über die Anfänge des Internets und setzen Sie die Primary / Secondary DNS-Infrastruktur in den Zusammenhang des redundanten dezentralen Konzepts.*
