@@ -1,4 +1,6 @@
 # Secondary DNS
+- [x] *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*
+
 [**Dazugehörige Theorie: Primary / Secondary Konzept**](../glossar/primsec.md)  
 Für den Secondary DNS erstellen wir nochmals eine Ubuntu-Server VM. Diesmal habe ich eine Ubuntu 24.04 (Noble Numbat) VM erstellt, denn so kann ich die neue Version testen sowie auch die Rückwärtskompatibilität prüfen.
 #### 1. APT Pakete installieren

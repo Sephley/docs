@@ -1,5 +1,7 @@
 # Bind9
-Bind9 ist eine Open-Source Implementation von DNS.  
+- [x] *Als Pflichtprogramm wird die Inbetriebnahme eines DNS-Resolvers und Nameservers erwartet (bind unter Linux).*
+
+Bind9 ist eine Open-Source Implementation von DNS.
 ## Setup
 Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
 
