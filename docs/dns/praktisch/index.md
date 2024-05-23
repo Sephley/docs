@@ -1,5 +1,6 @@
 # Aufgaben
-Dieser Teil behandelt folgende Punkte von dem Auftrag:  
+Dieser Teil behandelt folgende Punkte von dem Auftrag:
+
 - [ ] *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*
 - [ ] *Erstellen Sie einen Secondary DNS und lassen Sie die Zonen automatisiert synchronisieren.*
 - [ ] *In einem früheren Auftrag haben Sie exotische Betriebssysteme ans Netzwerk angebunden. Binden Sie Ihren DNS-Resolver ein und zeigen Sie per Wireshark, ob diese Betriebssysteme die Abfragen korrekt durchführen.*
