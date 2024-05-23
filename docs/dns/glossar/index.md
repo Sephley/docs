@@ -1,7 +1,7 @@
 # Glossar
 Ich werde diesen Abschnitt referenzieren, wenn ich bei dem praktischen Teil etwas begründen oder belegen möchte.
 
-Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persöhnlichen Umgebung. 
+Hier ist nicht nur Theorie, sondern auch Beispiele aus meinem Geschäft sowie aus der Freizeit / persönlichen Umgebung. 
 
 Checkliste der Aufträge gemäss Olat:
 

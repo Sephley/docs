@@ -63,7 +63,7 @@ nav: #utilizes section feature for index pages
       - Praktisch: 
         - dns/praktisch/index.md
         - Bind9: dns/praktisch/bind9.md
-        - Persöhnliche-Subdomain: dns/praktisch/pers_subdomain.md
+        - Persönliche-Subdomain: dns/praktisch/pers_subdomain.md
         - Secondary-DNS: dns/praktisch/secdns.md
         - DNS-übersteuern: dns/praktisch/uebersteuern.md
         - Wireshark: dns/praktisch/wireshark.md
