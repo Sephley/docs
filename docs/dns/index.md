@@ -5,10 +5,10 @@ Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun sc
 
 ## Aufbau
 Die praktischen Aufgaben mit den persöhnlichen Erfahrung finden Sie unter dem praktischen Block.
-Der Theorieblock dient als Glossar und Hilfmittel, um den praktischen Teil zu verstehen.
+Das Glossar dient als Hilfmittel, um den praktischen Teil zu verstehen.
 
 ## Quellen
-### Theorie
+### Glossar
 - DNS Zone file Erklärung von Cloudflare  
 [https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/)  
 - Primary / Secondary Konzept von Cloudflare  

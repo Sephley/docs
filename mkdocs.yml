@@ -10,10 +10,6 @@ theme:
   - navigation.top
   - navigation.footer
   - navigation.tabs
-  markdown_extensions: #requires pymdown-extensions in ci job
-    - def_list
-    - pymdownx.tasklist:
-        custom_checkbox: true
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -35,6 +31,11 @@ plugins:
   - search
   - mkdocs-video
 
+markdown_extensions: #requires pymdown-extensions + markdown in ci job
+    - def_list
+    - pymdownx.tasklist:
+        custom_checkbox: true
+
 nav: #utilizes section feature for index pages
   - Home: index.md
   - ZLI-M109: 
@@ -51,15 +52,14 @@ nav: #utilizes section feature for index pages
     - Mitschnitt-DHCP-PXE-Debian: pxe-mitschnitt.md
     - DNS:
       - dns/index.md
-      - Theorie: 
-        - dns/theorie/index.md
-        - Anfänge-des-Internets: dns/theorie/beginning.md
-        - DNS-in-AWS: dns/theorie/dnsaws.md
-        - DNS-unter-IPv6: dns/theorie/dnsipv6.md
-        - DynDNS: dns/theorie/dyndns.md
-        - Primary-Secondary-Konzept: dns/theorie/primsec.md
-        - Record-Typen: dns/theorie/rectypes.md
-        - Zonendatei: dns/theorie/zonefile.md
+      - Glossar: 
+        - dns/glossar/index.md
+        - Anfänge-des-Internets: dns/glossar/beginning.md
+        - DNS-unter-IPv6: dns/glossar/dnsipv6.md
+        - DynDNS: dns/glossar/dyndns.md
+        - Primary-Secondary-Konzept: dns/glossar/primsec.md
+        - Record-Typen: dns/glossar/rectypes.md
+        - Zonendatei: dns/glossar/zonefile.md
       - Praktisch: 
         - dns/praktisch/index.md
         - Bind9: dns/praktisch/bind9.md
@@ -67,5 +67,6 @@ nav: #utilizes section feature for index pages
         - Secondary-DNS: dns/praktisch/secdns.md
         - DNS-übersteuern: dns/praktisch/uebersteuern.md
         - Wireshark: dns/praktisch/wireshark.md
+        - DNS-in-AWS: dns/praktisch/dnsaws.md
   - Experts-Kurs: 
     - experts.md

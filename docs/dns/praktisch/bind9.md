@@ -43,7 +43,7 @@ zone "1.168.192.in-addr.arpa" IN {
         allow-update { none; };
 };
 ```
-Nun schreiben wir endlich unser zone file. (Theorie Block "Zonendatei")  
+Nun schreiben wir endlich unser zone file. [**Dazugehörige Theorie: Zonendatei**](../glossar/zonefile.md)  
 Um uns diese Arbeit zu erleichtern, kopieren wir den Inhalt von `db.local` in unsere neues zone file `forward.sephley.local`
 ```
 cp db.local forward.sephley.local
@@ -62,7 +62,7 @@ $TTL    604800
 primary IN      A       192.168.1.7
 www     IN      A       192.168.1.4
 ```
-(Theorie Block "Record-Typen")  
+[**Dazugehörige Theorie: Record-Typen**](../glossar/rectypes.md)  
 Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage:
 ```
 cp db.127 reverse.sephley.local
