@@ -27,3 +27,4 @@ Anschliessend laden wir den Dienst neu:
 sudo systemctl reload named
 ```
 ## Probleme / Anmerkungen
+Keine. Die schnellen boot-Zeiten von Ubuntu-Noble gefallen mir sehr. Good job Canonical!
