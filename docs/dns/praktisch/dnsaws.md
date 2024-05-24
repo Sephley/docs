@@ -7,3 +7,5 @@ Um dies zu testen, habe ich das Learnerlab verwendet.
 
 Der DNS in AWS ist unter Route 53 zu finden.
 ## Probleme / Anmerkungen
+
+![aws_1](images/aws_1.png)
