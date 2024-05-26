@@ -15,7 +15,7 @@ Wie folgt habe Bind9 installiert, konfiguriert und in meine Umgebung integriert.
 sudo apt update
 sudo apt install bind9 bind9utils bind9-doc dnsutils
 ```
-#### 2. Konfigration vornehmen
+#### 2. Konfiguration vornehmen
 Die config-files für Bind9 befinden findet man unter `/etc/bind`.  
 Zuerst bearbeiten wir die Datei `named.conf.options`.  
 Vieles ist hier schon ausgefüllt, ich habe bloss den DNS zu dem von Cloudflare umkonfiguriert und das Netzwerk angepasst.
@@ -132,7 +132,7 @@ Output:
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 - ` network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53`  
 Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies ist, weil ich noch IPv6 aktiviert hatte, was ich in meiner Konfig nicht mit-einbezogen habe.
-- Gemäss Anleitung von Linuxtechi wollte ich den DNS statisch konfigurieren, um die Funktionalität meines DNS zu testen. Da stand ich sollte `/etc/resolv.conf` bearbeiten, doch das Erste, was in dieser Datei stand war:
+- Gemäss Anleitung von Linuxtechi wollte ich den DNS statisch konfigurieren, um die Funktionalität meines DNS zu testen. Da stand ich sollte `/etc/resolv.conf` bearbeiten, doch das Erste, was in dieser Datei stand, war:
 ```
 # This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
 # Do not edit.
