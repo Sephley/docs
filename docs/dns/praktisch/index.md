@@ -1,5 +1,8 @@
 # Aufgaben
-Checkliste der Aufträge gemäss Olat (grünes Häckchen = fertig, graues Häckchen = WIP):
+Checkliste der Aufträge gemäss Olat:
+
+- [x] = fertig
+- [] = WIP
 
 - [x] *Als Pflichtprogramm wird die Inbetriebnahme eines DNS-Resolvers und Nameservers erwartet (bind unter Linux).*
     * [x] *In Wireshark zeichnen Sie die rekursive Abfrage auf und erklären diese.*

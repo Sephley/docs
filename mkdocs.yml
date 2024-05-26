@@ -55,9 +55,9 @@ nav: #utilizes section feature for index pages
       - Glossar: 
         - dns/glossar/index.md
         - Anfänge-des-Internets: dns/glossar/beginning.md
+        - Primary-Secondary-Konzept: dns/glossar/primsec.md
         - DNS-unter-IPv6: dns/glossar/dnsipv6.md
         - DynDNS: dns/glossar/dyndns.md
-        - Primary-Secondary-Konzept: dns/glossar/primsec.md
         - Record-Typen: dns/glossar/rectypes.md
         - Zonendatei: dns/glossar/zonefile.md
       - Praktisch: 
