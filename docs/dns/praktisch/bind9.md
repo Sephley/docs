@@ -65,7 +65,7 @@ primary IN      A       192.168.1.7
 www     IN      A       192.168.1.4
 ```
 [**Dazugehörige Theorie: Record-Typen**](../glossar/rectypes.md)  
-Nun konfigurieren wie die Reverse zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage:
+Nun konfigurieren wie die Reverse Zone. Wie vorhin kopieren wir eine bestehende Datei als Vorlage:
 ```
 cp db.127 reverse.sephley.local
 ```
@@ -131,8 +131,8 @@ Output:
 - Zuerst wollte ich den Bind9 mit [der Anleitung von Digitalocean aufsetzen](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-20-04), diese war jedoch overkill für meine Umgebung. Aber welche Anleitung sollte ich denn nehmen? 
 - Meine lokale VMware Umgebung ist sehr langsam. Vielleicht sollte ich sie migrieren. Ich glaube ich verwende ab nun Terraform & Packer, um meine VMs zu erstellen.
 - ` network unreachable resolving './DNSKEY/IN': 2001:dc3::35#53`  
-Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies ist weil ich noch IPv6 aktiviert hatte, was ich in meiner Konfig nicht mit-einbezogen habe.
-- Gemäss Anleitung von Linuxtechi wollte ich den DNS statisch konfigurieren um die Funktionalität meines DNS zu testen. Da stand ich sollte `/etc/resolv.conf` bearbeiten, doch das erste was in dieser Datei stand war:
+Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies ist, weil ich noch IPv6 aktiviert hatte, was ich in meiner Konfig nicht mit-einbezogen habe.
+- Gemäss Anleitung von Linuxtechi wollte ich den DNS statisch konfigurieren, um die Funktionalität meines DNS zu testen. Da stand ich sollte `/etc/resolv.conf` bearbeiten, doch das Erste, was in dieser Datei stand war:
 ```
 # This is /run/systemd/resolve/stub-resolv.conf managed by man:systemd-resolved(8).
 # Do not edit.
@@ -144,4 +144,4 @@ Viele solche Meldungen wurden mir bei `systemctl status named` angezeigt. Dies i
 # internal DNS stub resolver of systemd-resolved. This file lists all
 # configured search domains.
 ```
-Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoretisch überschreiben kann mit einem statischen File, aber dass es nicht empfohlen wird. Ich habe dann im `/etc/netplan/00-installer-config.yaml` den nameserver angegeben.
+Die Datei war also nur ein Symlink. Ich habe herausgefunden, dass man es theoretisch überschreiben kann mit einem statischen File, aber dass es nicht empfohlen wird. Ich habe dann im `/etc/netplan/00-installer-config.yaml` den Nameserver angegeben.

@@ -13,5 +13,5 @@ Checkliste der Aufträge gemäss Olat:
     * [x] *Übersteuern Sie den DNS mittels Hosts-File (auch unter Windows). Wie verhält sich der Resolver, wenn Sie ihm per Hosts-File andere Werte unterjubeln? Werden diese da berücksichtigt?*
 
 ### Netzwerkschema
-Ich übernehme das Netzwerk vom letzen Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, andererseits weil es eine gute Übung für mich ist.
+Ich übernehme das Netzwerk vom letzten Auftrag zu PXE und DHCP. Einerseits weil es praktisch ist, andererseits weil es eine gute Übung für mich ist.
 ![Netzwerkschema](drawio/netzwerkschama_m300_dns.drawio)

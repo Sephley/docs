@@ -1,11 +1,11 @@
 # DNS Modul 300
-[Auftrag](https://olat.bbw.ch/auth/RepositoryEntry/635961710/CourseNode/109192337476214/path%3D~~DNS/0)  
+[Link zum Auftrag](https://olat.bbw.ch/auth/RepositoryEntry/635961710/CourseNode/109192337476214/path%3D~~DNS/0)  
 ## Vorwissen
-Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun schon zwei Jahre her, von dem her bin ich also doch froh kann ich dies erneut tun. Mit DynDNS habe ich auch schon in meiner privaten Infrastruktur erfahrungen gemacht.
+Ich habe bereits im Geschäft einen Bind9 DNS-Server aufgesetzt. Dies ist nun schon zwei Jahre her, von dem her bin ich also, doch froh kann ich dies erneut tun. Mit DynDNS habe ich auch schon in meiner privaten Infrastruktur erfahrungen gemacht.
 
 ## Aufbau
-Die praktischen Aufgaben mit den persönlichen Erfahrung finden Sie unter dem praktischen Block.
-Das Glossar dient als Hilfmittel, um den praktischen Teil zu verstehen.
+Die praktischen Aufgaben mit den persönlichen Erfahrungen finden Sie unter dem praktischen Block.
+Das Glossar dient als Hilfsmittel, um den praktischen Teil zu verstehen.
 
 ## Quellen
 ### Glossar
