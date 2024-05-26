@@ -23,9 +23,3 @@ Das Glossar dient als Hilfmittel, um den praktischen Teil zu verstehen.
 [https://bind9.readthedocs.io/en/latest/chapter3.html](https://bind9.readthedocs.io/en/latest/chapter3.html)
 - Bind9 als Secondary DNS von Serverspace  
 [https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/](https://serverspace.io/support/help/bind9-as-a-secondary-dns-server-on-ubuntu/)
-
-## TODO
-- edit the quotations of the assingment points so that you use them on a per-task basis. Nobody is going to read that wall of text.
-- add some sort of anchor linking for the theory block.
-- Describe Problems more
-- update network diagram
