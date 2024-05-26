@@ -9,8 +9,9 @@ Ich habe einen scan gestartet und nach `dns` gefiltert. Während dem scan habe i
 ![wireshark_3](images/wireshark_3.png)
 [Datei herunterladen](../downloadable/olat_dns.pcapng)
 
-1. Start bei dem rekursiven Resolver:  
-Der Client sendet eine DNS-Abfrage an einen rekursiven DNS-Resolver.
+1. Start bei dem Resolver:  
+Der Client sendet eine DNS-Abfrage an den DNS-Resolver.  
+Pakete: `179 - 183`
 
 2. Anfrage an die Root-Nameserver:  
 Der rekursive Resolver fragt einen der Root-Nameserver an. Root-Nameserver verwalten die Informationen über die TLD-Nameserver (Top-Level-Domain-Nameserver).
@@ -31,7 +32,8 @@ Der rekursive Resolver sendet die erhaltene IP-Adresse an den ursprünglichen Cl
 Sowohl der rekursive Resolver als auch der Client speichern die Antwort im Cache, um bei zukünftigen Anfragen schneller antworten zu können.
 
 ## Probleme / Anmerkungen
-Ich habe zuerst eine bereits gecachte Abfrage auf www.google.ch gemacht, was natürlich nichts nützt, wenn man den ganzen Prozess erklären möchte.
+Ich habe irgendwie den Sinn der Aufgabe nicht begriffen und habe die rekursive Anfrage an olat.bbw.ch gemacht. Aber der Sinn und Zweck dieser Aufgabe ist ja, dass ich die Anfrage an meinen eigenen DNS mache...  
+Dazu habe ich zuerst eine bereits gecachte Abfrage auf www.google.ch gemacht, was natürlich nichts nützt, wenn man den ganzen Prozess erklären möchte.
 
 ![wireshark_1](images/wireshark_1.png)  
 [Datei herunterladen](../downloadable/windows_dns.pcapng)
