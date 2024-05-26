@@ -6,12 +6,12 @@ Ich habe meinen ehemaligen DHCP client verwendet, wo Wireshark schon installiert
 ## Windows
 Ich habe einen scan gestartet und nach `dns` gefiltert. Während dem scan habe ich Microsoft Edge geöffnet und olat.bbw.ch aufgelöst.
 
-![wireshark_3](images/wireshark_3.png)
-[Datei herunterladen](../downloadable/olat_dns.pcapng)
+![wireshark_4](images/wireshark_4.png)
+[Datei herunterladen](../downloadable/sephley_lookup.pcapng)
 
 1. Start bei dem Resolver:  
 Der Client sendet eine DNS-Abfrage an den DNS-Resolver.  
-Pakete: `179 - 183`
+Pakete: `3-5`
 
 2. Anfrage an die Root-Nameserver:  
 Der rekursive Resolver fragt einen der Root-Nameserver an. Root-Nameserver verwalten die Informationen über die TLD-Nameserver (Top-Level-Domain-Nameserver).
