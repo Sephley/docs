@@ -33,9 +33,8 @@ Sowohl der rekursive Resolver als auch der Client speichern die Antwort im Cache
 ## Probleme / Anmerkungen
 Ich habe zuerst eine bereits gecachte Abfrage auf www.google.ch gemacht, was natürlich nichts nützt, wenn man den ganzen Prozess erklären möchte.
 
-![wireshark_1](images/wireshark_1.png)
+![wireshark_1](images/wireshark_1.png)  
+[Datei herunterladen](../downloadable/windows_dns.pcapng)
 Falls Sie sich fragen, was gstatic.com ist: Google lädt static content (Javascripts, Bilder, CSS) von einer anderen Domäne. Dies hilft bei der Ladezeit, da es die Bandbreite verringert.
 
 ![wireshark_2](images/wireshark_2.png)
-
-[Datei herunterladen](../downloadable/windows_dns.pcapng)
