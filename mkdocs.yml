@@ -68,5 +68,11 @@ nav: #utilizes section feature for index pages
         - DNS-übersteuern: dns/praktisch/uebersteuern.md
         - Wireshark: dns/praktisch/wireshark.md
         - DNS-in-AWS: dns/praktisch/dnsaws.md
+    - TLS:
+      - tls/index.md
+      - Glossar:
+        - tls/index.md
+      - Aufgaben:
+        - tls/index.md
   - Experts-Kurs: 
     - experts.md
