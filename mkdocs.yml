@@ -74,5 +74,6 @@ nav: #utilizes section feature for index pages
         - tls/index.md
       - Aufgaben:
         - tls/index.md
+        - Wireshark: tls/aufgaben/wireshark.md
   - Experts-Kurs: 
     - experts.md
