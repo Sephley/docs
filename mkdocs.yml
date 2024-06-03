@@ -83,6 +83,7 @@ nav: #utilizes section feature for index pages
       - Aufgaben:
         - tls/aufgaben/index.md
         - Wireshark: tls/aufgaben/wireshark.md
+        - Nginx: tls/aufgaben/nginx.md
       - Homelab:
         - tls/homelab/index.md
         - Traefik: tls/homelab/traefik.md
