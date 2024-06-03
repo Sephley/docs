@@ -75,5 +75,8 @@ nav: #utilizes section feature for index pages
       - Aufgaben:
         - tls/aufgaben/index.md
         - Wireshark: tls/aufgaben/wireshark.md
+      - Homelab:
+        - tls/homelab/index.md
+        - Traefik: tls/aufgaben/traefik.md
   - Experts-Kurs: 
     - experts.md
