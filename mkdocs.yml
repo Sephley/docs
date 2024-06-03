@@ -72,11 +72,19 @@ nav: #utilizes section feature for index pages
       - tls/index.md
       - Glossar:
         - tls/glossar/index.md
+        - Architektur: tls/glossar/architektur.md
+        - Anwendungsfälle: tls/glossar/use-cases.md
+        - Vergleich-nach-Sicherheitslevel: tls/glossar/vergleich.md
+        - Angriff-Abwehrmechanismus: tls/glossar/angriff-abwehr.md
+        - Verschlüsslungsverfahren: tls/glossar/verschluesslungsverfahren.md
+        - SNI: tls/glossar/sni.md
+        - Nachteile: tls/glossar/nachteile.md
+        - Wikipedia-Artikel: tls/glossar/wikipedia.md
       - Aufgaben:
         - tls/aufgaben/index.md
         - Wireshark: tls/aufgaben/wireshark.md
       - Homelab:
         - tls/homelab/index.md
-        - Traefik: tls/aufgaben/traefik.md
+        - Traefik: tls/homelab/traefik.md
   - Experts-Kurs: 
     - experts.md
