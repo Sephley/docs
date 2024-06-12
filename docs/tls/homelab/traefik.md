@@ -16,6 +16,7 @@ The Dashboard is only reachable from our internal network (so via VPN or GUI VM)
 |`containerd.io`| - |
 |`docker-buildx-plugin`| - |
 |`docker-compose-plugin`| - |
+
 Follow the [official installation guide of docker](https://docs.docker.com/engine/install/ubuntu/)
 
 [I also recommend running docker in a rootless environment](https://docs.docker.com/engine/install/linux-postinstall/)
@@ -57,5 +58,8 @@ providers:
       cert: ./certs/cert.pem
       key: ./certs/key.pem
 ```
-https://doc.traefik.io/traefik/routing/routers/#tls
-https://doc.traefik.io/traefik/providers/docker/#tls
+<https://doc.traefik.io/traefik/routing/routers/#tls>  
+<https://doc.traefik.io/traefik/providers/docker/#tls>
+
+## TLS in Traefik
+<https://doc.traefik.io/traefik/https/tls/>
