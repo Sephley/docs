@@ -5,5 +5,6 @@ Für jeden der folgenden Domänen habe ich den "SSL Server Test" von SSL Labs au
 
 | **URL**| **TLS Version**| **SSL Labs Auswertung**|
 |--|--|--|
-| <https://www.digitec.ch>| 1.3| [A+](<https://www.ssllabs.com/ssltest/analyze.html?d=www.digitec.ch>)|
+| <https://www.digitec.ch>| 1.3| [A+](https://www.ssllabs.com/ssltest/analyze.html?d=www.digitec.ch)|
 | <https://olat.bbw.ch>| 1.3| [A+](https://www.ssllabs.com/ssltest/analyze.html?d=olat.bbw.ch)|
+| <https://sephley.github.io/docs>| |[A](https://www.ssllabs.com/ssltest/analyze.html?d=sephley.github.io) |
