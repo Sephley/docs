@@ -3,7 +3,7 @@ In diesem Abschnitt installiere ich Nginx und konfiguriere ein selbstsigniertes 
 ## Installation
 >Ubuntu 24.04
 ```
-sudo apt install ngninx
+sudo apt install nginx
 ```
 
 ## Konfiguration

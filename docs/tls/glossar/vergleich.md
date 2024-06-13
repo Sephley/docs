@@ -3,7 +3,7 @@
 
 Für jeden der folgenden Domänen habe ich den "SSL Server Test" von SSL Labs ausgeführt.
 
-| **URL**| **TLS Version**| **SSL Labs Test**| **Auswertung**|
-|--|--|--|--|
-| <https://www.digitec.ch>| 1.3| A+| <https://www.ssllabs.com/ssltest/analyze.html?d=www.digitec.ch>|
-| <https://olat.bbw.ch>| | | |
+| **URL**| **TLS Version**| **SSL Labs Auswertung**|
+|--|--|--|
+| <https://www.digitec.ch>| 1.3| [A+](<https://www.ssllabs.com/ssltest/analyze.html?d=www.digitec.ch>)|
+| <https://olat.bbw.ch>| | |
