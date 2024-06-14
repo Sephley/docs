@@ -38,8 +38,8 @@ server {
 
 ## Self-signed cert
 ```
-openssl genrsa -out www.sephley.home.key 2048
-openssl req -new -key www.sephley.home.key -out csr.pem
-openssl req -x509 -key www.sephley.home.key -in csr.pem -out www.sephley.home.crt -days 365
+openssl genrsa -out www.sephley.com.key 2048
+openssl req -new -key www.sephley.com.key -out csr.pem
+openssl req -x509 -key www.sephley.com.key -in csr.pem -out www.sephley.home.crt -days 365
 ```
 ![self-signed-cert](../images/self-sigend-cert.png)
