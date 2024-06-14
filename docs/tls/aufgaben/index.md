@@ -4,5 +4,5 @@
 - [ ] = WIP
 
 Checkliste der Aufträge gemäss Olat:
-- [ ]*TLS in Wireshark*
-- [ ]*TLS im Web (HTTPS)*
+- [ ] *TLS in Wireshark*
+- [ ] *TLS im Web (HTTPS)*
