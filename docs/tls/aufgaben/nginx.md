@@ -1,4 +1,8 @@
 # Nginx mit TLS
+- [ ]*TLS im Web (HTTPS)*
+
+*Sie haben in der Vorübung zwei zertifikatsbasierte Webzugänge eingerichtet. Verwenden Sie diese für den Mitschnitt des HTTPS-Zugriffs. Finden Sie die Elemente der Theorie im Mitschnitt und ordnen Sie diese zu. Hier noch ein nützlicher Link: https://www.sslshopper.com/article-most-common-openssl-commands.html Welche Verschlüsselung haben Sie verwendet? War Ihnen das bei der Erstellung bewusst? Können Sie spezielle Protokollabläufe simulieren? Versuchen Sie einen Alert aufzuzeichnen.*
+
 In diesem Abschnitt installiere ich Nginx und konfiguriere ein selbstsigniertes Zertifikat.
 ## Installation
 >Ubuntu 24.04
