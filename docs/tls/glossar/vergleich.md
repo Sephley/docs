@@ -20,8 +20,10 @@ Für jeden der folgenden Domänen habe ich den "SSL Server Test" von SSL Labs au
 Was bei meinen Webseiten zum A anstatt A+ geführt hat sind die Ciphers.  
 Beispielsweise ist mir aufgefallen, das mein selbst-signiertes Zertifikat <https://www.sephley.com> schwächere Ciphers verwendet als <https://olat.bbw.ch>.
 
-><https://olat.bbw.ch>  
+><https://olat.bbw.ch>
+
 ![olat-bbw-ciphers](../images/ssllabs-olat-bbw.png)
 
-><https://www.sephley.com>  
+><https://www.sephley.com>
+
 ![www-sephley-ciphers](../images/ssllabs-www-sephley.png)
