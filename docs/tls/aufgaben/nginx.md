@@ -40,10 +40,15 @@ server {
 }
 ```
 
-## Self-signed cert
+## Self-signed cert generieren
 ```
 openssl genrsa -out www.sephley.com.key 2048
 openssl req -new -key www.sephley.com.key -out csr.pem
 openssl req -x509 -key www.sephley.com.key -in csr.pem -out www.sephley.home.crt -days 365
 ```
 ![self-signed-cert](../images/self-sigend-cert.png)
+
+## Reflexion
+Da ich dies schon mehrmals im Geschäft machen musste, war mir der Ablauf schon bekannt.
+
+Ich habe aber aus einer anderen Aufgabe lernen können, welche ciphers sicher sind.
