@@ -50,6 +50,10 @@ openssl req -x509 -key www.sephley.com.key -in csr.pem -out www.sephley.home.crt
 ```
 ![self-signed-cert](../images/self-sigend-cert.png)
 
+Um unsere CA mit Firefox zu vertrauen, müssen wir es in den Zertifikats-Einstellungen importieren:
+
+![firefox](../images/firefox.png)
+
 ## Reflexion
 Da ich dies schon mehrmals machen musste, war mir der Ablauf schon bekannt.
 
