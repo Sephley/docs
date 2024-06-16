@@ -60,7 +60,7 @@ Da ich dies schon mehrmals machen musste, war mir der Ablauf schon bekannt.
 Als ich dies originell aufgesetzt habe, habe ich die Ciphers nicht beachtet. Ich habe jedoch bei dem [Vergleich mit anderen](vergleich.md) gemerkt, dass dies sinnvoll wäre.  
 Deshalb habe ich `ssl_ciphers TLS_AES_256_GCM_SHA384;` in der config spezifiziert.
 
-**ACHTUNG!** Die cipher `TLS_AES_256_GCM_SHA384` hat nicht funktioniert, weil es von nginx nicht erkannt wird. Es ist aber eine valide cipher, dies habe ich wie folgt geprüft:
+**ACHTUNG!** Die Cipher `TLS_AES_256_GCM_SHA384` hat nicht funktioniert, weil es von nginx nicht erkannt wird. Es ist aber eine valide Cipher, dies habe ich wie folgt geprüft:
 
 ![suite](../images/suite.png)
 
