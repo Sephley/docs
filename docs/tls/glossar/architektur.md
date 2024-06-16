@@ -13,6 +13,8 @@ There are three main components to what the TLS protocol accomplishes: Encryptio
 
 ## Handshake Layer
 
+<https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/>
+
 ![handshake](../images/tls-ssl-handshake.png)  
 [*Bild von Cloudflare*](https://cf-assets.www.cloudflare.com/slt3lc6tev37/5aYOr5erfyNBq20X5djTco/3c859532c91f25d961b2884bf521c1eb/tls-ssl-handshake.png)
 
