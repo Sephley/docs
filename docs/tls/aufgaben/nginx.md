@@ -1,5 +1,5 @@
 # Nginx mit TLS
-- [ ] *TLS im Web (HTTPS)*
+- [x] *TLS im Web (HTTPS)*
 
 *Sie haben in der Vorübung zwei zertifikatsbasierte Webzugänge eingerichtet. Verwenden Sie diese für den Mitschnitt des HTTPS-Zugriffs. Finden Sie die Elemente der Theorie im Mitschnitt und ordnen Sie diese zu. Hier noch ein nützlicher Link: https://www.sslshopper.com/article-most-common-openssl-commands.html Welche Verschlüsselung haben Sie verwendet? War Ihnen das bei der Erstellung bewusst? Können Sie spezielle Protokollabläufe simulieren? Versuchen Sie einen Alert aufzuzeichnen.*
 
@@ -25,6 +25,7 @@ server {
         server_name www.sephley.home;
         ssl_certificate www.sephley.home.crt;
         ssl_certificate_key www.sephley.home.key;
+        ssl_ciphers TLS_AES_256_GCM_SHA384;
 
         root /var/www/html;
 
@@ -50,3 +51,6 @@ openssl req -x509 -key www.sephley.com.key -in csr.pem -out www.sephley.home.crt
 
 ## Reflexion
 Da ich dies schon mehrmals im Geschäft machen musste, war mir der Ablauf schon bekannt.
+
+Als ich dies originell aufgesetzt habe, habe ich die Ciphers nicht beachtet. Ich habe jedoch bei dem [Vergleich mit anderen](vergleich.md) gemerkt, dass dies sinnvoll wäre.  
+Deshalb habe ich `ssl_ciphers TLS_AES_256_GCM_SHA384;` in der config spezifiziert.
