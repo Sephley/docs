@@ -11,7 +11,7 @@ Wenn wir in dieser Datei nach `ssl` filtern, wird der Handshake klar ersichtlich
 ![wireshark-1](../images/wireshark-1.png)
 
 **1. Client Hello**  
-Mein Client initiiert den Verbindungsaufbau. Die Nachricht enthält Informationen wie die unterstützten Cipher Suites und einm Secret, welcher im Schlüsselaustausch verwendet wird.
+Mein Client initiiert den Verbindungsaufbau. Die Nachricht enthält Informationen wie die unterstützten Cipher Suites und ein Secret, welcher im Schlüsselaustausch verwendet wird.
 
 **2. Server Hello**  
 Diese Nachricht enthält die vom Server gewählte Verschlüsselungsmethode und eine weiteres Secret.
