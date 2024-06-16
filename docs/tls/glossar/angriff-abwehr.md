@@ -1,2 +1,7 @@
 # Angriff / Abwehrmöglichkeiten
-- [ ] *Wählen Sie eine der Angriffsmöglichkeiten aus und beschreiben Sie den Angriff und die Abwehrmechanismen von TLS detailliert.*
+- [x] *Wählen Sie eine der Angriffsmöglichkeiten aus und beschreiben Sie den Angriff und die Abwehrmechanismen von TLS detailliert.*
+
+Man-in-the-Middle ist eine bekannte Angriffsmethode, welche auf TLS betrifft.
+
+Wenn ein Angreifer platziert sich zwischen zwei kommunizierenden Parteien und liest oder manipuliert den Datenverkehr.
+Um dies zu verhindern, sollte man mit Zertifikaten arbeiten (2-way-authentification).

@@ -1,5 +1,9 @@
 # Spezielle Anwendungsfälle
-- [ ] *Wer setzt TLS ein? Sehen Sie noch speziellere Anwendungsfälle insbesondere für 2-Way-Authentification.*
+- [x] *Wer setzt TLS ein? Sehen Sie noch speziellere Anwendungsfälle insbesondere für 2-Way-Authentification.*
+
+TLS kann für sehr vieles noch eingesetzt werden, es ist schlussendlich eine Verschlusselungsmöglichkeit. Durch die Implementierung von 2-Way-Authentification mit Zertifikaten können sowohl Clients als auch Server in verschiedenen Szenarien authentifiziert werden, was die Sicherheit und Vertrauenswürdigkeit der Kommunikation weiter erhöht.
+
+Unten ist noch eine Liste von anderen Möglichkeiten (von ChatGPT generiert).
 
 1. E-Mail-Sicherheit
 
