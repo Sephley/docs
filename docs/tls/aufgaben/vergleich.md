@@ -27,3 +27,9 @@ Beispielsweise ist mir aufgefallen, das mein selbst-signiertes Zertifikat <https
 ><https://www.sephley.com>
 
 ![www-sephley-ciphers](../images/ssllabs-www-sephley.png)
+
+Bei der Erstellung des private keys habe ich nicht darauf geachtet, welche ciphers ich verwende.  
+Falsch, das spezifiziert man nicht bei der Erstellung des private keys sondern bei dem Webserver. in meinem Fall musste ich also meine Nginx config anpassen:
+```
+ssl_ciphers TLS_AES_256_GCM_SHA384;
+```
