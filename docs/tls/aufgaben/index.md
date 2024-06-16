@@ -3,8 +3,8 @@
 - [x] = fertig
 - [ ] = WIP
 
-Checkliste der Aufträge gemäss Olat:
+Checkliste der Aufgaben gemäss Olat:
 
-- [ ] *TLS Wireshark Analyse*
+- [x] *TLS Wireshark Analyse*
 - [x] *TLS im Web (HTTPS)*
 - [x] *Vergleichen Sie verschiedene HTTPS-Seiten (digitec, olat, Schweizer Bank Ihrer Wahl, Nischenbank z. B. garantibank.nl) auf ihren Sicherheitslevel.*

@@ -1,5 +1,5 @@
 # Architektur des Protokolls
-- [ ] *Verschaffen Sie sich einen Überblick über die Architektur des Protokolls.*
+- [x] *Verschaffen Sie sich einen Überblick über die Architektur des Protokolls.*
 
 <https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/>
 
