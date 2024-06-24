@@ -96,7 +96,10 @@ nav: #utilizes section feature for index pages
         - Wildcard-Zertifikate: acme/glossar/wildcard.md
       - Aufgaben:
         - acme/aufgaben/index.md
-        - Bind DNS für Letsencrypt: acme/aufgaben/bind-letsencrypt.md
-        - Certbot in Betrieb nehmen: acme/aufgaben/certbot.md
+        - Bind-DNS für-Letsencrypt: acme/aufgaben/bind-letsencrypt.md
+        - Certbot-in-Betrieb-nehmen: acme/aufgaben/certbot.md
+      - Homelab:
+        - acme/homelab/index.md
+        - ACME-in-Traefik: acme/homelab/traefik.md
   - Experts-Kurs: 
     - experts.md
