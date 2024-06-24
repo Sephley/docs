@@ -87,5 +87,16 @@ nav: #utilizes section feature for index pages
       - Homelab:
         - tls/homelab/index.md
         - Traefik: tls/homelab/traefik.md
+    - ACME:
+      - acme/index.md
+      - Glossar:
+        - acme/glossar/index.md
+        - Was-ist-ACME: acme/glossar/acme.md
+        - Let's-Encrypt-Zertifikate: acme/glossar/lets-encrypt.md
+        - Wildcard-Zertifikate: acme/glossar/wildcard.md
+      - Aufgaben:
+        - acme/aufgaben/index.md
+        - Bind DNS für Letsencrypt: acme/aufgaben/bind-letsencrypt.md
+        - Certbot in Betrieb nehmen: acme/aufgaben/certbot.md
   - Experts-Kurs: 
     - experts.md
