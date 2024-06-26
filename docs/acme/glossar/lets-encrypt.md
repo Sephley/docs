@@ -2,6 +2,8 @@
 
 <https://letsencrypt.org/>
 
+## Über Let's Encrypt
+
 Let’s Encrypt ist eine freie, automatisierte und offene Zertifizierungsstelle (CA) und läuft für die Öffentlichkeit. Der Dienst wird zur Verfügung gestellt von Internet Security Research Group (ISRG).
 
 Die Schlüsselprinzipien hinter Let’s Encrypt sind:
@@ -12,3 +14,5 @@ Die Schlüsselprinzipien hinter Let’s Encrypt sind:
 - Transparent: Alle ausgestellten und widerrufenen Zertifikate werden öffentlich für jedermann zur Inspektion zur Verfügung gestellt.
 - Offen: Das automatische Ausstellungs- und Erneuerungsprotokoll wird als offener Standard veröffentlicht, damit es andere adaptieren können.
 - Kooperativ: Ähnlich wie die zugrundeliegenden Internetprotokolle selbst ist Let’s Encrypt eine gemeinsame Anstrengung, die der Community zugute kommt und außerhalb der Kontrolle einer einzelnen Organisation liegt.
+
+## Funktionilität von Let's Encrypt
