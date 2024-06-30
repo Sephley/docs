@@ -2,6 +2,10 @@
 
 Da snap nun die offiziell-unterstützte Installationsmethode ist, verwenden wir snap.
 
+Um Certbot für mich auszutesten, habe ich es auf meinem Linode installiert. Auf meinem Linode ist ein nginx Webserver auf Ubuntu 24.04 installiert.
+
+<https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal>
+
 Zuerst sorgen wir dafür, dass Certbot nicht bereits installiert ist.
 ```
 sudo apt-get remove certbot
@@ -22,3 +26,6 @@ sudo certbot --nginx
 ![certbot_2](../images/certbot_2.png)
 
 ![certbot_cert](../images/certbot_cert.png)
+
+## Probleme / Anmerkungen
+Keine, die Installation erfolgte reibungslos. Es hat mich wirklich überrascht, wie leicht es funktioniert hat.
