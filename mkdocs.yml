@@ -96,6 +96,7 @@ nav: #utilizes section feature for index pages
         - Wildcard-Zertifikate: acme/glossar/wildcard.md
       - Aufgaben:
         - acme/aufgaben/index.md
+        - Certbot-Basic: acme/aufgaben/certbot-basic.md
         - Certbot-mit-Cloudflare: acme/aufgaben/certbot-cloudflare.md
         - Certbot-mit-Bind9: acme/aufgaben/certbot-bind.md
       - Homelab:
