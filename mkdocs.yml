@@ -102,5 +102,7 @@ nav: #utilizes section feature for index pages
       - Homelab:
         - acme/homelab/index.md
         - ACME-in-Traefik: acme/homelab/traefik.md
+      - Fazit:
+        - acme/fazit/index.md
   - Experts-Kurs: 
     - experts.md
