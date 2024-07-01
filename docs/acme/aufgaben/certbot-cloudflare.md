@@ -22,3 +22,12 @@ sudo snap install certbot-dns-cloudflare
 ```
 
 Das Cloudflare Plugin kann nicht einfach so funktionieren, man muss zuerst die erforderliche Konfiguration für die Autehntifizierung vornehmen. Und zwar benötigen wir ein config file mit unseren Cloudflare API credentials.
+
+>von <https://dash.cloudflare.com/profile/api-tokens>  
+![cloudflare_1](../images/cloudflare_1.png)
+
+Gemäss der offiziellen Doku von Certbot brauchen wir einen Token mit den Berechtigungen `Zone:DNS:Edit`.  
+>von <https://certbot-dns-cloudflare.readthedocs.io/en/stable/#credentials>
+![certbot_cloudflare_doc](../images/certbot_cloudflare_doc.png)
+
+![cloudflare_2](../images/cloudflare_2.png)
