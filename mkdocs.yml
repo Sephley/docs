@@ -94,6 +94,7 @@ nav: #utilizes section feature for index pages
         - Was-ist-ACME: acme/glossar/acme.md
         - Let's-Encrypt-Zertifikate: acme/glossar/lets-encrypt.md
         - Wildcard-Zertifikate: acme/glossar/wildcard.md
+        - DNS-01: acme/glossar/dns-01.md
       - Aufgaben:
         - acme/aufgaben/index.md
         - Certbot-Basic: acme/aufgaben/certbot-basic.md
