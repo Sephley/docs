@@ -1,5 +1,7 @@
 # Basisinstallation von Certbot
 
+- [x] *Certbot in Betrieb nehmen*
+
 [Certbot](https://certbot.eff.org/) ist ein Open-Source Tool, welches automatisch Let's Encrypt Zertifikate generieren kann.
 
 ## Voraussetzungen
