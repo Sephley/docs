@@ -33,7 +33,7 @@ sudo certbot --nginx
 
 ![certbot_2](../images/certbot_2.png)
 
-Somit haben wir nun ein Zertifikat ausgestellt.
+Somit haben wir ein Zertifikat ausgestellt.
 
 ![certbot_cert](../images/certbot_cert.png)
 
