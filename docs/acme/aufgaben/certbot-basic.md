@@ -1,8 +1,16 @@
 # Basisinstallation von Certbot
 
-Da snap nun die offiziell-unterstützte Installationsmethode ist, verwenden wir snap.
+[Certbot](https://certbot.eff.org/) ist ein Open-Source Tool, welches automatisch Let's Encrypt Zertifikate generieren kann.
+
+## Voraussetzungen
 
 Um Certbot für mich auszutesten, habe ich es auf meinem Linode installiert. Auf meinem Linode ist ein nginx Webserver auf Ubuntu 24.04 installiert.
+
+Selbstverständlich benötigt man bei dem DNS-Provider auch ein Record, der auf den Linode zeigt.
+
+## Installation
+
+Da snap nun die offiziell-unterstützte Installationsmethode ist, verwenden wir snap.
 
 <https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal>
 
@@ -25,7 +33,10 @@ sudo certbot --nginx
 
 ![certbot_2](../images/certbot_2.png)
 
+Somit haben wir nun ein Zertifikat ausgestellt.
+
 ![certbot_cert](../images/certbot_cert.png)
 
 ## Probleme / Anmerkungen
+
 Keine, die Installation erfolgte reibungslos. Es hat mich wirklich überrascht, wie leicht es funktioniert hat.

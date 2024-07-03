@@ -16,3 +16,11 @@ Die Schlüsselprinzipien hinter Let’s Encrypt sind:
 - Kooperativ: Ähnlich wie die zugrundeliegenden Internetprotokolle selbst ist Let’s Encrypt eine gemeinsame Anstrengung, die der Community zugute kommt und außerhalb der Kontrolle einer einzelnen Organisation liegt.
 
 ## Funktionilität von Let's Encrypt
+
+<https://letsencrypt.org/getting-started/>
+
+Um ein Zertifikat bei Let's Encrypt zu generieren muss man auf folgende URL zugreifen können: `https://acme-v02.api.letsencrypt.org/directory`
+
+Diese URL ist das ACME Directory. Es dient als Entrypoint für ACME-Clients, um die verfügbaren Endpoints für die Interaktion mit der CA zu ermitteln. Das Directory ist ein JSON-Objekt, das eine Reihe von URLs für verschiedene vom ACME-Server bereitgestellte Dienste enthält.
+
+Es gibt [sehr viele Wege](<https://letsencrypt.org/docs/client-options/>), um ein Let's Encrypt Zertifikat auszustellen.

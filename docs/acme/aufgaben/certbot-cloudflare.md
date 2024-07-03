@@ -30,7 +30,7 @@ Gemäss der offiziellen Doku von Certbot brauchen wir einen Token mit den Berech
 >von <https://certbot-dns-cloudflare.readthedocs.io/en/stable/#credentials>  
 ![certbot_cloudflare_doc](../images/certbot_cloudflare_doc.png)
 
-Also wählen wir diesen Template.
+Also wählen wir dieses Template.
 ![cloudflare_2](../images/cloudflare_2.png)
 
 Und schon haben wir unseren Token.  
@@ -50,3 +50,6 @@ certbot certonly \
 ```
 
 ![certbot_wildcard](../images/certbot_wildcard.png)
+
+## Probleme / Anmerkungen
+Als ich das erste Mal den certbot Befehl ausgeführt habe, erwartete ich, dass das Zertifikat aktiviert werden sollte. Dies war aber nicht der Fall, denn mit `certbot certonly` wird das Zertifikat, zwar ausgestellt, jedoch nicht aktivert.
