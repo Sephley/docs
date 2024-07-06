@@ -6,5 +6,6 @@
 Checkliste meiner selbst-definierten Themen:
 
 - [ ] *Was ist ACME?*
-- [ ] *Let's Encrypt Zertifikate*
+- [x] *Let's Encrypt Zertifikate*
 - [ ] *Wildcard Zertifikate*
+- [ ] *Was ist DNS-01?*
