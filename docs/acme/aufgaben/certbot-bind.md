@@ -8,6 +8,8 @@ Das ist natürlich blödsinn, denn ein funktionierender Automatismus macht keine
 
 Das einzige Risiko, welches besteht, ist wenn Certbot einen breaking change einführt und es niemand merkt.
 
+Am idealsten wäre es warscheinlich wenn wir unsere Wildcard Zertifikate ganz ersetzen würden, [siehe Glossar](../glossar/wildcard.md).
+
 ## Bind DNS für Letsencrypt aufsetzen
 
 Wir setzen Bind9 als DNS ein, also müssen wir diesen umkonfigurieren. Hierfür verwende ich die [Anleitung aus Olat](https://www.hagen-bauer.de/2019/06/authoritive-bind-server.html).
@@ -82,4 +84,4 @@ sudo /opt/certbot/bin/pip install --upgrade certbot certbot-nginx certbot-dns-rf
 
 ## Probleme / Anmerkungen
 
-Diese Methode wurde noch nicht angenommen (bis 08.07.2024 noch nicht).
+Diese Methode wurde noch nicht angenommen (bis 08.07.2024 noch nicht), da ich es noch in der Sitzung besprechen muss. Wie oben erwähnt wäre das Ersetzen der Wildcard Zertifkate evtl. auch eine Lösung.
