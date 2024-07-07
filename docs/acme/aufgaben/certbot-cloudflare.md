@@ -54,3 +54,5 @@ certbot certonly \
 
 ## Probleme / Anmerkungen
 Als ich das erste Mal den certbot Befehl ausgeführt habe, erwartete ich, dass das Zertifikat aktiviert werden sollte. Dies war aber nicht der Fall, denn mit `certbot certonly` wird das Zertifikat zwar ausgestellt, jedoch nicht aktivert.
+
+Somit war ist das gar keine ACME implementation, denn es sollte voll-automatisert funktionieren.
