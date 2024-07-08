@@ -16,7 +16,7 @@ Wir setzen Bind9 als DNS ein, also müssen wir diesen umkonfigurieren. Hierfür 
 
 ## Installation
 
-Wir verwenden im Geschäft kein snap, also wir müssen eine andere Installationsmethode suchen.
+Wir verwenden im Geschäft kein [snap](https://snapcraft.io/), also wir müssen eine andere Installationsmethode suchen.
 
 Pip ist gemäss der [offiziellen Doku](https://eff-certbot.readthedocs.io/en/latest/install.html#alternative-2-pip) eine Alternative zu snap. Diese Methode ist für uns geeignet, da Python und Pip standardmässig auf unseren Servern installiert sind.
 
@@ -85,3 +85,5 @@ sudo /opt/certbot/bin/pip install --upgrade certbot certbot-nginx certbot-dns-rf
 ## Probleme / Anmerkungen
 
 Diese Methode wurde noch nicht angenommen (bis 08.07.2024 noch nicht), da ich es noch in der Sitzung besprechen muss. Wie oben erwähnt wäre das Ersetzen der Wildcard Zertifkate evtl. auch eine Lösung.
+
+Ich denke es wäre aber Sinnvoll, dies zu implementieren. Für die regulären Zertifikate haben wir ja schon eine Lösung mit Cronjob und acme-tiny.
