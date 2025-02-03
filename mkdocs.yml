@@ -30,6 +30,8 @@ plugins:
   - drawio
   - search
   - mkdocs-video
+extra_css:
+  - stylesheets/home.css
 
 markdown_extensions: #requires pymdown-extensions + markdown in ci job
     - def_list

@@ -1,0 +1,37 @@
+:root {
+  --md-home-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Hide default content on home page */
+body[data-md-page="index"] .md-main__inner {
+  max-width: 100%;
+  margin: 0;
+}
+
+body[data-md-page="index"] .md-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  background: var(--md-home-background);
+  color: white;
+}
+
+body[data-md-page="index"] .md-content__inner {
+  max-width: 800px;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Custom home page styling */
+body[data-md-page="index"] h1 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+body[data-md-page="index"] p {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
